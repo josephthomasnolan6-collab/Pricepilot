@@ -1,1211 +1,1308 @@
 const products = [
 
-    {
-        id: 1,
-        name: "iPhone 17",
-        category: "Smartphone",
-        emoji: "📱",
-        description: "Apple's latest flagship smartphone.",
-        rating: 4.8,
+    // =========================
+    // APPLE IPHONES
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 999,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 1029,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 1049,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "iphone-16-pro-max",
+        brand: "Apple",
+        name: "iPhone 16 Pro Max",
+        category: "phone",
+        price: 1199,
+        oldPrice: 1299,
+        image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 1199,
+            Currys: 1199
+        }
+    },
+
+    {
+        id: "iphone-16-pro",
+        brand: "Apple",
+        name: "iPhone 16 Pro",
+        category: "phone",
+        price: 999,
+        oldPrice: 1099,
+        image: "https://images.unsplash.com/photo-1592286927505-1def25115558?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 999,
+            Currys: 999
+        }
+    },
+
+    {
+        id: "iphone-16",
+        brand: "Apple",
+        name: "iPhone 16",
+        category: "phone",
+        price: 799,
+        oldPrice: 899,
+        image: "https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 799,
+            Currys: 789
+        }
+    },
+
+    {
+        id: "iphone-16-plus",
+        brand: "Apple",
+        name: "iPhone 16 Plus",
+        category: "phone",
+        price: 899,
+        oldPrice: 999,
+        image: "https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 899,
+            Currys: 879
+        }
+    },
+
+    {
+        id: "iphone-15-pro-max",
+        brand: "Apple",
+        name: "iPhone 15 Pro Max",
+        category: "phone",
+        price: 999,
+        oldPrice: 1199,
+        image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 999,
+            Currys: 979
+        }
+    },
+
+    {
+        id: "iphone-15-pro",
+        brand: "Apple",
+        name: "iPhone 15 Pro",
+        category: "phone",
+        price: 899,
+        oldPrice: 1099,
+        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 899,
+            Currys: 899
+        }
+    },
+
+    {
+        id: "iphone-15",
+        brand: "Apple",
+        name: "iPhone 15",
+        category: "phone",
+        price: 699,
+        oldPrice: 799,
+        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 699,
+            Currys: 679
+        }
+    },
+
+    {
+        id: "iphone-15-plus",
+        brand: "Apple",
+        name: "iPhone 15 Plus",
+        category: "phone",
+        price: 799,
+        oldPrice: 899,
+        image: "https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 799,
+            Currys: 789
+        }
+    },
+
+    {
+        id: "iphone-se",
+        brand: "Apple",
+        name: "iPhone SE",
+        category: "phone",
+        price: 449,
+        oldPrice: 499,
+        image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 449,
+            Currys: 439
+        }
     },
 
 
-    {
-        id: 2,
-        name: "Samsung Galaxy S26",
-        category: "Smartphone",
-        emoji: "📱",
-        description: "Premium Samsung Galaxy smartphone.",
-        rating: 4.7,
+    // =========================
+    // APPLE IPADS
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 899,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 949,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 979,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "ipad-pro-13",
+        brand: "Apple",
+        name: "iPad Pro 13-inch",
+        category: "tablet",
+        price: 1299,
+        oldPrice: 1399,
+        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 1299,
+            Currys: 1299
+        }
+    },
+
+    {
+        id: "ipad-air",
+        brand: "Apple",
+        name: "iPad Air",
+        category: "tablet",
+        price: 699,
+        oldPrice: 749,
+        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 699,
+            Currys: 679
+        }
+    },
+
+    {
+        id: "ipad-10",
+        brand: "Apple",
+        name: "iPad 10th Generation",
+        category: "tablet",
+        price: 449,
+        oldPrice: 499,
+        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 449,
+            Currys: 439
+        }
     },
 
 
-    {
-        id: 3,
-        name: "Google Pixel 10",
-        category: "Smartphone",
-        emoji: "📱",
-        description: "Google's smart Android flagship.",
-        rating: 4.6,
+    // =========================
+    // APPLE WATCH
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 799,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 829,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 849,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "apple-watch-ultra-2",
+        brand: "Apple",
+        name: "Apple Watch Ultra 2",
+        category: "watch",
+        price: 799,
+        oldPrice: 899,
+        image: "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 799,
+            Currys: 779
+        }
+    },
+
+    {
+        id: "apple-watch-series-10",
+        brand: "Apple",
+        name: "Apple Watch Series 10",
+        category: "watch",
+        price: 449,
+        oldPrice: 499,
+        image: "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 449,
+            Currys: 439
+        }
     },
 
 
-    {
-        id: 4,
-        name: "MacBook Air M4",
-        category: "Laptop",
-        emoji: "💻",
-        description: "Lightweight Apple laptop powered by M4.",
-        rating: 4.9,
+    // =========================
+    // AIRPODS
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 1099,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 1149,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 1199,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "airpods-pro-2",
+        brand: "Apple",
+        name: "AirPods Pro 2",
+        category: "audio",
+        price: 249,
+        oldPrice: 279,
+        image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 249,
+            Currys: 239
+        }
+    },
+
+    {
+        id: "airpods-4",
+        brand: "Apple",
+        name: "AirPods 4",
+        category: "audio",
+        price: 179,
+        oldPrice: 199,
+        image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 179,
+            Currys: 169
+        }
     },
 
 
-    {
-        id: 5,
-        name: "Dell XPS 15",
-        category: "Laptop",
-        emoji: "💻",
-        description: "Premium Windows laptop for work and study.",
-        rating: 4.5,
+    // =========================
+    // SAMSUNG GALAXY S
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 1299,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 1349,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 1399,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "galaxy-s25-ultra",
+        brand: "Samsung",
+        name: "Samsung Galaxy S25 Ultra",
+        category: "phone",
+        price: 1249,
+        oldPrice: 1349,
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 1249,
+            Currys: 1199
+        }
+    },
+
+    {
+        id: "galaxy-s25-plus",
+        brand: "Samsung",
+        name: "Samsung Galaxy S25+",
+        category: "phone",
+        price: 999,
+        oldPrice: 1099,
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 999,
+            Currys: 979
+        }
+    },
+
+    {
+        id: "galaxy-s25",
+        brand: "Samsung",
+        name: "Samsung Galaxy S25",
+        category: "phone",
+        price: 799,
+        oldPrice: 899,
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 799,
+            Currys: 769
+        }
+    },
+
+    {
+        id: "galaxy-s24-ultra",
+        brand: "Samsung",
+        name: "Samsung Galaxy S24 Ultra",
+        category: "phone",
+        price: 999,
+        oldPrice: 1249,
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 999,
+            Currys: 949
+        }
+    },
+
+    {
+        id: "galaxy-s24",
+        brand: "Samsung",
+        name: "Samsung Galaxy S24",
+        category: "phone",
+        price: 649,
+        oldPrice: 799,
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 649,
+            Currys: 629
+        }
     },
 
 
-    {
-        id: 6,
-        name: "RTX 5090 Graphics Card",
-        category: "Graphics Card",
-        emoji: "🎮",
-        description: "High-end graphics card for extreme gaming.",
-        rating: 4.9,
+    // =========================
+    // SAMSUNG FOLDABLES
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 1999,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 2099,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 2150,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "galaxy-z-fold-6",
+        brand: "Samsung",
+        name: "Samsung Galaxy Z Fold6",
+        category: "phone",
+        price: 1799,
+        oldPrice: 1999,
+        image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 1799,
+            Currys: 1699
+        }
+    },
+
+    {
+        id: "galaxy-z-flip-6",
+        brand: "Samsung",
+        name: "Samsung Galaxy Z Flip6",
+        category: "phone",
+        price: 999,
+        oldPrice: 1099,
+        image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 999,
+            Currys: 949
+        }
     },
 
 
-    {
-        id: 7,
-        name: "RTX 5070",
-        category: "Graphics Card",
-        emoji: "🎮",
-        description: "Powerful graphics card for high-performance gaming.",
-        rating: 4.7,
+    // =========================
+    // SAMSUNG TABLETS
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 649,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 699,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 729,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "galaxy-tab-s10-ultra",
+        brand: "Samsung",
+        name: "Samsung Galaxy Tab S10 Ultra",
+        category: "tablet",
+        price: 1199,
+        oldPrice: 1349,
+        image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 1199,
+            Currys: 1149
+        }
+    },
+
+    {
+        id: "galaxy-tab-s9",
+        brand: "Samsung",
+        name: "Samsung Galaxy Tab S9",
+        category: "tablet",
+        price: 699,
+        oldPrice: 799,
+        image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 699,
+            Currys: 649
+        }
     },
 
 
-    {
-        id: 8,
-        name: "PlayStation 5",
-        category: "Gaming Console",
-        emoji: "🎮",
-        description: "Sony's current-generation gaming console.",
-        rating: 4.8,
+    // =========================
+    // SAMSUNG WATCHES
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 499,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 529,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 549,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "galaxy-watch-ultra",
+        brand: "Samsung",
+        name: "Samsung Galaxy Watch Ultra",
+        category: "watch",
+        price: 649,
+        oldPrice: 699,
+        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 649,
+            Currys: 599
+        }
+    },
+
+    {
+        id: "galaxy-watch-7",
+        brand: "Samsung",
+        name: "Samsung Galaxy Watch7",
+        category: "watch",
+        price: 349,
+        oldPrice: 399,
+        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 349,
+            Currys: 329
+        }
     },
 
 
-    {
-        id: 9,
-        name: "Xbox Series X",
-        category: "Gaming Console",
-        emoji: "🎮",
-        description: "Microsoft's powerful 4K gaming console.",
-        rating: 4.7,
+    // =========================
+    // SAMSUNG BUDS
+    // =========================
 
-        prices: [
-            {
-                store: "Amazon",
-                price: 479,
-                url: "https://www.amazon.com"
-            },
-            {
-                store: "Currys",
-                price: 499,
-                url: "https://www.currys.ie"
-            },
-            {
-                store: "DID Electrical",
-                price: 529,
-                url: "https://www.did.ie"
-            }
-        ]
+    {
+        id: "galaxy-buds-3-pro",
+        brand: "Samsung",
+        name: "Samsung Galaxy Buds3 Pro",
+        category: "audio",
+        price: 249,
+        oldPrice: 279,
+        image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 249,
+            Currys: 229
+        }
+    },
+
+    {
+        id: "galaxy-buds-3",
+        brand: "Samsung",
+        name: "Samsung Galaxy Buds3",
+        category: "audio",
+        price: 179,
+        oldPrice: 199,
+        image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 179,
+            Currys: 169
+        }
+    },
+
+
+    // =========================
+    // GOOGLE PIXEL
+    // =========================
+
+    {
+        id: "pixel-9-pro-xl",
+        brand: "Google",
+        name: "Google Pixel 9 Pro XL",
+        category: "phone",
+        price: 1199,
+        oldPrice: 1299,
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 1199,
+            Currys: 1149
+        }
+    },
+
+    {
+        id: "pixel-9-pro",
+        brand: "Google",
+        name: "Google Pixel 9 Pro",
+        category: "phone",
+        price: 999,
+        oldPrice: 1099,
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 999,
+            Currys: 949
+        }
+    },
+
+    {
+        id: "pixel-9",
+        brand: "Google",
+        name: "Google Pixel 9",
+        category: "phone",
+        price: 799,
+        oldPrice: 899,
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 799,
+            Currys: 749
+        }
+    },
+
+    {
+        id: "pixel-8-pro",
+        brand: "Google",
+        name: "Google Pixel 8 Pro",
+        category: "phone",
+        price: 699,
+        oldPrice: 999,
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 699,
+            Currys: 649
+        }
+    },
+
+    {
+        id: "pixel-8",
+        brand: "Google",
+        name: "Google Pixel 8",
+        category: "phone",
+        price: 499,
+        oldPrice: 699,
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 499,
+            Currys: 479
+        }
+    },
+
+
+    // =========================
+    // GOOGLE TABLETS
+    // =========================
+
+    {
+        id: "pixel-tablet",
+        brand: "Google",
+        name: "Google Pixel Tablet",
+        category: "tablet",
+        price: 499,
+        oldPrice: 599,
+        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 499,
+            Currys: 479
+        }
+    },
+
+
+    // =========================
+    // GOOGLE WATCH
+    // =========================
+
+    {
+        id: "pixel-watch-3",
+        brand: "Google",
+        name: "Google Pixel Watch 3",
+        category: "watch",
+        price: 399,
+        oldPrice: 449,
+        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 399,
+            Currys: 379
+        }
+    },
+
+
+    // =========================
+    // GOOGLE EARBUDS
+    // =========================
+
+    {
+        id: "pixel-buds-pro-2",
+        brand: "Google",
+        name: "Google Pixel Buds Pro 2",
+        category: "audio",
+        price: 229,
+        oldPrice: 249,
+        image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=600&q=80",
+        retailers: {
+            Amazon: 229,
+            Currys: 219
+        }
     }
 
 ];
 
 
+// ======================================
+// DOM ELEMENTS
+// ======================================
 
-let currentResults = [...products];
+const productGrid = document.getElementById("productGrid");
+const dealGrid = document.getElementById("dealGrid");
+const favouritesGrid = document.getElementById("favouritesGrid");
+
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const suggestions = document.getElementById("suggestions");
+
+const brandFilter = document.getElementById("brandFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const sortFilter = document.getElementById("sortFilter");
+
+const noResults = document.getElementById("noResults");
+
+const themeToggle = document.getElementById("themeToggle");
+
+const productModal = document.getElementById("productModal");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+
+const emptyFavourites = document.getElementById("emptyFavourites");
 
 
+// ======================================
+// FAVOURITES
+// ======================================
 
-/* -----------------------------
-   BASIC PRODUCT CALCULATIONS
------------------------------ */
+let favourites = JSON.parse(
+    localStorage.getItem("pricepilot-favourites") || "[]"
+);
 
-
-function cheapestPrice(product) {
-
-    return Math.min(
-        ...product.prices.map(store => store.price)
+function saveFavourites() {
+    localStorage.setItem(
+        "pricepilot-favourites",
+        JSON.stringify(favourites)
     );
-
 }
 
+function toggleFavourite(id) {
 
-function highestPrice(product) {
+    if (favourites.includes(id)) {
 
-    return Math.max(
-        ...product.prices.map(store => store.price)
-    );
+        favourites = favourites.filter(
+            favouriteId => favouriteId !== id
+        );
 
-}
+    } else {
 
-
-function productSavings(product) {
-
-    return highestPrice(product) - cheapestPrice(product);
-
-}
-
-
-
-/* -----------------------------
-   SEARCH
------------------------------ */
-
-
-function searchProduct() {
-
-    const input = document
-        .getElementById("productSearch")
-        .value
-        .toLowerCase()
-        .replace(/\s+/g, "");
-
-
-    if (input === "") {
-
-        currentResults = [...products];
-
-        document.getElementById("liveSuggestions").innerHTML = "";
-
-        applyFilters();
-
-        return;
-
+        favourites.push(id);
     }
 
+    saveFavourites();
 
-    const results = products.filter(product => {
-
-        const productName = product.name
-            .toLowerCase()
-            .replace(/\s+/g, "");
-
-        const category = product.category
-            .toLowerCase()
-            .replace(/\s+/g, "");
-
-
-        return productName.includes(input) ||
-               category.includes(input);
-
-    });
-
-
-    showLiveSuggestions(results);
-
-    currentResults = results;
-
-    applyFilters();
-
+    renderProducts();
+    renderFavourites();
 }
 
 
+// ======================================
+// LOWEST PRICE
+// ======================================
 
-/* -----------------------------
-   QUICK SEARCH
------------------------------ */
+function getLowestPrice(product) {
+
+    return Math.min(
+        ...Object.values(product.retailers)
+    );
+}
+
+function getBestRetailer(product) {
+
+    const entries = Object.entries(product.retailers);
+
+    entries.sort((a, b) => a[1] - b[1]);
+
+    return entries[0][0];
+}
 
 
-function quickSearch(term) {
+// ======================================
+// PRODUCT CARD
+// ======================================
 
-    document.getElementById("productSearch").value = term;
+function createProductCard(product) {
 
-    searchProduct();
+    const lowestPrice = getLowestPrice(product);
+    const bestRetailer = getBestRetailer(product);
+
+    const saving =
+        product.oldPrice > lowestPrice
+            ? product.oldPrice - lowestPrice
+            : 0;
+
+    const isFavourite =
+        favourites.includes(product.id);
+
+    return `
+        <article class="product-card">
+
+            <button
+                class="favourite-button ${isFavourite ? "active" : ""}"
+                onclick="toggleFavourite('${product.id}')"
+                aria-label="Favourite ${product.name}"
+            >
+                ${isFavourite ? "♥" : "♡"}
+            </button>
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-brand">
+                    ${product.brand}
+                </div>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+                <div class="price-row">
+
+                    <span class="current-price">
+                        €${lowestPrice.toLocaleString()}
+                    </span>
+
+                    ${
+                        product.oldPrice
+                            ? `<span class="old-price">
+                                €${product.oldPrice.toLocaleString()}
+                               </span>`
+                            : ""
+                    }
+
+                </div>
+
+                ${
+                    saving > 0
+                        ? `<div class="saving">
+                            Save €${saving}
+                           </div>`
+                        : ""
+                }
+
+                <div class="best-deal">
+                    Best price at ${bestRetailer}
+                </div>
+
+                <button
+                    class="compare-button"
+                    onclick="openProduct('${product.id}')"
+                >
+                    Compare prices
+                </button>
+
+            </div>
+
+        </article>
+    `;
+}
+
+
+// ======================================
+// RENDER PRODUCTS
+// ======================================
+
+function renderProducts(customProducts = null) {
+
+    let list = customProducts || [...products];
+
+    const brand =
+        brandFilter.value;
+
+    const category =
+        categoryFilter.value;
+
+    const sort =
+        sortFilter.value;
+
+    if (brand !== "all") {
+
+        list = list.filter(
+            product => product.brand === brand
+        );
+    }
+
+    if (category !== "all") {
+
+        list = list.filter(
+            product => product.category === category
+        );
+    }
+
+    if (sort === "price-low") {
+
+        list.sort(
+            (a, b) =>
+                getLowestPrice(a) -
+                getLowestPrice(b)
+        );
+
+    } else if (sort === "price-high") {
+
+        list.sort(
+            (a, b) =>
+                getLowestPrice(b) -
+                getLowestPrice(a)
+        );
+
+    } else if (sort === "name") {
+
+        list.sort(
+            (a, b) =>
+                a.name.localeCompare(b.name)
+        );
+    }
+
+    productGrid.innerHTML =
+        list.map(createProductCard).join("");
+
+    noResults.classList.toggle(
+        "hidden",
+        list.length !== 0
+    );
+}
+
+
+// ======================================
+// DEALS
+// ======================================
+
+function renderDeals() {
+
+    const deals = [...products]
+        .filter(
+            product =>
+                product.oldPrice &&
+                product.oldPrice >
+                getLowestPrice(product)
+        )
+        .sort(
+            (a, b) => {
+
+                const savingA =
+                    a.oldPrice -
+                    getLowestPrice(a);
+
+                const savingB =
+                    b.oldPrice -
+                    getLowestPrice(b);
+
+                return savingB - savingA;
+            }
+        )
+        .slice(0, 8);
+
+    dealGrid.innerHTML =
+        deals.map(createProductCard).join("");
+}
+
+
+// ======================================
+// FAVOURITES
+// ======================================
+
+function renderFavourites() {
+
+    const favouriteProducts =
+        products.filter(
+            product =>
+                favourites.includes(product.id)
+        );
+
+    favouritesGrid.innerHTML =
+        favouriteProducts
+            .map(createProductCard)
+            .join("");
+
+    emptyFavourites.classList.toggle(
+        "hidden",
+        favouriteProducts.length > 0
+    );
+}
+
+
+// ======================================
+// SEARCH
+// ======================================
+
+function performSearch() {
+
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+    if (!query) {
+
+        renderProducts();
+
+        return;
+    }
+
+    const results =
+        products.filter(product =>
+            `${product.brand} ${product.name} ${product.category}`
+                .toLowerCase()
+                .includes(query)
+        );
+
+    renderProducts(results);
 
     document
         .getElementById("products")
         .scrollIntoView({
             behavior: "smooth"
         });
-
 }
 
 
+// ======================================
+// SEARCH SUGGESTIONS
+// ======================================
 
-/* -----------------------------
-   LIVE SUGGESTIONS
------------------------------ */
+function showSuggestions() {
 
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
 
-function showLiveSuggestions(results) {
+    if (!query) {
 
-    const box =
-        document.getElementById("liveSuggestions");
-
-
-    if (results.length === 0) {
-
-        box.innerHTML = "";
+        suggestions.innerHTML = "";
 
         return;
-
     }
 
-
-    box.innerHTML = results
-        .slice(0, 5)
-        .map(product => `
-
-            <button
-                class="suggestion"
-                onclick="quickSearch('${product.name}')"
-            >
-
-                ${product.emoji}
-
-                <span>
-                    ${product.name}
-                </span>
-
-                <small>
-                    from €${cheapestPrice(product)}
-                </small>
-
-            </button>
-
-        `)
-        .join("");
-
-}
-
-
-
-/* -----------------------------
-   FILTERS
------------------------------ */
-
-
-function applyFilters() {
-
-    let results = [...currentResults];
-
-
-    const category =
-        document.getElementById("categoryFilter").value;
-
-
-    const maxPrice =
-        Number(
-            document.getElementById("priceFilter").value
-        );
-
-
-    const sort =
-        document.getElementById("sortFilter").value;
-
-
-
-    if (category !== "All") {
-
-        results = results.filter(product =>
-            product.category === category
-        );
-
-    }
-
-
-
-    results = results.filter(product =>
-        cheapestPrice(product) <= maxPrice
-    );
-
-
-
-    if (sort === "cheapest") {
-
-        results.sort(
-            (a, b) =>
-                cheapestPrice(a) - cheapestPrice(b)
-        );
-
-    }
-
-
-    if (sort === "expensive") {
-
-        results.sort(
-            (a, b) =>
-                cheapestPrice(b) - cheapestPrice(a)
-        );
-
-    }
-
-
-    if (sort === "rating") {
-
-        results.sort(
-            (a, b) =>
-                b.rating - a.rating
-        );
-
-    }
-
-
-    if (sort === "savings") {
-
-        results.sort(
-            (a, b) =>
-                productSavings(b) -
-                productSavings(a)
-        );
-
-    }
-
-
-
-    currentResults = results;
-
-    displayProducts(results);
-
-    updateResultCount(results);
-
-}
-
-
-
-/* -----------------------------
-   PRODUCT DISPLAY
------------------------------ */
-
-
-function displayProducts(results) {
-
-    const container =
-        document.getElementById("results");
-
-
-    if (results.length === 0) {
-
-        container.innerHTML = `
-
-            <div class="empty-state">
-
-                <div>🔍</div>
-
-                <h2>No products found</h2>
-
-                <p>
-                    Try changing your search or filters.
-                </p>
-
-                <button onclick="resetFilters()">
-                    Reset filters
-                </button>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-
-    container.innerHTML = results
-        .map(product => createProductCard(product))
-        .join("");
-
-}
-
-
-
-/* -----------------------------
-   PRODUCT CARD
------------------------------ */
-
-
-function createProductCard(product) {
-
-    const cheapest =
-        cheapestPrice(product);
-
-
-    const highest =
-        highestPrice(product);
-
-
-    const savings =
-        productSavings(product);
-
-
-    const saved =
-        isFavourite(product.id);
-
-
-    const maxBar =
-        highest;
-
-
-
-    const storeRows =
-        product.prices.map(store => {
-
-            const width =
-                (store.price / maxBar) * 100;
-
-
-            const isBest =
-                store.price === cheapest;
-
-
-            return `
-
-                <div class="store-row">
-
-                    <div class="store-info">
-
-                        <span>
-                            ${store.store}
-                        </span>
-
-                        ${
-                            isBest
-                            ?
-                            `<b class="best-tag">BEST</b>`
-                            :
-                            ""
-                        }
-
-                    </div>
-
-
-                    <div class="price-info">
-
-                        <strong>
-                            €${store.price}
-                        </strong>
-
-                        <div class="price-bar">
-
-                            <div
-                                style="width:${width}%"
-                            ></div>
-
-                        </div>
-
-                    </div>
-
+    const results =
+        products
+            .filter(product =>
+                product.name
+                    .toLowerCase()
+                    .includes(query)
+            )
+            .slice(0, 6);
+
+    suggestions.innerHTML =
+        results
+            .map(product => `
+                <div
+                    class="suggestion"
+                    data-id="${product.id}"
+                >
+                    <strong>
+                        ${product.name}
+                    </strong>
+
+                    <span>
+                        — from €${getLowestPrice(product)}
+                    </span>
                 </div>
+            `)
+            .join("");
 
-            `;
+    document
+        .querySelectorAll(".suggestion")
+        .forEach(element => {
 
-        }).join("");
+            element.addEventListener(
+                "click",
+                () => {
 
+                    const product =
+                        products.find(
+                            item =>
+                                item.id ===
+                                element.dataset.id
+                        );
 
+                    searchInput.value =
+                        product.name;
 
-    return `
+                    suggestions.innerHTML = "";
 
-        <article class="product-card">
-
-            <div class="card-top">
-
-                <span class="category-badge">
-                    ${product.emoji}
-                    ${product.category}
-                </span>
-
-
-                <button
-                    class="heart-button ${saved ? "saved" : ""}"
-                    onclick="toggleFavourite(${product.id})"
-                >
-                    ${saved ? "❤️" : "♡"}
-                </button>
-
-            </div>
-
-
-
-            <div
-                class="product-image"
-                onclick="openProduct(${product.id})"
-            >
-                ${product.emoji}
-            </div>
-
-
-
-            <div class="rating">
-
-                ⭐ ${product.rating}
-
-                <span>
-                    Highly rated
-                </span>
-
-            </div>
-
-
-
-            <h3>
-                ${product.name}
-            </h3>
-
-
-            <p class="description">
-                ${product.description}
-            </p>
-
-
-
-            <div class="best-price">
-
-                <span>
-                    Best price
-                </span>
-
-                <strong>
-                    €${cheapest}
-                </strong>
-
-            </div>
-
-
-
-            ${
-                savings > 0
-                ?
-                `
-                <div class="saving">
-
-                    🔥 Save up to €${savings}
-
-                </div>
-                `
-                :
-                ""
-            }
-
-
-
-            <div class="stores">
-
-                ${storeRows}
-
-            </div>
-
-
-
-            <div class="card-actions">
-
-                <button
-                    class="primary-button"
-                    onclick="openProduct(${product.id})"
-                >
-                    Compare prices
-                </button>
-
-
-                <button
-                    class="secondary-button"
-                    onclick="setPriceAlert(${product.id})"
-                >
-                    🔔 Alert me
-                </button>
-
-            </div>
-
-        </article>
-
-    `;
-
-}
-
-
-
-/* -----------------------------
-   BEST VALUE
------------------------------ */
-
-
-function showBestValue() {
-
-    const sorted =
-        [...products].sort((a, b) => {
-
-            const scoreA =
-                cheapestPrice(a) -
-                productSavings(a) -
-                a.rating * 20;
-
-
-            const scoreB =
-                cheapestPrice(b) -
-                productSavings(b) -
-                b.rating * 20;
-
-
-            return scoreA - scoreB;
-
+                    openProduct(product.id);
+                }
+            );
         });
-
-
-    const product = sorted[0];
-
-
-    document.getElementById("bestValue").innerHTML = `
-
-        <div class="best-value-card">
-
-            <div class="best-value-icon">
-                ${product.emoji}
-            </div>
-
-
-            <div class="best-value-info">
-
-                <span class="winner-label">
-                    🏆 PRICEPILOT RECOMMENDS
-                </span>
-
-                <h2>
-                    ${product.name}
-                </h2>
-
-                <p>
-                    ${product.description}
-                </p>
-
-
-                <div class="recommendation-stats">
-
-                    <span>
-                        ⭐ ${product.rating}
-                    </span>
-
-                    <span>
-                        💰 From €${cheapestPrice(product)}
-                    </span>
-
-                    <span>
-                        🔥 Save €${productSavings(product)}
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <button
-                class="primary-button"
-                onclick="openProduct(${product.id})"
-            >
-                View deal
-            </button>
-
-        </div>
-
-    `;
-
 }
 
 
-
-/* -----------------------------
-   RESULT COUNT
------------------------------ */
-
-
-function updateResultCount(results) {
-
-    document.getElementById("resultCount").textContent =
-
-        results.length === products.length
-
-        ? "Showing all products"
-
-        : `Showing ${results.length} product${
-            results.length === 1 ? "" : "s"
-        }`;
-
-}
-
-
-
-/* -----------------------------
-   FAVOURITES
------------------------------ */
-
-
-function getFavourites() {
-
-    return JSON.parse(
-        localStorage.getItem("pricePilotFavourites") || "[]"
-    );
-
-}
-
-
-function isFavourite(id) {
-
-    return getFavourites().includes(id);
-
-}
-
-
-function toggleFavourite(id) {
-
-    let favourites = getFavourites();
-
-
-    if (favourites.includes(id)) {
-
-        favourites =
-            favourites.filter(item => item !== id);
-
-    } else {
-
-        favourites.push(id);
-
-    }
-
-
-    localStorage.setItem(
-        "pricePilotFavourites",
-        JSON.stringify(favourites)
-    );
-
-
-    displayProducts(currentResults);
-
-}
-
-
-
-/* -----------------------------
-   PRODUCT MODAL
------------------------------ */
-
+// ======================================
+// PRODUCT MODAL
+// ======================================
 
 function openProduct(id) {
 
     const product =
-        products.find(item => item.id === id);
-
+        products.find(
+            item => item.id === id
+        );
 
     if (!product) return;
 
+    const lowestPrice =
+        getLowestPrice(product);
 
-    const cheapest =
-        product.prices.reduce(
-            (best, current) =>
-                current.price < best.price
-                    ? current
-                    : best
-        );
+    const bestRetailer =
+        getBestRetailer(product);
 
+    const retailers =
+        Object.entries(product.retailers);
 
-    const modal =
-        document.getElementById("productModal");
+    modalContent.innerHTML = `
 
+        <div class="product-brand">
+            ${product.brand}
+        </div>
 
-    document.getElementById("modalContent").innerHTML = `
+        <h2 style="font-size:32px;margin:8px 0 20px;">
+            ${product.name}
+        </h2>
 
-        <div class="modal-product">
+        <p style="color:var(--muted);margin-bottom:25px;">
+            Compare available retailer prices below.
+        </p>
 
-            <div class="modal-icon">
-                ${product.emoji}
+        <div style="
+            padding:20px;
+            border-radius:15px;
+            background:var(--bg);
+            margin-bottom:25px;
+        ">
+
+            <strong>
+                Best price
+            </strong>
+
+            <div style="
+                font-size:36px;
+                font-weight:800;
+                margin-top:5px;
+            ">
+                €${lowestPrice.toLocaleString()}
             </div>
 
-            <span class="category-badge">
-                ${product.category}
-            </span>
-
-            <h2>
-                ${product.name}
-            </h2>
-
-            <div class="rating">
-                ⭐ ${product.rating}
-            </div>
-
-            <p>
-                ${product.description}
-            </p>
-
-
-            <h3>
-                Price comparison
-            </h3>
-
-
-            <div class="modal-stores">
-
-                ${product.prices.map(store => `
-
-                    <div class="modal-store">
-
-                        <span>
-                            ${store.store}
-                        </span>
-
-                        <strong>
-                            €${store.price}
-                        </strong>
-
-                        <a
-                            href="${store.url}"
-                            target="_blank"
-                        >
-                            Visit store
-                        </a>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-
-            <div class="modal-best">
-
-                🏆 Best price:
-
-                <strong>
-                    €${cheapest.price}
-                </strong>
-
-                at ${cheapest.store}
-
+            <div style="
+                color:var(--success);
+                font-weight:700;
+                margin-top:5px;
+            ">
+                ${bestRetailer}
             </div>
 
         </div>
 
+        <h3 style="margin-bottom:15px;">
+            Retailer comparison
+        </h3>
+
+        ${retailers.map(([retailer, price]) => `
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                padding:17px 0;
+                border-bottom:1px solid var(--border);
+            ">
+
+                <strong>
+                    ${retailer}
+                </strong>
+
+                <div>
+                    <strong style="font-size:20px;">
+                        €${price.toLocaleString()}
+                    </strong>
+
+                    ${
+                        price === lowestPrice
+                            ? `
+                                <span style="
+                                    color:var(--success);
+                                    margin-left:8px;
+                                    font-size:12px;
+                                    font-weight:bold;
+                                ">
+                                    BEST PRICE
+                                </span>
+                              `
+                            : ""
+                    }
+
+                </div>
+
+            </div>
+
+        `).join("")}
+
+        <p style="
+            margin-top:20px;
+            font-size:12px;
+            color:var(--muted);
+        ">
+            Demo prices are currently displayed.
+            Live retailer API connections can be added later.
+        </p>
+
     `;
 
-
-    modal.classList.add("show");
-
+    productModal.classList.remove("hidden");
 }
 
 
+// ======================================
+// CLOSE MODAL
+// ======================================
 
-function closeModal() {
-
-    document
-        .getElementById("productModal")
-        .classList.remove("show");
-
-}
-
-
-
-window.onclick = function(event) {
-
-    const modal =
-        document.getElementById("productModal");
-
-
-    if (event.target === modal) {
-
-        closeModal();
-
+closeModal.addEventListener(
+    "click",
+    () => {
+        productModal.classList.add("hidden");
     }
+);
 
-};
+productModal.addEventListener(
+    "click",
+    event => {
 
+        if (event.target === productModal) {
 
-
-/* -----------------------------
-   PRICE ALERT
------------------------------ */
-
-
-function setPriceAlert(id) {
-
-    const product =
-        products.find(item => item.id === id);
-
-
-    if (!product) return;
-
-
-    const target =
-        prompt(
-            `Set your target price for ${product.name} (€):`
-        );
-
-
-    if (target === null) return;
-
-
-    const price =
-        Number(target);
-
-
-    if (
-        Number.isNaN(price) ||
-        price <= 0
-    ) {
-
-        alert("Please enter a valid price.");
-
-        return;
-
+            productModal.classList.add("hidden");
+        }
     }
+);
 
 
-    const alerts =
-        JSON.parse(
-            localStorage.getItem("pricePilotAlerts") || "[]"
+// ======================================
+// SEARCH EVENTS
+// ======================================
+
+searchButton.addEventListener(
+    "click",
+    performSearch
+);
+
+searchInput.addEventListener(
+    "input",
+    showSuggestions
+);
+
+searchInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Enter") {
+
+            suggestions.innerHTML = "";
+
+            performSearch();
+        }
+    }
+);
+
+
+// ======================================
+// QUICK SEARCH
+// ======================================
+
+document
+    .querySelectorAll(".quick-search")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                searchInput.value =
+                    button.dataset.search;
+
+                performSearch();
+            }
         );
-
-
-    alerts.push({
-
-        product: product.name,
-        targetPrice: price
-
     });
 
 
-    localStorage.setItem(
-        "pricePilotAlerts",
-        JSON.stringify(alerts)
+// ======================================
+// FILTERS
+// ======================================
+
+brandFilter.addEventListener(
+    "change",
+    renderProducts
+);
+
+categoryFilter.addEventListener(
+    "change",
+    renderProducts
+);
+
+sortFilter.addEventListener(
+    "change",
+    renderProducts
+);
+
+
+// ======================================
+// CATEGORY BUTTONS
+// ======================================
+
+document
+    .querySelectorAll(".category-card")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                categoryFilter.value =
+                    button.dataset.category;
+
+                renderProducts();
+
+                document
+                    .getElementById("products")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+            }
+        );
+    });
+
+
+// ======================================
+// BRAND BUTTONS
+// ======================================
+
+document
+    .querySelectorAll(".brand-card")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                brandFilter.value =
+                    button.dataset.brand;
+
+                renderProducts();
+
+                document
+                    .getElementById("products")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+            }
+        );
+    });
+
+
+// ======================================
+// DARK MODE
+// ======================================
+
+const savedTheme =
+    localStorage.getItem(
+        "pricepilot-theme"
     );
 
+if (savedTheme === "dark") {
 
-    alert(
-        `Price alert set!\n\nWe'll watch for ${product.name} to reach €${price}.`
-    );
+    document.body.classList.add("dark");
 
+    themeToggle.textContent = "☀️";
 }
 
+themeToggle.addEventListener(
+    "click",
+    () => {
 
+        document.body.classList.toggle("dark");
 
-/* -----------------------------
-   RESET
------------------------------ */
+        const dark =
+            document.body.classList.contains("dark");
 
+        themeToggle.textContent =
+            dark ? "☀️" : "🌙";
 
-function resetFilters() {
-
-    document.getElementById("productSearch").value = "";
-
-    document.getElementById("categoryFilter").value = "All";
-
-    document.getElementById("priceFilter").value = "999999";
-
-    document.getElementById("sortFilter").value = "recommended";
-
-
-    currentResults = [...products];
-
-
-    document.getElementById("liveSuggestions").innerHTML = "";
-
-
-    displayProducts(products);
-
-    updateResultCount(products);
-
-}
-
-
-
-/* -----------------------------
-   DARK MODE
------------------------------ */
-
-
-function toggleDarkMode() {
-
-    document.body.classList.toggle("dark");
-
-
-    const dark =
-        document.body.classList.contains("dark");
-
-
-    localStorage.setItem(
-        "pricePilotDarkMode",
-        dark
-    );
-
-}
-
-
-
-function loadDarkMode() {
-
-    const dark =
-        localStorage.getItem("pricePilotDarkMode");
-
-
-    if (dark === "true") {
-
-        document.body.classList.add("dark");
-
+        localStorage.setItem(
+            "pricepilot-theme",
+            dark ? "dark" : "light"
+        );
     }
-
-}
-
+);
 
 
-/* -----------------------------
-   START WEBSITE
------------------------------ */
+// ======================================
+// INITIAL LOAD
+// ======================================
 
+renderProducts();
+renderDeals();
+renderFavourites();
 
-function initialise() {
-
-    document.getElementById("productCount").textContent =
-        products.length;
-
-
-    displayProducts(products);
-
-    updateResultCount(products);
-
-    showBestValue();
-
-    loadDarkMode();
-
-}
-
-
-initialise();
+console.log(
+    `PricePilot loaded ${products.length} products.`
+);
