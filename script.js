@@ -1,530 +1,540 @@
 /* =========================================================
-   PRICEPILOT 3.0
-   COMPLETE JAVASCRIPT
-   ========================================================= */
+   PRICEPILOT 4.0
+   PROFESSIONAL FRONTEND ENGINE
 
-/*
    IMPORTANT:
-   The retailer prices in this version are DEMO DATA.
-   They are not live Amazon/Currys prices.
-*/
+   Product prices are demonstration data.
+
+   Real retailer/API credentials must NOT be placed
+   inside this file.
+
+   Future architecture:
+
+   PricePilot frontend
+          ↓
+   PricePilot backend
+          ↓
+   Retailer APIs / feeds
+          ↓
+   Price database
+          ↓
+   Price history + alerts
+========================================================= */
 
 
 /* =========================================================
    PRODUCT DATABASE
-   ========================================================= */
+========================================================= */
 
 const products = [
 
-    /* ================= APPLE ================= */
-
     {
-        id: "apple-iphone-16",
+        id: "iphone-16",
         brand: "Apple",
         name: "iPhone 16",
         category: "phone",
         price: 849,
         oldPrice: 899,
+        lowestEver: 829,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1592286927505-2fd6e7f3c5bd?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB"],
-        colours: ["Black", "White", "Pink", "Teal", "Ultramarine"],
+        popularity: 98,
+        image:
+            "https://images.unsplash.com/photo-1592286927505-2fd6e7f3c5bd?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 849 },
+            { name: "Currys", price: 879 }
+        ],
         specs: [
             "6.1-inch Super Retina XDR",
             "A18 chip",
             "48MP Fusion camera",
             "USB-C",
             "Face ID"
-        ],
-        retailers: [
-            { name: "Amazon", price: 849 },
-            { name: "Currys", price: 879 }
         ]
     },
 
     {
-        id: "apple-iphone-16-pro",
+        id: "iphone-16-pro",
         brand: "Apple",
         name: "iPhone 16 Pro",
         category: "phone",
         price: 1099,
         oldPrice: 1199,
+        lowestEver: 1049,
         rating: 4.9,
-        image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB", "1TB"],
-        colours: ["Black Titanium", "White Titanium", "Natural Titanium"],
+        popularity: 99,
+        image:
+            "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 1099 },
+            { name: "Currys", price: 1149 }
+        ],
         specs: [
             "6.3-inch Super Retina XDR",
             "A18 Pro chip",
             "48MP camera system",
             "5x Telephoto",
-            "USB-C"
-        ],
-        retailers: [
-            { name: "Amazon", price: 1099 },
-            { name: "Currys", price: 1149 }
+            "Titanium design"
         ]
     },
 
     {
-        id: "apple-iphone-16-pro-max",
+        id: "iphone-16-pro-max",
         brand: "Apple",
         name: "iPhone 16 Pro Max",
         category: "phone",
         price: 1199,
         oldPrice: 1299,
+        lowestEver: 1149,
         rating: 4.9,
-        image: "https://images.unsplash.com/photo-1592286927505-2fd6e7f3c5bd?auto=format&fit=crop&w=700&q=80",
-        storage: ["256GB", "512GB", "1TB"],
-        colours: ["Black Titanium", "White Titanium", "Natural Titanium"],
+        popularity: 100,
+        image:
+            "https://images.unsplash.com/photo-1592286927505-2fd6e7f3c5bd?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 1199 },
+            { name: "Currys", price: 1249 }
+        ],
         specs: [
             "6.9-inch Super Retina XDR",
             "A18 Pro chip",
             "48MP camera system",
             "5x Telephoto",
             "USB-C"
-        ],
-        retailers: [
-            { name: "Amazon", price: 1199 },
-            { name: "Currys", price: 1249 }
         ]
     },
 
     {
-        id: "apple-iphone-15",
+        id: "iphone-15",
         brand: "Apple",
         name: "iPhone 15",
         category: "phone",
         price: 699,
         oldPrice: 799,
+        lowestEver: 679,
         rating: 4.7,
-        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB"],
-        colours: ["Black", "Blue", "Green", "Yellow", "Pink"],
-        specs: [
-            "6.1-inch Super Retina XDR",
-            "A16 Bionic chip",
-            "48MP Main camera",
-            "USB-C",
-            "Dynamic Island"
-        ],
+        popularity: 91,
+        image:
+            "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 699 },
             { name: "Currys", price: 729 }
-        ]
-    },
-
-    {
-        id: "apple-iphone-15-pro",
-        brand: "Apple",
-        name: "iPhone 15 Pro",
-        category: "phone",
-        price: 899,
-        oldPrice: 999,
-        rating: 4.8,
-        image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB", "1TB"],
-        colours: ["Black Titanium", "Blue Titanium", "Natural Titanium"],
+        ],
         specs: [
             "6.1-inch Super Retina XDR",
-            "A17 Pro chip",
+            "A16 Bionic",
             "48MP camera",
-            "Titanium design",
-            "USB-C"
-        ],
-        retailers: [
-            { name: "Amazon", price: 899 },
-            { name: "Currys", price: 929 }
+            "USB-C",
+            "Dynamic Island"
         ]
     },
 
     {
-        id: "apple-ipad-air",
+        id: "ipad-air",
         brand: "Apple",
         name: "iPad Air",
         category: "tablet",
         price: 599,
         oldPrice: 649,
+        lowestEver: 579,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB", "1TB"],
-        colours: ["Blue", "Purple", "Starlight", "Space Grey"],
+        popularity: 88,
+        image:
+            "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 599 },
+            { name: "Currys", price: 629 }
+        ],
         specs: [
             "Liquid Retina display",
             "M2 chip",
             "Apple Pencil support",
             "USB-C",
             "Touch ID"
-        ],
-        retailers: [
-            { name: "Amazon", price: 599 },
-            { name: "Currys", price: 629 }
         ]
     },
 
     {
-        id: "apple-ipad-pro",
+        id: "ipad-pro",
         brand: "Apple",
         name: "iPad Pro",
         category: "tablet",
         price: 999,
         oldPrice: 1099,
+        lowestEver: 969,
         rating: 4.9,
-        image: "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=700&q=80",
-        storage: ["256GB", "512GB", "1TB", "2TB"],
-        colours: ["Silver", "Space Black"],
+        popularity: 84,
+        image:
+            "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 999 },
+            { name: "Currys", price: 1049 }
+        ],
         specs: [
             "Ultra Retina XDR",
             "M4 chip",
             "ProMotion",
-            "Thunderbolt / USB 4",
+            "Thunderbolt",
             "Face ID"
-        ],
-        retailers: [
-            { name: "Amazon", price: 999 },
-            { name: "Currys", price: 1049 }
         ]
     },
 
     {
-        id: "apple-watch-series-10",
-        brand: "Apple",
-        name: "Apple Watch Series 10",
-        category: "watch",
-        price: 449,
-        oldPrice: 499,
-        rating: 4.7,
-        image: "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?auto=format&fit=crop&w=700&q=80",
-        storage: ["42mm", "46mm"],
-        colours: ["Jet Black", "Rose Gold", "Silver"],
-        specs: [
-            "Always-On Retina display",
-            "S10 SiP",
-            "Sleep tracking",
-            "Water resistant",
-            "GPS"
-        ],
-        retailers: [
-            { name: "Amazon", price: 449 },
-            { name: "Currys", price: 469 }
-        ]
-    },
-
-    {
-        id: "apple-airpods-pro-2",
+        id: "airpods-pro-2",
         brand: "Apple",
         name: "AirPods Pro 2",
         category: "audio",
         price: 229,
         oldPrice: 249,
+        lowestEver: 219,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80",
-        storage: ["Standard"],
-        colours: ["White"],
-        specs: [
-            "Active Noise Cancellation",
-            "Adaptive Audio",
-            "USB-C charging",
-            "MagSafe charging case",
-            "IP54"
-        ],
+        popularity: 95,
+        image:
+            "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 229 },
             { name: "Currys", price: 239 }
+        ],
+        specs: [
+            "Active Noise Cancellation",
+            "Adaptive Audio",
+            "USB-C",
+            "MagSafe",
+            "IP54"
+        ]
+    },
+
+    {
+        id: "apple-watch-10",
+        brand: "Apple",
+        name: "Apple Watch Series 10",
+        category: "watch",
+        price: 449,
+        oldPrice: 499,
+        lowestEver: 429,
+        rating: 4.7,
+        popularity: 87,
+        image:
+            "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 449 },
+            { name: "Currys", price: 469 }
+        ],
+        specs: [
+            "Always-On Retina",
+            "S10 SiP",
+            "Sleep tracking",
+            "GPS",
+            "Water resistant"
         ]
     },
 
 
-    /* ================= SAMSUNG ================= */
+    /* =====================================================
+       SAMSUNG
+    ===================================================== */
 
     {
-        id: "samsung-s25",
+        id: "galaxy-s25",
         brand: "Samsung",
         name: "Galaxy S25",
         category: "phone",
         price: 899,
         oldPrice: 959,
+        lowestEver: 879,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB"],
-        colours: ["Navy", "Silver", "Blue", "Mint"],
+        popularity: 96,
+        image:
+            "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 899 },
+            { name: "Currys", price: 929 }
+        ],
         specs: [
             "6.2-inch Dynamic AMOLED 2X",
             "Snapdragon processor",
             "50MP camera",
             "Galaxy AI",
             "IP68"
-        ],
-        retailers: [
-            { name: "Amazon", price: 899 },
-            { name: "Currys", price: 929 }
         ]
     },
 
     {
-        id: "samsung-s25-plus",
+        id: "galaxy-s25-plus",
         brand: "Samsung",
         name: "Galaxy S25+",
         category: "phone",
         price: 999,
         oldPrice: 1099,
+        lowestEver: 969,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1610945264803-cb5e2c7e3d72?auto=format&fit=crop&w=700&q=80",
-        storage: ["256GB", "512GB"],
-        colours: ["Navy", "Silver", "Blue", "Mint"],
-        specs: [
-            "6.7-inch Dynamic AMOLED 2X",
-            "Snapdragon processor",
-            "50MP camera",
-            "Galaxy AI",
-            "IP68"
-        ],
+        popularity: 93,
+        image:
+            "https://images.unsplash.com/photo-1610945264803-cb5e2c7e3d72?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 999 },
             { name: "Currys", price: 1049 }
+        ],
+        specs: [
+            "6.7-inch AMOLED",
+            "Snapdragon",
+            "50MP camera",
+            "Galaxy AI",
+            "IP68"
         ]
     },
 
     {
-        id: "samsung-s25-ultra",
+        id: "galaxy-s25-ultra",
         brand: "Samsung",
         name: "Galaxy S25 Ultra",
         category: "phone",
         price: 1249,
         oldPrice: 1349,
+        lowestEver: 1199,
         rating: 4.9,
-        image: "https://images.unsplash.com/photo-1610945265078-3852dba0a2e1?auto=format&fit=crop&w=700&q=80",
-        storage: ["256GB", "512GB", "1TB"],
-        colours: ["Titanium Black", "Titanium Silver", "Titanium Blue"],
-        specs: [
-            "6.9-inch Dynamic AMOLED 2X",
-            "200MP camera",
-            "S Pen",
-            "Galaxy AI",
-            "Snapdragon processor"
-        ],
+        popularity: 99,
+        image:
+            "https://images.unsplash.com/photo-1610945265078-3852dba0a2e1?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 1249 },
             { name: "Currys", price: 1299 }
+        ],
+        specs: [
+            "6.9-inch AMOLED",
+            "200MP camera",
+            "S Pen",
+            "Galaxy AI",
+            "Snapdragon"
         ]
     },
 
     {
-        id: "samsung-a56",
+        id: "galaxy-a56",
         brand: "Samsung",
         name: "Galaxy A56",
         category: "phone",
         price: 479,
         oldPrice: 499,
+        lowestEver: 459,
         rating: 4.6,
-        image: "https://images.unsplash.com/photo-1610945264803-cb5e2c7e3d72?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB"],
-        colours: ["Awesome Graphite", "Awesome Lightgrey"],
+        popularity: 82,
+        image:
+            "https://images.unsplash.com/photo-1610945264803-cb5e2c7e3d72?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 479 },
+            { name: "Currys", price: 499 }
+        ],
         specs: [
-            "6.7-inch AMOLED display",
+            "6.7-inch AMOLED",
             "50MP camera",
             "5G",
             "5000mAh battery",
             "IP67"
-        ],
-        retailers: [
-            { name: "Amazon", price: 479 },
-            { name: "Currys", price: 499 }
         ]
     },
 
     {
-        id: "samsung-tab-s10",
+        id: "galaxy-tab-s10",
         brand: "Samsung",
         name: "Galaxy Tab S10",
         category: "tablet",
         price: 799,
         oldPrice: 899,
+        lowestEver: 769,
         rating: 4.7,
-        image: "https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB"],
-        colours: ["Moonstone Grey", "Platinum Silver"],
-        specs: [
-            "Dynamic AMOLED 2X",
-            "S Pen included",
-            "Galaxy AI",
-            "Wi-Fi",
-            "Large battery"
-        ],
+        popularity: 81,
+        image:
+            "https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 799 },
             { name: "Currys", price: 829 }
+        ],
+        specs: [
+            "Dynamic AMOLED 2X",
+            "S Pen",
+            "Galaxy AI",
+            "Wi-Fi",
+            "Large battery"
         ]
     },
 
     {
-        id: "samsung-watch7",
+        id: "galaxy-watch7",
         brand: "Samsung",
         name: "Galaxy Watch7",
         category: "watch",
         price: 299,
         oldPrice: 349,
+        lowestEver: 279,
         rating: 4.6,
-        image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=700&q=80",
-        storage: ["40mm", "44mm"],
-        colours: ["Green", "Cream", "Silver"],
+        popularity: 79,
+        image:
+            "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 299 },
+            { name: "Currys", price: 319 }
+        ],
         specs: [
-            "Super AMOLED display",
+            "Super AMOLED",
             "Galaxy AI",
             "Sleep tracking",
             "GPS",
             "Water resistant"
-        ],
-        retailers: [
-            { name: "Amazon", price: 299 },
-            { name: "Currys", price: 319 }
         ]
     },
 
     {
-        id: "samsung-buds3-pro",
+        id: "galaxy-buds3-pro",
         brand: "Samsung",
         name: "Galaxy Buds3 Pro",
         category: "audio",
         price: 219,
         oldPrice: 249,
+        lowestEver: 199,
         rating: 4.6,
-        image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80",
-        storage: ["Standard"],
-        colours: ["Silver", "White"],
+        popularity: 77,
+        image:
+            "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 219 },
+            { name: "Currys", price: 229 }
+        ],
         specs: [
             "Adaptive Noise Control",
             "Galaxy AI",
             "Hi-Fi audio",
             "Wireless charging",
             "IP57"
-        ],
-        retailers: [
-            { name: "Amazon", price: 219 },
-            { name: "Currys", price: 229 }
         ]
     },
 
 
-    /* ================= GOOGLE ================= */
+    /* =====================================================
+       GOOGLE
+    ===================================================== */
 
     {
-        id: "google-pixel-9",
+        id: "pixel-9",
         brand: "Google",
         name: "Pixel 9",
         category: "phone",
         price: 799,
         oldPrice: 899,
+        lowestEver: 749,
         rating: 4.7,
-        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB"],
-        colours: ["Obsidian", "Porcelain", "Wintergreen", "Peony"],
+        popularity: 91,
+        image:
+            "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80",
+        retailers: [
+            { name: "Amazon", price: 799 },
+            { name: "Currys", price: 829 }
+        ],
         specs: [
-            "6.3-inch OLED display",
+            "6.3-inch OLED",
             "Google Tensor G4",
             "50MP camera",
             "Gemini AI",
             "IP68"
-        ],
-        retailers: [
-            { name: "Amazon", price: 799 },
-            { name: "Currys", price: 829 }
         ]
     },
 
     {
-        id: "google-pixel-9-pro",
+        id: "pixel-9-pro",
         brand: "Google",
         name: "Pixel 9 Pro",
         category: "phone",
         price: 999,
         oldPrice: 1099,
+        lowestEver: 949,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB", "1TB"],
-        colours: ["Obsidian", "Porcelain", "Hazel", "Rose Quartz"],
-        specs: [
-            "6.3-inch LTPO OLED",
-            "Google Tensor G4",
-            "50MP triple camera",
-            "Gemini AI",
-            "IP68"
-        ],
+        popularity: 94,
+        image:
+            "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 999 },
             { name: "Currys", price: 1049 }
+        ],
+        specs: [
+            "6.3-inch LTPO OLED",
+            "Tensor G4",
+            "50MP triple camera",
+            "Gemini AI",
+            "IP68"
         ]
     },
 
     {
-        id: "google-pixel-9-pro-xl",
+        id: "pixel-9-pro-xl",
         brand: "Google",
         name: "Pixel 9 Pro XL",
         category: "phone",
         price: 1099,
         oldPrice: 1199,
+        lowestEver: 1049,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80",
-        storage: ["128GB", "256GB", "512GB", "1TB"],
-        colours: ["Obsidian", "Porcelain", "Hazel", "Rose Quartz"],
-        specs: [
-            "6.8-inch LTPO OLED",
-            "Google Tensor G4",
-            "50MP triple camera",
-            "Gemini AI",
-            "IP68"
-        ],
+        popularity: 92,
+        image:
+            "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 1099 },
             { name: "Currys", price: 1149 }
+        ],
+        specs: [
+            "6.8-inch LTPO OLED",
+            "Tensor G4",
+            "50MP triple camera",
+            "Gemini AI",
+            "IP68"
         ]
     },
 
     {
-        id: "google-pixel-watch-3",
+        id: "pixel-watch-3",
         brand: "Google",
         name: "Pixel Watch 3",
         category: "watch",
         price: 349,
         oldPrice: 399,
+        lowestEver: 329,
         rating: 4.6,
-        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80",
-        storage: ["41mm", "45mm"],
-        colours: ["Obsidian", "Silver", "Champagne Gold"],
-        specs: [
-            "Actua display",
-            "Google Assistant",
-            "Fitbit health tracking",
-            "GPS",
-            "Wear OS"
-        ],
+        popularity: 76,
+        image:
+            "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 349 },
             { name: "Currys", price: 369 }
+        ],
+        specs: [
+            "Actua display",
+            "Fitbit tracking",
+            "GPS",
+            "Wear OS",
+            "Google Assistant"
         ]
     },
 
     {
-        id: "google-pixel-buds-pro",
+        id: "pixel-buds-pro-2",
         brand: "Google",
         name: "Pixel Buds Pro 2",
         category: "audio",
         price: 229,
         oldPrice: 249,
+        lowestEver: 209,
         rating: 4.5,
-        image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80",
-        storage: ["Standard"],
-        colours: ["Hazel", "Porcelain", "Wintergreen"],
-        specs: [
-            "Active Noise Cancellation",
-            "Google Tensor A1",
-            "Gemini integration",
-            "Wireless charging",
-            "IP54"
-        ],
+        popularity: 74,
+        image:
+            "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=80",
         retailers: [
             { name: "Amazon", price: 229 },
             { name: "Currys", price: 239 }
+        ],
+        specs: [
+            "Active Noise Cancellation",
+            "Google Tensor A1",
+            "Gemini",
+            "Wireless charging",
+            "IP54"
         ]
     }
 
@@ -532,98 +542,159 @@ const products = [
 
 
 /* =========================================================
-   STATE
-   ========================================================= */
+   GLOBAL STATE
+========================================================= */
 
 let favourites =
     JSON.parse(
-        localStorage.getItem("pricepilot-favourites")
+        localStorage.getItem(
+            "pricepilot-favourites"
+        )
     ) || [];
+
 
 let recentlyViewed =
     JSON.parse(
-        localStorage.getItem("pricepilot-recent")
+        localStorage.getItem(
+            "pricepilot-recent"
+        )
     ) || [];
+
+
+let priceAlerts =
+    JSON.parse(
+        localStorage.getItem(
+            "pricepilot-alerts"
+        )
+    ) || [];
+
 
 let currentSearch = "";
 
-let currentProducts = [...products];
+let currentCountry =
+    localStorage.getItem(
+        "pricepilot-country"
+    ) || "🇮🇪 Ireland";
 
 
 /* =========================================================
-   DOM ELEMENTS
-   ========================================================= */
+   DOM
+========================================================= */
 
 const searchInput =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "searchInput"
+    );
 
 const searchButton =
-    document.getElementById("searchButton");
+    document.getElementById(
+        "searchButton"
+    );
 
 const clearSearch =
-    document.getElementById("clearSearch");
+    document.getElementById(
+        "clearSearch"
+    );
 
 const suggestions =
-    document.getElementById("suggestions");
+    document.getElementById(
+        "suggestions"
+    );
 
 const productGrid =
-    document.getElementById("productGrid");
-
-const trendingGrid =
-    document.getElementById("trendingGrid");
+    document.getElementById(
+        "productGrid"
+    );
 
 const dealGrid =
-    document.getElementById("dealGrid");
+    document.getElementById(
+        "dealGrid"
+    );
+
+const trendingGrid =
+    document.getElementById(
+        "trendingGrid"
+    );
 
 const favouritesGrid =
-    document.getElementById("favouritesGrid");
+    document.getElementById(
+        "favouritesGrid"
+    );
 
 const recentGrid =
-    document.getElementById("recentGrid");
-
-const noResults =
-    document.getElementById("noResults");
+    document.getElementById(
+        "recentGrid"
+    );
 
 const emptyFavourites =
-    document.getElementById("emptyFavourites");
+    document.getElementById(
+        "emptyFavourites"
+    );
 
 const emptyRecent =
-    document.getElementById("emptyRecent");
+    document.getElementById(
+        "emptyRecent"
+    );
+
+const noResults =
+    document.getElementById(
+        "noResults"
+    );
 
 const productModal =
-    document.getElementById("productModal");
+    document.getElementById(
+        "productModal"
+    );
 
 const modalContent =
-    document.getElementById("modalContent");
+    document.getElementById(
+        "modalContent"
+    );
 
 const closeModal =
-    document.getElementById("closeModal");
+    document.getElementById(
+        "closeModal"
+    );
 
 const toast =
-    document.getElementById("toast");
-
-const brandFilter =
-    document.getElementById("brandFilter");
-
-const categoryFilter =
-    document.getElementById("categoryFilter");
-
-const sortFilter =
-    document.getElementById("sortFilter");
+    document.getElementById(
+        "toast"
+    );
 
 const favouriteCount =
-    document.getElementById("favouriteCount");
+    document.getElementById(
+        "favouriteCount"
+    );
 
 const productCount =
-    document.getElementById("productCount");
+    document.getElementById(
+        "productCount"
+    );
 
 const themeToggle =
-    document.getElementById("themeToggle");
+    document.getElementById(
+        "themeToggle"
+    );
+
+const brandFilter =
+    document.getElementById(
+        "brandFilter"
+    );
+
+const categoryFilter =
+    document.getElementById(
+        "categoryFilter"
+    );
+
+const sortFilter =
+    document.getElementById(
+        "sortFilter"
+    );
 
 
 /* =========================================================
-   HELPERS
-   ========================================================= */
+   UTILITIES
+========================================================= */
 
 function money(value) {
 
@@ -638,11 +709,7 @@ function money(value) {
 }
 
 
-function getSaving(product) {
-
-    if (!product.oldPrice) {
-        return 0;
-    }
+function saving(product) {
 
     return Math.max(
         0,
@@ -651,26 +718,59 @@ function getSaving(product) {
 }
 
 
-function getSavingPercent(product) {
+function savingPercent(product) {
 
     if (!product.oldPrice) {
         return 0;
     }
 
     return Math.round(
-        (getSaving(product) / product.oldPrice) * 100
+        (
+            saving(product)
+            /
+            product.oldPrice
+        ) * 100
     );
 }
 
 
-function getBestRetailer(product) {
+function bestRetailer(product) {
 
     return [...product.retailers]
-        .sort((a, b) => a.price - b.price)[0];
+        .sort(
+            (a,b) =>
+                a.price - b.price
+        )[0];
 }
 
 
-function escapeHtml(value) {
+function dealScore(product) {
+
+    const discount =
+        savingPercent(product);
+
+    const rating =
+        product.rating * 10;
+
+    const historyBonus =
+        product.price <= product.lowestEver
+        ? 15
+        : 0;
+
+    return Math.min(
+        100,
+        Math.round(
+            discount
+            +
+            rating
+            +
+            historyBonus
+        )
+    );
+}
+
+
+function escapeHTML(value) {
 
     return String(value)
         .replaceAll("&", "&amp;")
@@ -683,78 +783,126 @@ function escapeHtml(value) {
 
 /* =========================================================
    TOAST
-   ========================================================= */
+========================================================= */
 
-let toastTimer;
+let toastTimeout;
 
 function showToast(message) {
 
-    toast.textContent = message;
+    toast.textContent =
+        message;
 
-    toast.classList.add("show");
+    toast.classList.add(
+        "show"
+    );
 
-    clearTimeout(toastTimer);
+    clearTimeout(
+        toastTimeout
+    );
 
-    toastTimer =
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 2500);
+    toastTimeout =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2500
+        );
 }
 
 
 /* =========================================================
    PRODUCT CARD
-   ========================================================= */
+========================================================= */
 
-function createProductCard(product) {
+function productCard(product) {
 
-    const favourite =
-        favourites.includes(product.id);
+    const isFavourite =
+        favourites.includes(
+            product.id
+        );
 
-    const bestRetailer =
-        getBestRetailer(product);
+    const best =
+        bestRetailer(product);
 
-    const saving =
-        getSaving(product);
+    const discount =
+        savingPercent(product);
 
-    const savingPercent =
-        getSavingPercent(product);
+    const score =
+        dealScore(product);
+
+    const nearLowest =
+        product.price <=
+        product.lowestEver + 20;
+
 
     return `
 
         <article
             class="product-card"
-            data-id="${escapeHtml(product.id)}"
+            data-id="${escapeHTML(product.id)}"
         >
 
             <button
-                class="favourite-button ${favourite ? "active" : ""}"
-                data-favourite="${escapeHtml(product.id)}"
-                aria-label="Favourite ${escapeHtml(product.name)}"
+                class="favourite-button
+                    ${isFavourite ? "active" : ""}"
+                data-favourite="${escapeHTML(product.id)}"
             >
-                ${favourite ? "♥" : "♡"}
+                ${isFavourite ? "♥" : "♡"}
             </button>
+
+
+            ${
+                discount >= 10
+                ?
+                `
+                <div
+                    style="
+                        position:absolute;
+                        top:12px;
+                        left:12px;
+                        z-index:4;
+                        padding:5px 8px;
+                        border-radius:6px;
+                        background:#16a34a;
+                        color:white;
+                        font-size:9px;
+                        font-weight:900;
+                    "
+                >
+                    -${discount}%
+                </div>
+                `
+                :
+                ""
+            }
+
 
             <div class="product-image">
 
                 <img
-                    src="${escapeHtml(product.image)}"
-                    alt="${escapeHtml(product.name)}"
+                    src="${escapeHTML(product.image)}"
+                    alt="${escapeHTML(product.name)}"
                     loading="lazy"
-                    onerror="this.style.display='none'"
                 >
 
             </div>
 
+
             <div class="product-info">
 
                 <div class="product-brand">
-                    ${escapeHtml(product.brand)}
+                    ${escapeHTML(product.brand)}
                 </div>
 
+
                 <h3 class="product-name">
-                    ${escapeHtml(product.name)}
+                    ${escapeHTML(product.name)}
                 </h3>
+
 
                 <div class="price-row">
 
@@ -776,33 +924,86 @@ function createProductCard(product) {
 
                 </div>
 
+
                 ${
-                    saving > 0
+                    discount > 0
                     ?
                     `
                     <span class="saving">
-                        Save ${money(saving)}
-                        (${savingPercent}%)
+                        Save ${money(saving(product))}
                     </span>
                     `
                     :
                     ""
                 }
 
+
                 <div class="best-deal">
 
-                    🏆 Best demo price:
+                    🏆
                     <strong>
-                        ${escapeHtml(bestRetailer.name)}
+                        ${escapeHTML(best.name)}
                     </strong>
+
+                    · ${money(best.price)}
+
+                    ${
+                        nearLowest
+                        ?
+                        `
+                        <div
+                            style="
+                                margin-top:4px;
+                                color:var(--success);
+                                font-weight:800;
+                            "
+                        >
+                            📉 Near lowest tracked price
+                        </div>
+                        `
+                        :
+                        ""
+                    }
 
                 </div>
 
+
+                <div
+                    style="
+                        display:flex;
+                        align-items:center;
+                        justify-content:space-between;
+                        margin-bottom:9px;
+                    "
+                >
+
+                    <span
+                        style="
+                            color:#f59e0b;
+                            font-size:10px;
+                            font-weight:800;
+                        "
+                    >
+                        ⭐ ${product.rating}
+                    </span>
+
+                    <span
+                        style="
+                            color:var(--muted);
+                            font-size:9px;
+                        "
+                    >
+                        Deal score ${score}/100
+                    </span>
+
+                </div>
+
+
                 <button
                     class="compare-button"
-                    data-product="${escapeHtml(product.id)}"
+                    data-product="${escapeHTML(product.id)}"
                 >
-                    Compare prices
+                    Compare retailers
                 </button>
 
             </div>
@@ -814,40 +1015,34 @@ function createProductCard(product) {
 
 
 /* =========================================================
-   RENDER PRODUCTS
-   ========================================================= */
+   RENDER
+========================================================= */
 
 function renderProducts(list) {
-
-    currentProducts = list;
 
     if (!list.length) {
 
         productGrid.innerHTML = "";
 
-        noResults.classList.remove("hidden");
+        noResults.classList.remove(
+            "hidden"
+        );
 
         return;
     }
 
-    noResults.classList.add("hidden");
+    noResults.classList.add(
+        "hidden"
+    );
 
     productGrid.innerHTML =
-        list.map(createProductCard).join("");
+        list.map(
+            productCard
+        ).join("");
 
-    attachCardEvents();
-}
-
-
-function renderTrending() {
-
-    const trending =
-        products.slice(0, 8);
-
-    trendingGrid.innerHTML =
-        trending.map(createProductCard).join("");
-
-    attachCardEvents(trendingGrid);
+    attachProductEvents(
+        productGrid
+    );
 }
 
 
@@ -856,55 +1051,86 @@ function renderDeals() {
     const deals =
         [...products]
             .sort(
-                (a, b) =>
-                    getSavingPercent(b)
+                (a,b) =>
+                    dealScore(b)
                     -
-                    getSavingPercent(a)
+                    dealScore(a)
             )
-            .slice(0, 8);
+            .slice(0,8);
 
     dealGrid.innerHTML =
-        deals.map(createProductCard).join("");
+        deals.map(
+            productCard
+        ).join("");
 
-    attachCardEvents(dealGrid);
+    attachProductEvents(
+        dealGrid
+    );
+}
+
+
+function renderTrending() {
+
+    const trending =
+        [...products]
+            .sort(
+                (a,b) =>
+                    b.popularity
+                    -
+                    a.popularity
+            )
+            .slice(0,8);
+
+    trendingGrid.innerHTML =
+        trending.map(
+            productCard
+        ).join("");
+
+    attachProductEvents(
+        trendingGrid
+    );
 }
 
 
 function renderFavourites() {
 
-    const favouriteProducts =
+    const list =
         products.filter(
             product =>
-                favourites.includes(product.id)
+                favourites.includes(
+                    product.id
+                )
         );
 
-    if (!favouriteProducts.length) {
+    if (!list.length) {
 
         favouritesGrid.innerHTML = "";
 
-        emptyFavourites.classList.remove(
-            "hidden"
-        );
+        emptyFavourites
+            .classList
+            .remove("hidden");
 
         return;
     }
 
-    emptyFavourites.classList.add(
-        "hidden"
-    );
+    emptyFavourites
+        .classList
+        .add("hidden");
 
     favouritesGrid.innerHTML =
-        favouriteProducts
-            .map(createProductCard)
-            .join("");
+        list.map(
+            productCard
+        ).join("");
 
-    attachCardEvents(favouritesGrid);
+    attachProductEvents(
+        favouritesGrid
+    );
 }
 
 
 function renderRecentlyViewed() {
 
-    const recentProducts =
+    const list =
         recentlyViewed
             .map(
                 id =>
@@ -915,115 +1141,134 @@ function renderRecentlyViewed() {
             )
             .filter(Boolean);
 
-    if (!recentProducts.length) {
+    if (!list.length) {
 
         recentGrid.innerHTML = "";
 
-        emptyRecent.classList.remove(
-            "hidden"
-        );
+        emptyRecent
+            .classList
+            .remove("hidden");
 
         return;
     }
 
-    emptyRecent.classList.add(
-        "hidden"
-    );
+    emptyRecent
+        .classList
+        .add("hidden");
 
     recentGrid.innerHTML =
-        recentProducts
-            .map(createProductCard)
-            .join("");
+        list.map(
+            productCard
+        ).join("");
 
-    attachCardEvents(recentGrid);
+    attachProductEvents(
+        recentGrid
+    );
 }
 
 
 /* =========================================================
-   CARD EVENTS
-   ========================================================= */
+   PRODUCT EVENTS
+========================================================= */
 
-function attachCardEvents(
-    container = productGrid
+function attachProductEvents(
+    container
 ) {
 
     container
-        .querySelectorAll("[data-favourite]")
-        .forEach(button => {
+        .querySelectorAll(
+            "[data-favourite]"
+        )
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                event => {
+                button.addEventListener(
+                    "click",
+                    event => {
 
-                    event.stopPropagation();
+                        event.stopPropagation();
 
-                    toggleFavourite(
-                        button.dataset.favourite
-                    );
+                        toggleFavourite(
+                            button.dataset.favourite
+                        );
 
-                }
-            );
-
-        });
-
-
-    container
-        .querySelectorAll("[data-product]")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    openProduct(
-                        button.dataset.product
-                    );
-
-                }
-            );
-
-        });
-
-
-    container
-        .querySelectorAll(".product-card")
-        .forEach(card => {
-
-            card.addEventListener(
-                "click",
-                event => {
-
-                    if (
-                        event.target.closest(
-                            "button"
-                        )
-                    ) {
-                        return;
                     }
+                );
 
-                    openProduct(
-                        card.dataset.id
-                    );
+            }
+        );
 
-                }
-            );
 
-        });
+    container
+        .querySelectorAll(
+            "[data-product]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+                        openProduct(
+                            button.dataset.product
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    container
+        .querySelectorAll(
+            ".product-card"
+        )
+        .forEach(
+            card => {
+
+                card.addEventListener(
+                    "click",
+                    event => {
+
+                        if (
+                            event.target.closest(
+                                "button"
+                            )
+                        ) {
+                            return;
+                        }
+
+                        openProduct(
+                            card.dataset.id
+                        );
+
+                    }
+                );
+
+            }
+        );
 
 }
 
 
 /* =========================================================
    FAVOURITES
-   ========================================================= */
+========================================================= */
 
 function toggleFavourite(id) {
 
-    if (favourites.includes(id)) {
+    if (
+        favourites.includes(id)
+    ) {
 
         favourites =
             favourites.filter(
-                item => item !== id
+                item =>
+                    item !== id
             );
 
         showToast(
@@ -1037,16 +1282,24 @@ function toggleFavourite(id) {
         showToast(
             "❤️ Added to favourites"
         );
+
     }
+
 
     localStorage.setItem(
         "pricepilot-favourites",
-        JSON.stringify(favourites)
+        JSON.stringify(
+            favourites
+        )
     );
+
 
     updateFavouriteCount();
 
-    renderAll();
+    renderFavourites();
+
+    applyFilters();
+
 }
 
 
@@ -1058,24 +1311,30 @@ function updateFavouriteCount() {
 
 
 /* =========================================================
-   RECENTLY VIEWED
-   ========================================================= */
+   RECENT HISTORY
+========================================================= */
 
-function addRecentlyViewed(id) {
+function addRecent(id) {
 
     recentlyViewed =
         recentlyViewed.filter(
-            item => item !== id
+            item =>
+                item !== id
         );
 
     recentlyViewed.unshift(id);
 
     recentlyViewed =
-        recentlyViewed.slice(0, 8);
+        recentlyViewed.slice(
+            0,
+            8
+        );
 
     localStorage.setItem(
         "pricepilot-recent",
-        JSON.stringify(recentlyViewed)
+        JSON.stringify(
+            recentlyViewed
+        )
     );
 
     renderRecentlyViewed();
@@ -1084,230 +1343,174 @@ function addRecentlyViewed(id) {
 
 /* =========================================================
    PRODUCT MODAL
-   ========================================================= */
+========================================================= */
 
 function openProduct(id) {
 
     const product =
         products.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
 
     if (!product) {
         return;
     }
 
-    addRecentlyViewed(id);
 
-    const bestRetailer =
-        getBestRetailer(product);
+    addRecent(id);
 
-    const saving =
-        getSaving(product);
+
+    const best =
+        bestRetailer(product);
+
+    const score =
+        dealScore(product);
+
 
     modalContent.innerHTML = `
 
-        <div class="modal-product">
+        <div>
 
             <div
+                class="product-image"
                 style="
-                    display:grid;
-                    place-items:center;
-                    background:var(--surface-secondary);
-                    border-radius:15px;
-                    overflow:hidden;
-                    margin-bottom:25px;
-                    height:250px;
+                    height:280px;
+                    border-radius:16px;
+                    margin-bottom:22px;
                 "
             >
 
                 <img
-                    src="${escapeHtml(product.image)}"
-                    alt="${escapeHtml(product.name)}"
-                    style="
-                        width:100%;
-                        height:100%;
-                        object-fit:cover;
-                    "
+                    src="${escapeHTML(product.image)}"
+                    alt="${escapeHTML(product.name)}"
                 >
 
             </div>
 
+
             <div class="product-brand">
-                ${escapeHtml(product.brand)}
+                ${escapeHTML(product.brand)}
             </div>
+
 
             <h2
                 style="
                     font-size:32px;
+                    line-height:1.1;
                     margin-bottom:8px;
+                    letter-spacing:-1.2px;
                 "
             >
-                ${escapeHtml(product.name)}
+                ${escapeHTML(product.name)}
             </h2>
+
 
             <div
                 style="
-                    color:#f59e0b;
-                    margin-bottom:15px;
+                    display:flex;
+                    gap:15px;
+                    align-items:center;
+                    margin-bottom:18px;
+                    flex-wrap:wrap;
                 "
             >
-                ⭐ ${product.rating}/5
+
+                <span
+                    style="
+                        color:#f59e0b;
+                        font-size:12px;
+                        font-weight:800;
+                    "
+                >
+                    ⭐ ${product.rating}/5
+                </span>
+
+                <span
+                    style="
+                        padding:5px 8px;
+                        background:var(--primary-light);
+                        color:var(--primary);
+                        border-radius:6px;
+                        font-size:10px;
+                        font-weight:800;
+                    "
+                >
+                    Deal score ${score}/100
+                </span>
+
             </div>
+
 
             <div
                 style="
                     display:flex;
                     align-items:center;
                     gap:10px;
-                    margin-bottom:20px;
+                    margin-bottom:12px;
                 "
             >
 
                 <strong
                     style="
-                        font-size:30px;
+                        font-size:32px;
                     "
                 >
                     ${money(product.price)}
                 </strong>
 
-                ${
-                    product.oldPrice
-                    ?
-                    `
-                    <span class="old-price">
-                        ${money(product.oldPrice)}
-                    </span>
-                    `
-                    :
-                    ""
-                }
+                <span class="old-price">
+                    ${money(product.oldPrice)}
+                </span>
 
             </div>
 
-            ${
-                saving > 0
-                ?
-                `
-                <div
-                    class="saving"
-                    style="margin-bottom:20px;"
-                >
-                    Save ${money(saving)}
-                    (${getSavingPercent(product)}%)
-                </div>
-                `
-                :
-                ""
-            }
-
-            <h3
-                style="
-                    margin-bottom:10px;
-                "
-            >
-                Storage
-            </h3>
 
             <div
                 style="
-                    display:flex;
-                    flex-wrap:wrap;
-                    gap:7px;
+                    padding:13px;
+                    border-radius:10px;
+                    background:var(--surface-secondary);
                     margin-bottom:20px;
                 "
             >
 
-                ${product.storage.map(
-                    storage =>
-                        `
-                        <span
-                            style="
-                                padding:7px 11px;
-                                border:1px solid var(--border);
-                                border-radius:8px;
-                                font-size:12px;
-                            "
-                        >
-                            ${escapeHtml(storage)}
-                        </span>
-                        `
-                ).join("")}
+                <div
+                    style="
+                        font-size:10px;
+                        color:var(--muted);
+                        margin-bottom:3px;
+                    "
+                >
+                    Lowest tracked price
+                </div>
+
+                <strong
+                    style="
+                        color:var(--success);
+                        font-size:17px;
+                    "
+                >
+                    ${money(product.lowestEver)}
+                </strong>
 
             </div>
 
+
             <h3
                 style="
+                    font-size:16px;
                     margin-bottom:10px;
                 "
             >
-                Colours
+                Retailer comparison
             </h3>
+
 
             <div
                 style="
-                    display:flex;
-                    flex-wrap:wrap;
-                    gap:7px;
-                    margin-bottom:25px;
-                "
-            >
-
-                ${product.colours.map(
-                    colour =>
-                        `
-                        <span
-                            style="
-                                padding:7px 11px;
-                                border:1px solid var(--border);
-                                border-radius:8px;
-                                font-size:12px;
-                            "
-                        >
-                            ${escapeHtml(colour)}
-                        </span>
-                        `
-                ).join("")}
-
-            </div>
-
-            <h3
-                style="
-                    margin-bottom:10px;
-                "
-            >
-                Key specifications
-            </h3>
-
-            <ul
-                style="
-                    padding-left:20px;
-                    margin-bottom:25px;
-                    color:var(--text-secondary);
-                "
-            >
-
-                ${product.specs.map(
-                    spec =>
-                        `<li>${escapeHtml(spec)}</li>`
-                ).join("")}
-
-            </ul>
-
-            <h3
-                style="
-                    margin-bottom:12px;
-                "
-            >
-                Compare retailers
-            </h3>
-
-            <div
-                style="
-                    display:flex;
-                    flex-direction:column;
-                    gap:9px;
+                    display:grid;
+                    gap:8px;
                 "
             >
 
@@ -1323,16 +1526,16 @@ function openProduct(id) {
                             const isBest =
                                 retailer.name
                                 ===
-                                bestRetailer.name;
+                                best.name;
 
                             return `
+
                                 <div
                                     style="
                                         display:flex;
-                                        align-items:center;
                                         justify-content:space-between;
-                                        gap:10px;
-                                        padding:13px;
+                                        align-items:center;
+                                        padding:14px;
                                         border:1px solid
                                             ${isBest
                                                 ? "var(--primary)"
@@ -1348,23 +1551,23 @@ function openProduct(id) {
                                     <div>
 
                                         <strong>
-                                            ${escapeHtml(retailer.name)}
+                                            ${escapeHTML(retailer.name)}
                                         </strong>
 
                                         ${
                                             isBest
                                             ?
                                             `
-                                            <span
+                                            <div
                                                 style="
                                                     color:var(--success);
-                                                    font-size:11px;
-                                                    display:block;
-                                                    font-weight:700;
+                                                    font-size:9px;
+                                                    font-weight:850;
+                                                    margin-top:2px;
                                                 "
                                             >
-                                                BEST DEMO PRICE
-                                            </span>
+                                                CHEAPEST
+                                            </div>
                                             `
                                             :
                                             ""
@@ -1372,11 +1575,13 @@ function openProduct(id) {
 
                                     </div>
 
+
                                     <strong>
                                         ${money(retailer.price)}
                                     </strong>
 
                                 </div>
+
                             `;
 
                         }
@@ -1385,53 +1590,121 @@ function openProduct(id) {
 
             </div>
 
-            <div
+
+            <h3
                 style="
-                    margin-top:20px;
-                    padding:12px;
-                    border-radius:9px;
-                    background:var(--surface-secondary);
-                    color:var(--muted);
-                    font-size:11px;
+                    margin-top:25px;
+                    margin-bottom:10px;
+                    font-size:16px;
                 "
             >
-                ℹ️ Retailer prices shown here are demo
-                data until live retailer/API connections
-                are added.
+                Key specifications
+            </h3>
+
+
+            <ul
+                style="
+                    padding-left:20px;
+                    color:var(--text-secondary);
+                    font-size:12px;
+                "
+            >
+
+                ${product.specs
+                    .map(
+                        spec =>
+                            `<li>${escapeHTML(spec)}</li>`
+                    )
+                    .join("")}
+
+            </ul>
+
+
+            <div
+                style="
+                    margin-top:25px;
+                    padding:14px;
+                    border-radius:10px;
+                    background:var(--surface-secondary);
+                    font-size:10px;
+                    color:var(--muted);
+                "
+            >
+
+                📊 Price history is prepared for
+                the upcoming live retailer tracking
+                system.
+
             </div>
+
+
+            <button
+                class="primary-button"
+                style="
+                    width:100%;
+                    margin-top:15px;
+                "
+                id="modalAlertButton"
+            >
+                🔔 Track this price
+            </button>
 
         </div>
 
     `;
 
+
     productModal.classList.remove(
         "hidden"
     );
+
+
+    document
+        .getElementById(
+            "modalAlertButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                createAlert(
+                    product.id
+                );
+
+            }
+        );
+
 }
 
 
 /* =========================================================
    CLOSE MODAL
-   ========================================================= */
+========================================================= */
 
-function closeProductModal() {
+function closeProduct() {
 
-    productModal.classList.add(
-        "hidden"
-    );
+    productModal
+        .classList
+        .add("hidden");
+
 }
+
 
 closeModal.addEventListener(
     "click",
-    closeProductModal
+    closeProduct
 );
 
+
 productModal
-    .querySelector(".modal-overlay")
+    .querySelector(
+        ".modal-overlay"
+    )
     .addEventListener(
         "click",
-        closeProductModal
-    );
+        closeProduct
+);
+
 
 document.addEventListener(
     "keydown",
@@ -1440,7 +1713,11 @@ document.addEventListener(
         if (
             event.key === "Escape"
         ) {
-            closeProductModal();
+
+            closeProduct();
+
+            closeCountry();
+
         }
 
     }
@@ -1448,149 +1725,113 @@ document.addEventListener(
 
 
 /* =========================================================
+   PRICE ALERTS
+========================================================= */
+
+function createAlert(id) {
+
+    const product =
+        products.find(
+            item =>
+                item.id === id
+        );
+
+    if (!product) {
+        return;
+    }
+
+
+    const target =
+        Math.round(
+            product.price * .9
+        );
+
+
+    const existing =
+        priceAlerts.find(
+            alert =>
+                alert.productId === id
+        );
+
+
+    if (existing) {
+
+        showToast(
+            "🔔 You're already tracking this product"
+        );
+
+        return;
+    }
+
+
+    priceAlerts.push(
+        {
+            productId: id,
+            targetPrice: target,
+            created:
+                new Date()
+                    .toISOString()
+        }
+    );
+
+
+    localStorage.setItem(
+        "pricepilot-alerts",
+        JSON.stringify(
+            priceAlerts
+        )
+    );
+
+
+    showToast(
+        `🔔 Alert created below ${money(target)}`
+    );
+
+}
+
+
+/* =========================================================
    SEARCH
-   ========================================================= */
+========================================================= */
 
 function performSearch() {
 
-    const query =
+    currentSearch =
         searchInput.value
             .trim()
             .toLowerCase();
 
-    currentSearch = query;
 
     clearSearch.classList.toggle(
         "hidden",
-        !query
+        !currentSearch
     );
+
 
     suggestions.innerHTML = "";
 
-    if (!query) {
 
-        applyFilters();
+    applyFilters();
 
-        return;
-    }
-
-    const results =
-        products.filter(
-            product =>
-                product.name
-                    .toLowerCase()
-                    .includes(query)
-                ||
-                product.brand
-                    .toLowerCase()
-                    .includes(query)
-                ||
-                product.category
-                    .toLowerCase()
-                    .includes(query)
-        );
-
-    currentProducts = results;
-
-    renderProducts(results);
 
     document
-        .getElementById("products")
-        ?.scrollIntoView({
-            behavior: "smooth"
-        });
+        .getElementById(
+            "products"
+        )
+        .scrollIntoView(
+            {
+                behavior: "smooth"
+            }
+        );
+
 }
 
 
-function showSuggestions() {
-
-    const query =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-    if (!query) {
-
-        suggestions.innerHTML = "";
-
-        return;
-    }
-
-    const results =
-        products
-            .filter(
-                product =>
-                    product.name
-                        .toLowerCase()
-                        .includes(query)
-                    ||
-                    product.brand
-                        .toLowerCase()
-                        .includes(query)
-            )
-            .slice(0, 6);
-
-    suggestions.innerHTML =
-        results.map(
-            product =>
-                `
-                <div
-                    class="suggestion"
-                    data-suggestion="${escapeHtml(product.id)}"
-                >
-                    🔎
-                    <strong>
-                        ${escapeHtml(product.name)}
-                    </strong>
-                    <span>
-                        ${escapeHtml(product.brand)}
-                    </span>
-                </div>
-                `
-        ).join("");
-
-    suggestions
-        .querySelectorAll("[data-suggestion]")
-        .forEach(item => {
-
-            item.addEventListener(
-                "click",
-                () => {
-
-                    const product =
-                        products.find(
-                            p =>
-                                p.id
-                                ===
-                                item.dataset.suggestion
-                        );
-
-                    if (!product) {
-                        return;
-                    }
-
-                    searchInput.value =
-                        product.name;
-
-                    suggestions.innerHTML = "";
-
-                    performSearch();
-
-                    openProduct(
-                        product.id
-                    );
-
-                }
-            );
-
-        });
-}
-
-
-searchInput.addEventListener(
-    "input",
-    showSuggestions
+searchButton.addEventListener(
+    "click",
+    performSearch
 );
+
 
 searchInput.addEventListener(
     "keydown",
@@ -1600,8 +1841,6 @@ searchInput.addEventListener(
             event.key === "Enter"
         ) {
 
-            suggestions.innerHTML = "";
-
             performSearch();
 
         }
@@ -1609,10 +1848,12 @@ searchInput.addEventListener(
     }
 );
 
-searchButton.addEventListener(
-    "click",
-    performSearch
+
+searchInput.addEventListener(
+    "input",
+    showSuggestions
 );
+
 
 clearSearch.addEventListener(
     "click",
@@ -1622,9 +1863,9 @@ clearSearch.addEventListener(
 
         currentSearch = "";
 
-        clearSearch.classList.add(
-            "hidden"
-        );
+        clearSearch
+            .classList
+            .add("hidden");
 
         suggestions.innerHTML = "";
 
@@ -1635,31 +1876,136 @@ clearSearch.addEventListener(
 
 
 /* =========================================================
-   QUICK SEARCH
-   ========================================================= */
+   AUTOCOMPLETE
+========================================================= */
 
-document
-    .querySelectorAll(".quick-search")
-    .forEach(button => {
+function showSuggestions() {
 
-        button.addEventListener(
-            "click",
-            () => {
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
 
-                searchInput.value =
-                    button.dataset.search;
 
-                performSearch();
+    if (!query) {
+
+        suggestions.innerHTML = "";
+
+        return;
+    }
+
+
+    const matches =
+        products
+            .filter(
+                product => {
+
+                    const text =
+                        `
+                        ${product.name}
+                        ${product.brand}
+                        ${product.category}
+                        `
+                        .toLowerCase();
+
+                    return text.includes(
+                        query
+                    );
+
+                }
+            )
+            .slice(0,6);
+
+
+    suggestions.innerHTML =
+        matches.map(
+            product =>
+                `
+
+                <div
+                    class="suggestion"
+                    data-suggestion="${escapeHTML(product.id)}"
+                >
+
+                    🔎
+
+                    <strong>
+                        ${escapeHTML(product.name)}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(product.brand)}
+                    </span>
+
+                </div>
+
+                `
+        ).join("");
+
+
+    suggestions
+        .querySelectorAll(
+            "[data-suggestion]"
+        )
+        .forEach(
+            item => {
+
+                item.addEventListener(
+                    "click",
+                    () => {
+
+                        searchInput.value =
+                            products.find(
+                                p =>
+                                    p.id
+                                    ===
+                                    item.dataset.suggestion
+                            ).name;
+
+                        suggestions.innerHTML =
+                            "";
+
+                        performSearch();
+
+                    }
+                );
 
             }
         );
 
-    });
+}
 
 
 /* =========================================================
-   FILTERS
-   ========================================================= */
+   QUICK SEARCH
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".quick-search"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    searchInput.value =
+                        button.dataset.search;
+
+                    performSearch();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   FILTERING
+========================================================= */
 
 function applyFilters() {
 
@@ -1672,10 +2018,8 @@ function applyFilters() {
     const sort =
         sortFilter.value;
 
-    const query =
-        currentSearch;
 
-    let filtered =
+    let results =
         products.filter(
             product => {
 
@@ -1684,23 +2028,30 @@ function applyFilters() {
                     ||
                     product.brand === brand;
 
+
                 const matchesCategory =
                     category === "all"
                     ||
                     product.category === category;
+
 
                 const searchable =
                     `
                     ${product.name}
                     ${product.brand}
                     ${product.category}
+                    ${product.specs.join(" ")}
                     `
                     .toLowerCase();
 
+
                 const matchesSearch =
-                    !query
+                    !currentSearch
                     ||
-                    searchable.includes(query);
+                    searchable.includes(
+                        currentSearch
+                    );
+
 
                 return (
                     matchesBrand
@@ -1714,66 +2065,202 @@ function applyFilters() {
         );
 
 
-    if (sort === "price-low") {
+    switch (sort) {
 
-        filtered.sort(
-            (a,b) =>
-                a.price - b.price
-        );
+        case "price-low":
 
-    } else if (sort === "price-high") {
+            results.sort(
+                (a,b) =>
+                    a.price - b.price
+            );
 
-        filtered.sort(
-            (a,b) =>
-                b.price - a.price
-        );
+            break;
 
-    } else if (sort === "saving") {
 
-        filtered.sort(
-            (a,b) =>
-                getSaving(b)
-                -
-                getSaving(a)
-        );
+        case "price-high":
 
-    } else if (sort === "rating") {
+            results.sort(
+                (a,b) =>
+                    b.price - a.price
+            );
 
-        filtered.sort(
-            (a,b) =>
-                b.rating - a.rating
-        );
+            break;
 
-    } else if (sort === "name") {
 
-        filtered.sort(
-            (a,b) =>
-                a.name.localeCompare(
-                    b.name
-                )
-        );
+        case "saving":
+
+            results.sort(
+                (a,b) =>
+                    saving(b)
+                    -
+                    saving(a)
+            );
+
+            break;
+
+
+        case "rating":
+
+            results.sort(
+                (a,b) =>
+                    b.rating
+                    -
+                    a.rating
+            );
+
+            break;
+
+
+        case "name":
+
+            results.sort(
+                (a,b) =>
+                    a.name.localeCompare(
+                        b.name
+                    )
+            );
+
+            break;
+
+
+        default:
+
+            results.sort(
+                (a,b) =>
+                    b.popularity
+                    -
+                    a.popularity
+            );
 
     }
 
-    renderProducts(filtered);
 
-    updateActiveFilters(
+    renderProducts(
+        results
+    );
+
+
+    renderActiveFilters(
         brand,
         category,
         sort
     );
+
 }
 
+
+/* =========================================================
+   ACTIVE FILTERS
+========================================================= */
+
+function renderActiveFilters(
+    brand,
+    category,
+    sort
+) {
+
+    const list = [];
+
+
+    if (brand !== "all") {
+
+        list.push(
+            `Brand: ${brand}`
+        );
+
+    }
+
+
+    if (category !== "all") {
+
+        list.push(
+            `Category: ${category}`
+        );
+
+    }
+
+
+    if (
+        sort !== "featured"
+    ) {
+
+        const names = {
+
+            "price-low":
+                "Lowest price",
+
+            "price-high":
+                "Highest price",
+
+            saving:
+                "Biggest saving",
+
+            rating:
+                "Highest rated",
+
+            name:
+                "Name"
+
+        };
+
+        list.push(
+            `Sort: ${names[sort]}`
+        );
+
+    }
+
+
+    if (currentSearch) {
+
+        list.push(
+            `Search: ${currentSearch}`
+        );
+
+    }
+
+
+    document
+        .getElementById(
+            "activeFilters"
+        )
+        .innerHTML =
+            list.map(
+                item =>
+                    `
+                    <span
+                        style="
+                            padding:5px 9px;
+                            border-radius:7px;
+                            background:var(--primary-light);
+                            color:var(--primary);
+                            font-size:10px;
+                            font-weight:800;
+                        "
+                    >
+                        ${escapeHTML(item)}
+                    </span>
+                    `
+            )
+            .join("");
+
+}
+
+
+/* =========================================================
+   FILTER EVENTS
+========================================================= */
 
 brandFilter.addEventListener(
     "change",
     applyFilters
 );
 
+
 categoryFilter.addEventListener(
     "change",
     applyFilters
 );
+
 
 sortFilter.addEventListener(
     "change",
@@ -1782,96 +2269,8 @@ sortFilter.addEventListener(
 
 
 /* =========================================================
-   ACTIVE FILTER DISPLAY
-   ========================================================= */
-
-function updateActiveFilters(
-    brand,
-    category,
-    sort
-) {
-
-    const active =
-        [];
-
-    if (brand !== "all") {
-        active.push(
-            `Brand: ${brand}`
-        );
-    }
-
-    if (category !== "all") {
-
-        const categoryName =
-            category.charAt(0)
-                .toUpperCase()
-            +
-            category.slice(1);
-
-        active.push(
-            `Category: ${categoryName}`
-        );
-
-    }
-
-    if (sort !== "featured") {
-
-        const names = {
-            "price-low":
-                "Price: Low → High",
-
-            "price-high":
-                "Price: High → Low",
-
-            "saving":
-                "Biggest saving",
-
-            "rating":
-                "Highest rated",
-
-            "name":
-                "Name"
-        };
-
-        active.push(
-            `Sort: ${names[sort]}`
-        );
-    }
-
-    if (currentSearch) {
-
-        active.push(
-            `Search: ${currentSearch}`
-        );
-
-    }
-
-    document.getElementById(
-        "activeFilters"
-    ).innerHTML =
-        active.map(
-            item =>
-                `
-                <span
-                    style="
-                        padding:5px 9px;
-                        background:var(--primary-light);
-                        color:var(--primary);
-                        border-radius:7px;
-                        font-size:11px;
-                        font-weight:700;
-                    "
-                >
-                    ${escapeHtml(item)}
-                </span>
-                `
-        ).join("");
-}
-
-
-/* =========================================================
-   RESET FILTERS
-   ========================================================= */
+   RESET
+========================================================= */
 
 function resetFilters() {
 
@@ -1888,9 +2287,9 @@ function resetFilters() {
 
     currentSearch = "";
 
-    clearSearch.classList.add(
-        "hidden"
-    );
+    clearSearch
+        .classList
+        .add("hidden");
 
     suggestions.innerHTML = "";
 
@@ -1900,104 +2299,29 @@ function resetFilters() {
 
 
 document
-    .getElementById("resetFilters")
+    .getElementById(
+        "resetFilters"
+    )
     .addEventListener(
         "click",
         resetFilters
     );
 
+
 document
-    .getElementById("resetSearch")
+    .getElementById(
+        "resetSearch"
+    )
     .addEventListener(
         "click",
         resetFilters
     );
 
 
-/* =========================================================
-   CATEGORY BUTTONS
-   ========================================================= */
-
 document
-    .querySelectorAll(".category-card")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                categoryFilter.value =
-                    button.dataset.category;
-
-                brandFilter.value =
-                    "all";
-
-                sortFilter.value =
-                    "featured";
-
-                currentSearch = "";
-
-                searchInput.value = "";
-
-                applyFilters();
-
-                document
-                    .getElementById("products")
-                    .scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }
-        );
-
-    });
-
-
-/* =========================================================
-   BRAND BUTTONS
-   ========================================================= */
-
-document
-    .querySelectorAll(".brand-card")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                brandFilter.value =
-                    button.dataset.brand;
-
-                categoryFilter.value =
-                    "all";
-
-                sortFilter.value =
-                    "featured";
-
-                currentSearch = "";
-
-                searchInput.value = "";
-
-                applyFilters();
-
-                document
-                    .getElementById("products")
-                    .scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }
-        );
-
-    });
-
-
-/* =========================================================
-   SHOW ALL
-   ========================================================= */
-
-document
-    .getElementById("showAllProducts")
+    .getElementById(
+        "showAllProducts"
+    )
     .addEventListener(
         "click",
         () => {
@@ -2005,10 +2329,139 @@ document
             resetFilters();
 
             document
-                .getElementById("products")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
+                .getElementById(
+                    "products"
+                )
+                .scrollIntoView(
+                    {
+                        behavior:
+                            "smooth"
+                    }
+                );
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "viewAllDeals"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            sortFilter.value =
+                "saving";
+
+            applyFilters();
+
+            document
+                .getElementById(
+                    "products"
+                )
+                .scrollIntoView(
+                    {
+                        behavior:
+                            "smooth"
+                    }
+                );
+
+        }
+    );
+
+
+/* =========================================================
+   CATEGORY BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".category-card"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    categoryFilter.value =
+                        button.dataset.category;
+
+                    brandFilter.value =
+                        "all";
+
+                    sortFilter.value =
+                        "featured";
+
+                    currentSearch = "";
+
+                    searchInput.value = "";
+
+                    applyFilters();
+
+                    document
+                        .getElementById(
+                            "products"
+                        )
+                        .scrollIntoView(
+                            {
+                                behavior:
+                                    "smooth"
+                            }
+                        );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   BRAND BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".brand-card"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    brandFilter.value =
+                        button.dataset.brand;
+
+                    categoryFilter.value =
+                        "all";
+
+                    sortFilter.value =
+                        "featured";
+
+                    currentSearch = "";
+
+                    searchInput.value = "";
+
+                    applyFilters();
+
+                    document
+                        .getElementById(
+                            "products"
+                        )
+                        .scrollIntoView(
+                            {
+                                behavior:
+                                    "smooth"
+                            }
+                        );
+
+                }
+            );
 
         }
     );
@@ -2016,19 +2469,7 @@ document
 
 /* =========================================================
    DARK MODE
-   ========================================================= */
-
-function updateThemeIcon() {
-
-    const dark =
-        document.body.classList.contains(
-            "dark"
-        );
-
-    themeToggle.textContent =
-        dark ? "☀️" : "🌙";
-}
-
+========================================================= */
 
 function loadTheme() {
 
@@ -2037,15 +2478,32 @@ function loadTheme() {
             "pricepilot-theme"
         );
 
-    if (saved === "dark") {
 
-        document.body.classList.add(
-            "dark"
-        );
+    if (
+        saved === "dark"
+    ) {
+
+        document.body
+            .classList
+            .add("dark");
 
     }
 
-    updateThemeIcon();
+
+    updateThemeButton();
+
+}
+
+
+function updateThemeButton() {
+
+    themeToggle.textContent =
+        document.body
+            .classList
+            .contains("dark")
+        ? "☀️"
+        : "🌙";
+
 }
 
 
@@ -2053,26 +2511,32 @@ themeToggle.addEventListener(
     "click",
     () => {
 
-        document.body.classList.toggle(
-            "dark"
-        );
+        document.body
+            .classList
+            .toggle("dark");
+
 
         const dark =
-            document.body.classList.contains(
-                "dark"
-            );
+            document.body
+                .classList
+                .contains("dark");
+
 
         localStorage.setItem(
             "pricepilot-theme",
-            dark ? "dark" : "light"
+            dark
+                ? "dark"
+                : "light"
         );
 
-        updateThemeIcon();
+
+        updateThemeButton();
+
 
         showToast(
             dark
-            ? "🌙 Dark mode enabled"
-            : "☀️ Light mode enabled"
+                ? "🌙 Dark mode enabled"
+                : "☀️ Light mode enabled"
         );
 
     }
@@ -2080,17 +2544,135 @@ themeToggle.addEventListener(
 
 
 /* =========================================================
-   DEAL ALERT BUTTON
-   ========================================================= */
+   COUNTRY SELECTOR
+========================================================= */
+
+const countryButton =
+    document.getElementById(
+        "countryButton"
+    );
+
+const countryModal =
+    document.getElementById(
+        "countryModal"
+    );
+
+const closeCountryButton =
+    document.getElementById(
+        "closeCountry"
+    );
+
+
+function openCountry() {
+
+    countryModal
+        .classList
+        .remove("hidden");
+
+}
+
+
+function closeCountry() {
+
+    countryModal
+        .classList
+        .add("hidden");
+
+}
+
+
+countryButton.addEventListener(
+    "click",
+    openCountry
+);
+
+
+closeCountryButton.addEventListener(
+    "click",
+    closeCountry
+);
+
 
 document
-    .getElementById("alertButton")
-    .addEventListener(
-        "click",
-        () => {
+    .querySelectorAll(
+        ".country-options button"
+    )
+    .forEach(
+        button => {
 
-            showToast(
-                "🔔 Price alerts are coming soon!"
+            button.addEventListener(
+                "click",
+                () => {
+
+                    currentCountry =
+                        button.dataset.country;
+
+                    countryButton.textContent =
+                        currentCountry;
+
+                    localStorage.setItem(
+                        "pricepilot-country",
+                        currentCountry
+                    );
+
+                    closeCountry();
+
+                    showToast(
+                        `🌍 Market changed to ${currentCountry}`
+                    );
+
+                }
+            );
+
+        }
+);
+
+
+countryButton.textContent =
+    currentCountry;
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+const mobileMenuButton =
+    document.getElementById(
+        "mobileMenuButton"
+    );
+
+
+mobileMenuButton.addEventListener(
+    "click",
+    () => {
+
+        mobileMenu
+            .classList
+            .toggle("open");
+
+    }
+);
+
+
+mobileMenu
+    .querySelectorAll("a")
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    mobileMenu
+                        .classList
+                        .remove("open");
+
+                }
             );
 
         }
@@ -2098,8 +2680,80 @@ document
 
 
 /* =========================================================
-   CLOSE SUGGESTIONS
-   ========================================================= */
+   ANNOUNCEMENT
+========================================================= */
+
+document
+    .getElementById(
+        "announcementClose"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .querySelector(
+                    ".announcement"
+                )
+                .style.display =
+                    "none";
+
+        }
+    );
+
+
+/* =========================================================
+   ALERT BUTTON
+========================================================= */
+
+document
+    .getElementById(
+        "alertButton"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            const first =
+                products[0];
+
+            createAlert(
+                first.id
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+document
+    .getElementById(
+        "logoButton"
+    )
+    .addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            window.scrollTo(
+                {
+                    top: 0,
+                    behavior:
+                        "smooth"
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   CLICK OUTSIDE SEARCH
+========================================================= */
 
 document.addEventListener(
     "click",
@@ -2111,7 +2765,8 @@ document.addEventListener(
             )
         ) {
 
-            suggestions.innerHTML = "";
+            suggestions.innerHTML =
+                "";
 
         }
 
@@ -2120,56 +2775,48 @@ document.addEventListener(
 
 
 /* =========================================================
-   UPDATE PRODUCT COUNT
-   ========================================================= */
+   PRODUCT COUNT
+========================================================= */
 
-function updateProductCount() {
-
-    productCount.textContent =
-        products.length;
-}
-
-
-/* =========================================================
-   RENDER EVERYTHING
-   ========================================================= */
-
-function renderAll() {
-
-    applyFilters();
-
-    renderTrending();
-
-    renderDeals();
-
-    renderFavourites();
-
-    renderRecentlyViewed();
-
-    updateFavouriteCount();
-
-    updateProductCount();
-
-}
+productCount.textContent =
+    products.length;
 
 
 /* =========================================================
    INITIALISE
-   ========================================================= */
+========================================================= */
 
 loadTheme();
 
-renderAll();
+updateFavouriteCount();
+
+renderDeals();
+
+renderTrending();
+
+renderFavourites();
+
+renderRecentlyViewed();
+
+applyFilters();
 
 
 /* =========================================================
-   CONSOLE INFORMATION
-   ========================================================= */
+   DEVELOPMENT INFORMATION
+========================================================= */
 
 console.log(
-    "PricePilot 3.0 loaded successfully."
+    "PricePilot 4.0 loaded."
 );
 
 console.log(
-    `${products.length} products loaded.`
+    `Catalogue: ${products.length} products`
+);
+
+console.log(
+    "Real retailer API layer: NEXT PHASE"
+);
+
+console.log(
+    "Never place retailer API secrets in frontend JavaScript."
 );
