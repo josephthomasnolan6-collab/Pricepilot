@@ -1,422 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PricePilot — Find Better Prices</title>
+    <title>PricePilot — Compare Tech Prices</title>
+    <meta name="description" content="PricePilot helps you compare technology prices across retailers.">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<header class="navbar">
+    <div class="logo">
+        <span class="logo-icon">✈</span>
+        <span>Price<span>Pilot</span></span>
+    </div>
 
-    <nav class="navbar">
-
-        <div class="logo">
-            ✈️ <span>PricePilot</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="#products">Products</a>
-            <a href="#how-it-works">How it works</a>
-            <button id="darkModeButton" onclick="toggleDarkMode()">
-                🌙
-            </button>
-        </div>
-
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#deals">Deals</a>
+        <a href="#favourites">Favourites</a>
     </nav>
 
-
-    <!-- HERO -->
-
-    <header class="hero">
-
-        <div class="hero-content">
-
-            <div class="hero-badge">
-                ⚡ Smarter shopping starts here
-            </div>
-
-            <h1>
-                Find the best price.
-                <span>Every time.</span>
-            </h1>
-
-            <p>
-                PricePilot compares products across multiple stores
-                so you can spend less and shop smarter.
-            </p>
+    <button id="themeToggle" class="theme-button">🌙</button>
+</header>
 
 
-            <div class="search-box">
+<main>
 
-                <input
-                    id="productSearch"
-                    type="text"
-                    placeholder="Search iPhone, Samsung, RTX..."
-                    oninput="searchProduct()"
-                >
+<section id="home" class="hero">
 
-                <button onclick="searchProduct()">
-                    🔍 Search
-                </button>
+    <div class="hero-content">
 
-            </div>
-
-
-            <div id="liveSuggestions" class="live-suggestions"></div>
-
-
-            <div class="popular-searches">
-
-                <span>Popular:</span>
-
-                <button onclick="quickSearch('iPhone')">
-                    iPhone
-                </button>
-
-                <button onclick="quickSearch('Samsung')">
-                    Samsung
-                </button>
-
-                <button onclick="quickSearch('RTX')">
-                    RTX
-                </button>
-
-                <button onclick="quickSearch('MacBook')">
-                    MacBook
-                </button>
-
-            </div>
-
+        <div class="hero-badge">
+            🔥 Find the best tech deals
         </div>
 
-    </header>
-
-
-    <!-- STATS -->
-
-    <section class="stats">
-
-        <div>
-            <strong id="productCount">0</strong>
-            <span>Products</span>
-        </div>
-
-        <div>
-            <strong>4</strong>
-            <span>Categories</span>
-        </div>
-
-        <div>
-            <strong>3</strong>
-            <span>Stores</span>
-        </div>
-
-        <div>
-            <strong>24/7</strong>
-            <span>Price checking</span>
-        </div>
-
-    </section>
-
-
-    <!-- MAIN -->
-
-    <main id="products" class="main-container">
-
-
-        <!-- FILTERS -->
-
-        <section class="control-panel">
-
-            <div class="control-top">
-
-                <div>
-                    <h2>Find your product</h2>
-                    <p id="resultCount">
-                        Showing all products
-                    </p>
-                </div>
-
-                <button class="reset-button" onclick="resetFilters()">
-                    ↻ Reset
-                </button>
-
-            </div>
-
-
-            <div class="filters">
-
-
-                <div class="filter">
-
-                    <label>Category</label>
-
-                    <select
-                        id="categoryFilter"
-                        onchange="applyFilters()"
-                    >
-
-                        <option value="All">
-                            All categories
-                        </option>
-
-                        <option value="Smartphone">
-                            📱 Smartphones
-                        </option>
-
-                        <option value="Laptop">
-                            💻 Laptops
-                        </option>
-
-                        <option value="Graphics Card">
-                            🎮 Graphics Cards
-                        </option>
-
-                        <option value="Gaming Console">
-                            🎮 Gaming Consoles
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="filter">
-
-                    <label>Maximum price</label>
-
-                    <select
-                        id="priceFilter"
-                        onchange="applyFilters()"
-                    >
-
-                        <option value="999999">
-                            Any price
-                        </option>
-
-                        <option value="500">
-                            Under €500
-                        </option>
-
-                        <option value="800">
-                            Under €800
-                        </option>
-
-                        <option value="1000">
-                            Under €1,000
-                        </option>
-
-                        <option value="1500">
-                            Under €1,500
-                        </option>
-
-                        <option value="2500">
-                            Under €2,500
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="filter">
-
-                    <label>Sort by</label>
-
-                    <select
-                        id="sortFilter"
-                        onchange="applyFilters()"
-                    >
-
-                        <option value="recommended">
-                            ⭐ Recommended
-                        </option>
-
-                        <option value="cheapest">
-                            💰 Cheapest
-                        </option>
-
-                        <option value="expensive">
-                            💎 Most expensive
-                        </option>
-
-                        <option value="rating">
-                            ⭐ Highest rated
-                        </option>
-
-                        <option value="savings">
-                            🔥 Biggest saving
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- BEST VALUE -->
-
-        <section class="best-value-section">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        PRICEPILOT PICK
-                    </span>
-
-                    <h2>🏆 Best value right now</h2>
-
-                    <p>
-                        Our recommendation based on price,
-                        rating and savings.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div id="bestValue"></div>
-
-        </section>
-
-
-        <!-- PRODUCTS -->
-
-        <section class="product-section">
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        COMPARE
-                    </span>
-
-                    <h2>Products</h2>
-                </div>
-
-            </div>
-
-
-            <div id="results" class="product-grid"></div>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- HOW IT WORKS -->
-
-    <section id="how-it-works" class="how-section">
-
-        <div class="section-heading centered">
-
-            <span class="section-label">
-                SIMPLE
-            </span>
-
-            <h2>How PricePilot works</h2>
-
-        </div>
-
-
-        <div class="steps">
-
-            <div class="step">
-
-                <div class="step-number">1</div>
-
-                <h3>🔎 Search</h3>
-
-                <p>
-                    Search for the product you're looking for.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">2</div>
-
-                <h3>📊 Compare</h3>
-
-                <p>
-                    PricePilot compares prices from different stores.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">3</div>
-
-                <h3>💰 Save</h3>
-
-                <p>
-                    Find the best deal and avoid overpaying.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="footer-logo">
-            ✈️ PricePilot
-        </div>
+        <h1>
+            Find it.
+            <span>Compare it.</span>
+            Save money.
+        </h1>
 
         <p>
-            Your co-pilot for smarter shopping.
+            Compare prices on phones, tablets, watches, earbuds,
+            laptops and more from your favourite retailers.
         </p>
 
-        <small>
-            © 2026 PricePilot — Prototype
-        </small>
+        <div class="search-container">
 
-    </footer>
-
-
-    <!-- PRODUCT MODAL -->
-
-    <div id="productModal" class="modal">
-
-        <div class="modal-content">
-
-            <button
-                class="close-modal"
-                onclick="closeModal()"
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search iPhone, Galaxy, Pixel..."
+                autocomplete="off"
             >
-                ×
+
+            <button id="searchButton">
+                🔎 Search
             </button>
 
-            <div id="modalContent"></div>
+        </div>
+
+        <div id="suggestions" class="suggestions"></div>
+
+        <div class="popular-searches">
+            <span>Popular:</span>
+
+            <button class="quick-search" data-search="iPhone 16">
+                iPhone 16
+            </button>
+
+            <button class="quick-search" data-search="Galaxy S25">
+                Galaxy S25
+            </button>
+
+            <button class="quick-search" data-search="Pixel 9">
+                Pixel 9
+            </button>
+
+            <button class="quick-search" data-search="AirPods">
+                AirPods
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="categories">
+
+    <h2>Shop by category</h2>
+
+    <div class="category-grid">
+
+        <button class="category-card" data-category="phone">
+            📱
+            <strong>Phones</strong>
+            <small>Apple, Samsung & Google</small>
+        </button>
+
+        <button class="category-card" data-category="tablet">
+            📲
+            <strong>Tablets</strong>
+            <small>iPad, Galaxy Tab & Pixel</small>
+        </button>
+
+        <button class="category-card" data-category="watch">
+            ⌚
+            <strong>Smartwatches</strong>
+            <small>Apple Watch & Galaxy Watch</small>
+        </button>
+
+        <button class="category-card" data-category="audio">
+            🎧
+            <strong>Audio</strong>
+            <small>AirPods & Galaxy Buds</small>
+        </button>
+
+    </div>
+
+</section>
+
+
+<section id="products" class="products-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">COMPARE</span>
+            <h2>Popular products</h2>
+        </div>
+
+        <div class="filters">
+
+            <select id="brandFilter">
+                <option value="all">All brands</option>
+                <option value="Apple">Apple</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Google">Google</option>
+            </select>
+
+            <select id="categoryFilter">
+                <option value="all">All categories</option>
+                <option value="phone">Phones</option>
+                <option value="tablet">Tablets</option>
+                <option value="watch">Watches</option>
+                <option value="audio">Audio</option>
+            </select>
+
+            <select id="sortFilter">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name">Name</option>
+            </select>
 
         </div>
 
     </div>
 
+    <div id="productGrid" class="product-grid"></div>
 
-    <script src="script.js"></script>
+    <div id="noResults" class="no-results hidden">
+        <h3>No products found</h3>
+        <p>Try another search or category.</p>
+    </div>
+
+</section>
+
+
+<section id="deals" class="deals-section">
+
+    <div class="section-heading">
+        <div>
+            <span class="section-label">DEALS</span>
+            <h2>Today's best deals</h2>
+        </div>
+    </div>
+
+    <div id="dealGrid" class="product-grid"></div>
+
+</section>
+
+
+<section class="brands-section">
+
+    <h2>Compare your favourite brands</h2>
+
+    <div class="brand-grid">
+
+        <button class="brand-card" data-brand="Apple">
+            <div></div>
+            <strong>Apple</strong>
+        </button>
+
+        <button class="brand-card" data-brand="Samsung">
+            <div>◉</div>
+            <strong>Samsung</strong>
+        </button>
+
+        <button class="brand-card" data-brand="Google">
+            <div>G</div>
+            <strong>Google</strong>
+        </button>
+
+    </div>
+
+</section>
+
+
+<section id="favourites" class="favourites-section">
+
+    <div class="section-heading">
+        <div>
+            <span class="section-label">YOUR LIST</span>
+            <h2>Favourites</h2>
+        </div>
+    </div>
+
+    <div id="favouritesGrid" class="product-grid"></div>
+
+    <div id="emptyFavourites" class="empty-state">
+        <div>❤️</div>
+        <h3>No favourites yet</h3>
+        <p>Click the heart on a product to save it here.</p>
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <div class="logo">
+                ✈ Price<span>Pilot</span>
+            </div>
+
+            <p>
+                Compare technology prices and find better deals.
+            </p>
+        </div>
+
+        <div>
+            <h3>PricePilot</h3>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#deals">Deals</a>
+        </div>
+
+        <div>
+            <h3>Brands</h3>
+            <a href="#products">Apple</a>
+            <a href="#products">Samsung</a>
+            <a href="#products">Google</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 PricePilot. Prices shown are demo data until retailer APIs are connected.
+    </div>
+
+</footer>
+
+
+<div id="productModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <button id="closeModal" class="close-modal">
+            ✕
+        </button>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
