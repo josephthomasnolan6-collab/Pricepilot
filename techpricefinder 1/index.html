@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PricePilot — Find Better Prices</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ✈️ <span>PricePilot</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#how-it-works">How it works</a>
+            <button id="darkModeButton" onclick="toggleDarkMode()">
+                🌙
+            </button>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ⚡ Smarter shopping starts here
+            </div>
+
+            <h1>
+                Find the best price.
+                <span>Every time.</span>
+            </h1>
+
+            <p>
+                PricePilot compares products across multiple stores
+                so you can spend less and shop smarter.
+            </p>
+
+
+            <div class="search-box">
+
+                <input
+                    id="productSearch"
+                    type="text"
+                    placeholder="Search iPhone, Samsung, RTX..."
+                    oninput="searchProduct()"
+                >
+
+                <button onclick="searchProduct()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+
+            <div id="liveSuggestions" class="live-suggestions"></div>
+
+
+            <div class="popular-searches">
+
+                <span>Popular:</span>
+
+                <button onclick="quickSearch('iPhone')">
+                    iPhone
+                </button>
+
+                <button onclick="quickSearch('Samsung')">
+                    Samsung
+                </button>
+
+                <button onclick="quickSearch('RTX')">
+                    RTX
+                </button>
+
+                <button onclick="quickSearch('MacBook')">
+                    MacBook
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div>
+            <strong id="productCount">0</strong>
+            <span>Products</span>
+        </div>
+
+        <div>
+            <strong>4</strong>
+            <span>Categories</span>
+        </div>
+
+        <div>
+            <strong>3</strong>
+            <span>Stores</span>
+        </div>
+
+        <div>
+            <strong>24/7</strong>
+            <span>Price checking</span>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main id="products" class="main-container">
+
+
+        <!-- FILTERS -->
+
+        <section class="control-panel">
+
+            <div class="control-top">
+
+                <div>
+                    <h2>Find your product</h2>
+                    <p id="resultCount">
+                        Showing all products
+                    </p>
+                </div>
+
+                <button class="reset-button" onclick="resetFilters()">
+                    ↻ Reset
+                </button>
+
+            </div>
+
+
+            <div class="filters">
+
+
+                <div class="filter">
+
+                    <label>Category</label>
+
+                    <select
+                        id="categoryFilter"
+                        onchange="applyFilters()"
+                    >
+
+                        <option value="All">
+                            All categories
+                        </option>
+
+                        <option value="Smartphone">
+                            📱 Smartphones
+                        </option>
+
+                        <option value="Laptop">
+                            💻 Laptops
+                        </option>
+
+                        <option value="Graphics Card">
+                            🎮 Graphics Cards
+                        </option>
+
+                        <option value="Gaming Console">
+                            🎮 Gaming Consoles
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter">
+
+                    <label>Maximum price</label>
+
+                    <select
+                        id="priceFilter"
+                        onchange="applyFilters()"
+                    >
+
+                        <option value="999999">
+                            Any price
+                        </option>
+
+                        <option value="500">
+                            Under €500
+                        </option>
+
+                        <option value="800">
+                            Under €800
+                        </option>
+
+                        <option value="1000">
+                            Under €1,000
+                        </option>
+
+                        <option value="1500">
+                            Under €1,500
+                        </option>
+
+                        <option value="2500">
+                            Under €2,500
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter">
+
+                    <label>Sort by</label>
+
+                    <select
+                        id="sortFilter"
+                        onchange="applyFilters()"
+                    >
+
+                        <option value="recommended">
+                            ⭐ Recommended
+                        </option>
+
+                        <option value="cheapest">
+                            💰 Cheapest
+                        </option>
+
+                        <option value="expensive">
+                            💎 Most expensive
+                        </option>
+
+                        <option value="rating">
+                            ⭐ Highest rated
+                        </option>
+
+                        <option value="savings">
+                            🔥 Biggest saving
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- BEST VALUE -->
+
+        <section class="best-value-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        PRICEPILOT PICK
+                    </span>
+
+                    <h2>🏆 Best value right now</h2>
+
+                    <p>
+                        Our recommendation based on price,
+                        rating and savings.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div id="bestValue"></div>
+
+        </section>
+
+
+        <!-- PRODUCTS -->
+
+        <section class="product-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        COMPARE
+                    </span>
+
+                    <h2>Products</h2>
+                </div>
+
+            </div>
+
+
+            <div id="results" class="product-grid"></div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section id="how-it-works" class="how-section">
+
+        <div class="section-heading centered">
+
+            <span class="section-label">
+                SIMPLE
+            </span>
+
+            <h2>How PricePilot works</h2>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <h3>🔎 Search</h3>
+
+                <p>
+                    Search for the product you're looking for.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <h3>📊 Compare</h3>
+
+                <p>
+                    PricePilot compares prices from different stores.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <h3>💰 Save</h3>
+
+                <p>
+                    Find the best deal and avoid overpaying.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ✈️ PricePilot
+        </div>
+
+        <p>
+            Your co-pilot for smarter shopping.
+        </p>
+
+        <small>
+            © 2026 PricePilot — Prototype
+        </small>
+
+    </footer>
+
+
+    <!-- PRODUCT MODAL -->
+
+    <div id="productModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
