@@ -2,1192 +2,318 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>PricePilot — Compare. Track. Save.</title>
 
-    <meta
-        name="description"
-        content="PricePilot - Compare technology prices across retailers."
-    >
+    <link rel="stylesheet" href="style.css">
 
-    <title>PricePilot — Compare Tech Prices</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <meta name="description" content="PricePilot compares technology prices and helps you find the best deals.">
 </head>
 
 <body>
 
-<!-- =====================================================
-     TOP ANNOUNCEMENT
-===================================================== -->
-
-<div class="announcement">
-    <span>🚀</span>
-    PricePilot is building the smarter way to compare tech prices.
-    <button id="announcementClose">×</button>
-</div>
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<header class="navbar">
+<header class="header">
 
     <div class="nav-container">
 
-        <a
-            href="#"
-            class="logo"
-            id="logoButton"
-        >
-            <span class="logo-icon">P</span>
-
-            <span>
-                Price<span>Pilot</span>
-            </span>
+        <a href="#" class="logo" onclick="showHome()">
+            <span class="logo-icon">✈</span>
+            <span>Price<span>Pilot</span></span>
         </a>
 
-
-        <nav class="desktop-nav">
-
-            <a href="#deals">Deals</a>
+        <nav class="nav">
+            <a href="#" onclick="showHome()">Home</a>
             <a href="#products">Products</a>
-            <a href="#brands">Brands</a>
-            <a href="#compare">Compare</a>
-            <a href="#alerts">Price Alerts</a>
-
+            <a href="#deals">Deals</a>
+            <a href="#categories">Categories</a>
         </nav>
-
 
         <div class="nav-actions">
 
-            <button
-                class="country-button"
-                id="countryButton"
-            >
-                🇮🇪 Ireland
-            </button>
-
-            <button
-                class="icon-button"
-                id="themeToggle"
-                aria-label="Toggle dark mode"
-            >
+            <button class="icon-button" onclick="toggleTheme()" title="Toggle theme">
                 🌙
             </button>
 
-            <button
-                class="icon-button"
-                id="mobileMenuButton"
-                aria-label="Open menu"
-            >
-                ☰
+            <button class="icon-button" onclick="showWatchlist()" title="Watchlist">
+                ♡
+                <span id="watchCount" class="notification">0</span>
             </button>
 
         </div>
-
-    </div>
-
-
-    <div
-        class="mobile-menu"
-        id="mobileMenu"
-    >
-
-        <a href="#deals">Deals</a>
-        <a href="#products">Products</a>
-        <a href="#brands">Brands</a>
-        <a href="#compare">Compare</a>
-        <a href="#alerts">Price Alerts</a>
 
     </div>
 
 </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
 <main>
 
-<section class="hero">
+    <!-- HERO -->
 
-    <div class="hero-background"></div>
+    <section class="hero">
 
-    <div class="container hero-content">
+        <div class="hero-content">
 
-        <div class="hero-badge">
-            <span class="pulse"></span>
-            Smarter tech shopping
-        </div>
+            <div class="hero-badge">
+                ⚡ Smart technology price comparison
+            </div>
 
+            <h1>
+                Find the
+                <span>best price.</span>
+                Every time.
+            </h1>
 
-        <h1>
-            Find the
-            <span>best price</span>
-            for your next device.
-        </h1>
+            <p>
+                Compare technology prices, discover deals and track products
+                across retailers with PricePilot.
+            </p>
 
+            <div class="hero-search">
 
-        <p class="hero-description">
-            Compare products, retailers and deals in one place.
-            PricePilot helps you find where your tech costs less.
-        </p>
-
-
-        <!-- SEARCH -->
-
-        <div class="search-wrapper">
-
-            <div class="search-box">
-
-                <span class="search-icon">⌕</span>
+                <span>🔎</span>
 
                 <input
-                    id="searchInput"
-                    type="search"
-                    autocomplete="off"
-                    placeholder="Search iPhone, Samsung, laptop, headphones..."
+                    id="heroSearch"
+                    type="text"
+                    placeholder="Search iPhone, Samsung, MacBook..."
+                    oninput="syncSearch(this.value)"
                 >
 
-                <button
-                    id="clearSearch"
-                    class="clear-search hidden"
-                >
-                    ×
-                </button>
-
-                <button
-                    id="searchButton"
-                    class="search-button"
-                >
+                <button onclick="performSearch()">
                     Search
                 </button>
 
             </div>
 
+            <div class="popular-searches">
 
-            <div
-                class="suggestions"
-                id="suggestions"
-            ></div>
+                <span>Popular:</span>
 
-        </div>
+                <button onclick="quickSearch('iPhone')">iPhone</button>
+                <button onclick="quickSearch('Samsung')">Samsung</button>
+                <button onclick="quickSearch('MacBook')">MacBook</button>
+                <button onclick="quickSearch('AirPods')">AirPods</button>
 
-
-        <!-- QUICK SEARCHES -->
-
-        <div class="quick-searches">
-
-            <span>Popular:</span>
-
-            <button
-                class="quick-search"
-                data-search="iPhone"
-            >
-                iPhone
-            </button>
-
-            <button
-                class="quick-search"
-                data-search="Samsung"
-            >
-                Samsung
-            </button>
-
-            <button
-                class="quick-search"
-                data-search="Pixel"
-            >
-                Pixel
-            </button>
-
-            <button
-                class="quick-search"
-                data-search="AirPods"
-            >
-                AirPods
-            </button>
-
-            <button
-                class="quick-search"
-                data-search="laptop"
-            >
-                Laptops
-            </button>
-
-        </div>
-
-
-        <!-- HERO STATS -->
-
-        <div class="hero-stats">
-
-            <div>
-                <strong id="productCount">0</strong>
-                <span>Products</span>
             </div>
 
-            <div>
-                <strong>30+</strong>
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats-section">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">🛒</div>
+                <strong id="statProducts">0</strong>
+                <span>Products tracked</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🏪</div>
+                <strong>20+</strong>
                 <span>Retailers planned</span>
             </div>
 
-            <div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <strong>€1,000+</strong>
+                <span>Potential savings</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
                 <strong>24/7</strong>
-                <span>Price monitoring</span>
+                <span>Deal monitoring</span>
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =====================================================
-     TRUST STRIP
-===================================================== -->
+    <!-- CATEGORIES -->
 
-<section class="trust-strip">
+    <section id="categories" class="section">
 
-    <div class="container trust-grid">
-
-        <div class="trust-item">
-            <span>🔎</span>
-            <div>
-                <strong>Compare</strong>
-                <small>Multiple retailers</small>
-            </div>
-        </div>
-
-        <div class="trust-item">
-            <span>💰</span>
-            <div>
-                <strong>Save</strong>
-                <small>Find better prices</small>
-            </div>
-        </div>
-
-        <div class="trust-item">
-            <span>📉</span>
-            <div>
-                <strong>Track</strong>
-                <small>Price movements</small>
-            </div>
-        </div>
-
-        <div class="trust-item">
-            <span>🔔</span>
-            <div>
-                <strong>Alert</strong>
-                <small>When prices fall</small>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     DEALS
-===================================================== -->
-
-<section
-    class="section"
-    id="deals"
->
-
-    <div class="container">
-
-        <div class="section-header">
+        <div class="section-heading">
 
             <div>
-                <span class="section-kicker">
-                    DEALS
-                </span>
-
-                <h2>
-                    Today's best opportunities
-                </h2>
-
-                <p>
-                    Products with some of the biggest
-                    discounts in the PricePilot catalogue.
-                </p>
+                <span class="eyebrow">EXPLORE</span>
+                <h2>Browse categories</h2>
             </div>
 
-            <button
-                class="outline-button"
-                id="viewAllDeals"
-            >
-                View all deals →
-            </button>
-
         </div>
-
-
-        <div
-            class="product-grid"
-            id="dealGrid"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CATEGORIES
-===================================================== -->
-
-<section class="section soft-section">
-
-    <div class="container">
-
-        <div class="section-header centered">
-
-            <span class="section-kicker">
-                EXPLORE
-            </span>
-
-            <h2>
-                Shop by category
-            </h2>
-
-            <p>
-                Find the technology you're looking for.
-            </p>
-
-        </div>
-
 
         <div class="category-grid">
 
-            <button
-                class="category-card"
-                data-category="phone"
-            >
+            <button class="category-card" onclick="filterCategory('Phones')">
                 <span>📱</span>
                 <strong>Phones</strong>
-                <small>Smartphones & devices</small>
+                <small>Apple, Samsung & Google</small>
             </button>
 
-            <button
-                class="category-card"
-                data-category="tablet"
-            >
+            <button class="category-card" onclick="filterCategory('Laptops')">
                 <span>💻</span>
-                <strong>Tablets</strong>
-                <small>iPad, Galaxy & more</small>
-            </button>
-
-            <button
-                class="category-card"
-                data-category="laptop"
-            >
-                <span>🖥️</span>
                 <strong>Laptops</strong>
-                <small>Work & gaming</small>
+                <small>MacBook, Dell & more</small>
             </button>
 
-            <button
-                class="category-card"
-                data-category="watch"
-            >
-                <span>⌚</span>
-                <strong>Smartwatches</strong>
-                <small>Apple, Samsung & more</small>
-            </button>
-
-            <button
-                class="category-card"
-                data-category="audio"
-            >
+            <button class="category-card" onclick="filterCategory('Audio')">
                 <span>🎧</span>
                 <strong>Audio</strong>
-                <small>Headphones & earbuds</small>
+                <small>AirPods, Buds & headphones</small>
             </button>
 
-            <button
-                class="category-card"
-                data-category="tv"
-            >
-                <span>📺</span>
-                <strong>TVs</strong>
-                <small>Entertainment</small>
+            <button class="category-card" onclick="filterCategory('Tablets')">
+                <span>📲</span>
+                <strong>Tablets</strong>
+                <small>iPad, Galaxy Tab & more</small>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Watches')">
+                <span>⌚</span>
+                <strong>Smartwatches</strong>
+                <small>Apple, Samsung & Google</small>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Gaming')">
+                <span>🎮</span>
+                <strong>Gaming</strong>
+                <small>Xbox, PlayStation & more</small>
             </button>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =====================================================
-     TRENDING
-===================================================== -->
+    <!-- DEALS -->
 
-<section class="section">
+    <section id="deals" class="section deals-section">
 
-    <div class="container">
-
-        <div class="section-header">
+        <div class="section-heading">
 
             <div>
-
-                <span class="section-kicker">
-                    TRENDING
-                </span>
-
-                <h2>
-                    What people are looking at
-                </h2>
-
-                <p>
-                    Popular products on PricePilot.
-                </p>
-
+                <span class="eyebrow">PRICEPILOT PICKS</span>
+                <h2>Today's best deals</h2>
+                <p>Our highest-scoring deals right now.</p>
             </div>
 
-            <button
-                class="outline-button"
-                id="showAllProducts"
-            >
-                Browse everything →
+            <button class="outline-button" onclick="showAllProducts()">
+                View all →
             </button>
 
         </div>
 
+        <div id="dealGrid" class="product-grid"></div>
 
-        <div
-            class="product-grid"
-            id="trendingGrid"
-        ></div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
+    <!-- PRODUCTS -->
 
-<section
-    class="section soft-section"
-    id="products"
->
+    <section id="products" class="section products-section">
 
-    <div class="container">
-
-        <div class="section-header">
+        <div class="section-heading">
 
             <div>
-
-                <span class="section-kicker">
-                    CATALOGUE
-                </span>
-
-                <h2>
-                    Compare technology
-                </h2>
-
-                <p>
-                    Search and filter the PricePilot catalogue.
-                </p>
-
+                <span class="eyebrow">COMPARE</span>
+                <h2>Technology marketplace</h2>
+                <p>Find the product you want and compare retailers.</p>
             </div>
 
         </div>
 
 
-        <!-- FILTER BAR -->
+        <div class="toolbar">
 
-        <div class="filter-panel">
+            <div class="search-small">
 
-            <div class="filter-group">
+                <span>🔎</span>
 
-                <label for="brandFilter">
-                    Brand
-                </label>
-
-                <select id="brandFilter">
-
-                    <option value="all">
-                        All brands
-                    </option>
-
-                    <option value="Apple">
-                        Apple
-                    </option>
-
-                    <option value="Samsung">
-                        Samsung
-                    </option>
-
-                    <option value="Google">
-                        Google
-                    </option>
-
-                    <option value="Sony">
-                        Sony
-                    </option>
-
-                    <option value="Microsoft">
-                        Microsoft
-                    </option>
-
-                </select>
+                <input
+                    id="productSearch"
+                    type="text"
+                    placeholder="Search products..."
+                    oninput="renderProducts()"
+                >
 
             </div>
 
 
-            <div class="filter-group">
+            <select id="categoryFilter" onchange="renderProducts()">
 
-                <label for="categoryFilter">
-                    Category
-                </label>
+                <option value="all">All categories</option>
+                <option value="Phones">Phones</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Audio">Audio</option>
+                <option value="Tablets">Tablets</option>
+                <option value="Watches">Watches</option>
+                <option value="Gaming">Gaming</option>
 
-                <select id="categoryFilter">
-
-                    <option value="all">
-                        All categories
-                    </option>
-
-                    <option value="phone">
-                        Phones
-                    </option>
-
-                    <option value="tablet">
-                        Tablets
-                    </option>
-
-                    <option value="laptop">
-                        Laptops
-                    </option>
-
-                    <option value="watch">
-                        Smartwatches
-                    </option>
-
-                    <option value="audio">
-                        Audio
-                    </option>
-
-                    <option value="tv">
-                        TVs
-                    </option>
-
-                </select>
-
-            </div>
+            </select>
 
 
-            <div class="filter-group">
+            <select id="brandFilter" onchange="renderProducts()">
 
-                <label for="sortFilter">
-                    Sort
-                </label>
+                <option value="all">All brands</option>
+                <option value="Apple">Apple</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Google">Google</option>
+                <option value="Dell">Dell</option>
+                <option value="Sony">Sony</option>
+                <option value="Microsoft">Microsoft</option>
 
-                <select id="sortFilter">
-
-                    <option value="featured">
-                        Featured
-                    </option>
-
-                    <option value="price-low">
-                        Price: Low → High
-                    </option>
-
-                    <option value="price-high">
-                        Price: High → Low
-                    </option>
-
-                    <option value="saving">
-                        Biggest saving
-                    </option>
-
-                    <option value="rating">
-                        Highest rated
-                    </option>
-
-                    <option value="name">
-                        Name
-                    </option>
-
-                </select>
-
-            </div>
+            </select>
 
 
-            <button
-                class="reset-button"
-                id="resetFilters"
-            >
-                Reset
+            <select id="sortFilter" onchange="renderProducts()">
+
+                <option value="deal">Best deal</option>
+                <option value="priceLow">Price: low → high</option>
+                <option value="priceHigh">Price: high → low</option>
+                <option value="rating">Highest rated</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="results-bar">
+
+            <span id="resultCount">0 products</span>
+
+            <button onclick="clearFilters()">
+                Clear filters
             </button>
 
         </div>
 
 
-        <div
-            class="active-filters"
-            id="activeFilters"
-        ></div>
+        <div id="productGrid" class="product-grid"></div>
+
+    </section>
 
 
-        <div
-            class="product-grid"
-            id="productGrid"
-        ></div>
+    <!-- WATCHLIST -->
 
+    <section id="watchlistSection" class="section watchlist-section hidden">
 
-        <div
-            class="no-results hidden"
-            id="noResults"
-        >
-
-            <div>🔍</div>
-
-            <h3>
-                No products found
-            </h3>
-
-            <p>
-                Try changing your search or filters.
-            </p>
-
-            <button
-                class="primary-button"
-                id="resetSearch"
-            >
-                Clear search
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     BRANDS
-===================================================== -->
-
-<section
-    class="section"
-    id="brands"
->
-
-    <div class="container">
-
-        <div class="section-header centered">
-
-            <span class="section-kicker">
-                BRANDS
-            </span>
-
-            <h2>
-                Explore top technology brands
-            </h2>
-
-        </div>
-
-
-        <div class="brand-grid">
-
-            <button
-                class="brand-card"
-                data-brand="Apple"
-            >
-                <span class="brand-letter apple">
-                    A
-                </span>
-                <strong>Apple</strong>
-                <small>iPhone · iPad · Watch</small>
-            </button>
-
-            <button
-                class="brand-card"
-                data-brand="Samsung"
-            >
-                <span class="brand-letter samsung">
-                    S
-                </span>
-                <strong>Samsung</strong>
-                <small>Galaxy · Buds · Watch</small>
-            </button>
-
-            <button
-                class="brand-card"
-                data-brand="Google"
-            >
-                <span class="brand-letter google">
-                    G
-                </span>
-                <strong>Google</strong>
-                <small>Pixel · Watch · Buds</small>
-            </button>
-
-            <button
-                class="brand-card"
-                data-brand="Sony"
-            >
-                <span class="brand-letter sony">
-                    S
-                </span>
-                <strong>Sony</strong>
-                <small>Audio · TV · Gaming</small>
-            </button>
-
-            <button
-                class="brand-card"
-                data-brand="Microsoft"
-            >
-                <span class="brand-letter microsoft">
-                    M
-                </span>
-                <strong>Microsoft</strong>
-                <small>Surface · Xbox</small>
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FAVOURITES
-===================================================== -->
-
-<section
-    class="section soft-section"
-    id="favourites"
->
-
-    <div class="container">
-
-        <div class="section-header">
+        <div class="section-heading">
 
             <div>
-
-                <span class="section-kicker">
-                    YOUR LIST
-                </span>
-
-                <h2>
-                    Favourites
-                    <span
-                        class="count-badge"
-                        id="favouriteCount"
-                    >
-                        0
-                    </span>
-                </h2>
-
-                <p>
-                    Keep products you want to monitor in one place.
-                </p>
-
+                <span class="eyebrow">YOUR PRODUCTS</span>
+                <h2>Watchlist</h2>
+                <p>Products you're keeping an eye on.</p>
             </div>
 
         </div>
 
-
-        <div
-            class="product-grid"
-            id="favouritesGrid"
-        ></div>
-
-
-        <div
-            class="empty-state"
-            id="emptyFavourites"
-        >
-
-            <div>♡</div>
-
-            <h3>
-                Nothing saved yet
-            </h3>
-
-            <p>
-                Tap the heart on a product to save it here.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RECENTLY VIEWED
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div>
-
-                <span class="section-kicker">
-                    HISTORY
-                </span>
-
-                <h2>
-                    Recently viewed
-                </h2>
-
-                <p>
-                    Products you've looked at recently.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="product-grid"
-            id="recentGrid"
-        ></div>
-
-
-        <div
-            class="empty-state"
-            id="emptyRecent"
-        >
-
-            <div>◷</div>
-
-            <h3>
-                Nothing here yet
-            </h3>
-
-            <p>
-                Open a product to start building your history.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PRICE ALERT CTA
-===================================================== -->
-
-<section
-    class="alert-section"
-    id="alerts"
->
-
-    <div class="container">
-
-        <div class="alert-card">
-
-            <div class="alert-icon">
-                🔔
-            </div>
-
-            <div>
-
-                <span class="section-kicker">
-                    COMING SOON
-                </span>
-
-                <h2>
-                    Never miss a price drop.
-                </h2>
-
-                <p>
-                    PricePilot is being built to monitor
-                    retailer prices and notify you when
-                    the price reaches your target.
-                </p>
-
-            </div>
-
-            <button
-                class="primary-button"
-                id="alertButton"
-            >
-                Create a price alert
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     COMPARE SECTION
-===================================================== -->
-
-<section
-    class="section"
-    id="compare"
->
-
-    <div class="container">
-
-        <div class="compare-info">
-
-            <div class="compare-icon">
-                ⚖️
-            </div>
-
-            <div>
-
-                <span class="section-kicker">
-                    SMART COMPARISON
-                </span>
-
-                <h2>
-                    Stop opening 20 tabs.
-                </h2>
-
-                <p>
-                    PricePilot is designed to bring
-                    retailer prices together so you can
-                    make a decision faster.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="footer">
-
-    <div class="container footer-grid">
-
-        <div class="footer-brand">
-
-            <div class="logo">
-                <span class="logo-icon">P</span>
-                <span>Price<span>Pilot</span></span>
-            </div>
-
-            <p>
-                Smarter technology shopping.
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h4>
-                Explore
-            </h4>
-
-            <a href="#products">
-                Products
-            </a>
-
-            <a href="#deals">
-                Deals
-            </a>
-
-            <a href="#brands">
-                Brands
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h4>
-                PricePilot
-            </h4>
-
-            <a href="#compare">
-                Compare
-            </a>
-
-            <a href="#alerts">
-                Price alerts
-            </a>
-
-            <a href="#favourites">
-                Favourites
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h4>
-                Retailers
-            </h4>
-
-            <span>Amazon</span>
-            <span>Currys</span>
-            <span>Best Buy</span>
-            <span>More coming</span>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <div class="container">
-
-            <span>
-                © 2026 PricePilot
-            </span>
-
-            <span>
-                Prices shown may be demonstration data.
-            </span>
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-<!-- =====================================================
-     PRODUCT MODAL
-===================================================== -->
-
-<div
-    class="modal hidden"
-    id="productModal"
->
-
-    <div class="modal-overlay"></div>
-
-    <div class="modal-window">
-
-        <button
-            class="modal-close"
-            id="closeModal"
-        >
-            ×
-        </button>
-
-        <div id="modalContent"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     COUNTRY MODAL
-===================================================== -->
-
-<div
-    class="country-modal hidden"
-    id="countryModal"
->
-
-    <div class="country-box">
-
-        <button
-            class="modal-close"
-            id="closeCountry"
-        >
-            ×
-        </button>
-
-        <h2>
-            Choose your market
-        </h2>
-
-        <p>
-            This will eventually determine which
-            retailers and currencies PricePilot uses.
-        </p>
-
-        <div class="country-options">
-
-            <button data-country="🇮🇪 Ireland">
-                🇮🇪 Ireland
-            </button>
-
-            <button data-country="🇬🇧 United Kingdom">
-                🇬🇧 United Kingdom
-            </button>
-
-            <button data-country="🇺🇸 United States">
-                🇺🇸 United States
-            </button>
-
-            <button data-country="🇨🇦 Canada">
-                🇨🇦 Canada
-            </button>
-
-            <button data-country="🇦🇺 Australia">
-                🇦🇺 Australia
-            </button>
-
-            <button data-country="🇩🇪 Germany">
-                🇩🇪 Germany
-            </button>
-
-            <button data-country="🇫🇷 France">
-                🇫🇷 France
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     TOAST
-===================================================== -->
-
-<div
-    class="toast"
-    id="toast"
-></div>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+        <div id="watchlist
