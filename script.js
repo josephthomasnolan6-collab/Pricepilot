@@ -1078,4 +1078,153 @@ function clearFilters() {
 
     if (hero) hero.value = "";
 
-    if (category) category.value = "
+    if (category) category.value = "all";
+
+    if (brand) brand.value = "all";
+
+    if (sort) sort.value = "deal";
+
+
+    renderProducts();
+
+}
+
+
+/* =====================================================
+   SHOW ALL PRODUCTS
+   ===================================================== */
+
+function showAllProducts() {
+
+    clearFilters();
+
+    const section =
+        document.getElementById(
+            "products"
+        );
+
+    if (section) {
+
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   HOME
+   ===================================================== */
+
+function showHome() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   DARK MODE
+   ===================================================== */
+
+function toggleTheme() {
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+
+    const enabled =
+        document.body.classList.contains(
+            "dark"
+        );
+
+
+    localStorage.setItem(
+        "pricepilotDark",
+        enabled
+    );
+
+}
+
+
+/* =====================================================
+   RETAILER
+   ===================================================== */
+
+function retailerClick(retailer) {
+
+    alert(
+        retailer +
+        " will be connected to PricePilot when its permitted retailer/API integration is added."
+    );
+
+}
+
+
+/* =====================================================
+   KEYBOARD
+   ===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+            closeModal();
+        }
+
+    }
+);
+
+
+/* =====================================================
+   MODAL CLICK
+   ===================================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        startPricePilot
+    );
+
+} else {
+
+    startPricePilot();
+
+}
