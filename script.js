@@ -1,16 +1,15 @@
+```javascript
 /* =========================================================
    PRICEPILOT — COMPLETE PRODUCT + INTERACTION ENGINE
    ========================================================= */
 
 /* =========================
    PRODUCT CATALOGUE
-   ========================= */
+========================= */
 
 const products = [
 
-    /* =========================
-       APPLE PHONES
-       ========================= */
+    /* APPLE */
 
     {
         id: 1,
@@ -34,8 +33,7 @@ const products = [
             ["Currys", 1429],
             ["Apple", 1499],
             ["Very", 1449]
-        ],
-        history: [1499, 1499, 1459, 1429, 1429, 1399]
+        ]
     },
 
     {
@@ -60,8 +58,7 @@ const products = [
             ["Currys", 1229],
             ["Apple", 1299],
             ["Very", 1249]
-        ],
-        history: [1299, 1299, 1249, 1229, 1199, 1199]
+        ]
     },
 
     {
@@ -86,8 +83,7 @@ const products = [
             ["Currys", 929],
             ["Apple", 949],
             ["Very", 919]
-        ],
-        history: [949, 949, 929, 929, 899, 899]
+        ]
     },
 
     {
@@ -112,16 +108,187 @@ const products = [
             ["Currys", 769],
             ["Apple", 799],
             ["Very", 759]
-        ],
-        history: [799, 799, 779, 769, 749, 749]
+        ]
     },
-
-    /* =========================
-       SAMSUNG PHONES
-       ========================= */
 
     {
         id: 5,
+        brand: "Apple",
+        name: "iPhone 15",
+        category: "Phones",
+        price: 599,
+        oldPrice: 699,
+        rating: 4.7,
+        reviews: 3100,
+        dealScore: 88,
+        emoji: "📱",
+        images: [
+            "images/iphone-15-1.jpg",
+            "images/iphone-15-2.jpg",
+            "images/iphone-15-3.jpg"
+        ],
+        retailers: [
+            ["Amazon", 599],
+            ["Currys", 619],
+            ["Very", 629],
+            ["Apple", 699]
+        ]
+    },
+
+    {
+        id: 6,
+        brand: "Apple",
+        name: "MacBook Air M4",
+        category: "Laptops",
+        price: 999,
+        oldPrice: 1099,
+        rating: 4.9,
+        reviews: 923,
+        dealScore: 94,
+        emoji: "💻",
+        images: [
+            "images/macbook-air-m4-1.jpg",
+            "images/macbook-air-m4-2.jpg",
+            "images/macbook-air-m4-3.jpg",
+            "images/macbook-air-m4-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 999],
+            ["Currys", 1049],
+            ["Apple", 1099],
+            ["Very", 1029]
+        ]
+    },
+
+    {
+        id: 7,
+        brand: "Apple",
+        name: "MacBook Pro 14 M4 Pro",
+        category: "Laptops",
+        price: 1849,
+        oldPrice: 1999,
+        rating: 4.9,
+        reviews: 481,
+        dealScore: 92,
+        emoji: "💻",
+        images: [
+            "images/macbook-pro-14-m4-1.jpg",
+            "images/macbook-pro-14-m4-2.jpg",
+            "images/macbook-pro-14-m4-3.jpg",
+            "images/macbook-pro-14-m4-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 1849],
+            ["Currys", 1899],
+            ["Apple", 1999],
+            ["Very", 1949]
+        ]
+    },
+
+    {
+        id: 8,
+        brand: "Apple",
+        name: "iPad Air M3",
+        category: "Tablets",
+        price: 649,
+        oldPrice: 699,
+        rating: 4.8,
+        reviews: 723,
+        dealScore: 91,
+        emoji: "📲",
+        images: [
+            "images/ipad-air-m3-1.jpg",
+            "images/ipad-air-m3-2.jpg",
+            "images/ipad-air-m3-3.jpg",
+            "images/ipad-air-m3-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 649],
+            ["Currys", 669],
+            ["Apple", 699],
+            ["Very", 679]
+        ]
+    },
+
+    {
+        id: 9,
+        brand: "Apple",
+        name: "iPad Pro M4",
+        category: "Tablets",
+        price: 999,
+        oldPrice: 1099,
+        rating: 4.9,
+        reviews: 521,
+        dealScore: 92,
+        emoji: "📲",
+        images: [
+            "images/ipad-pro-m4-1.jpg",
+            "images/ipad-pro-m4-2.jpg",
+            "images/ipad-pro-m4-3.jpg",
+            "images/ipad-pro-m4-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 999],
+            ["Currys", 1049],
+            ["Apple", 1099],
+            ["Very", 1029]
+        ]
+    },
+
+    {
+        id: 10,
+        brand: "Apple",
+        name: "AirPods Pro",
+        category: "Audio",
+        price: 229,
+        oldPrice: 249,
+        rating: 4.8,
+        reviews: 1842,
+        dealScore: 95,
+        emoji: "🎧",
+        images: [
+            "images/airpods-pro-1.jpg",
+            "images/airpods-pro-2.jpg",
+            "images/airpods-pro-3.jpg",
+            "images/airpods-pro-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 229],
+            ["Currys", 239],
+            ["Apple", 249],
+            ["Very", 235]
+        ]
+    },
+
+    {
+        id: 11,
+        brand: "Apple",
+        name: "AirPods 4",
+        category: "Audio",
+        price: 129,
+        oldPrice: 149,
+        rating: 4.7,
+        reviews: 1231,
+        dealScore: 90,
+        emoji: "🎧",
+        images: [
+            "images/airpods-4-1.jpg",
+            "images/airpods-4-2.jpg",
+            "images/airpods-4-3.jpg",
+            "images/airpods-4-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 129],
+            ["Currys", 139],
+            ["Apple", 149],
+            ["Very", 135]
+        ]
+    },
+
+    /* SAMSUNG */
+
+    {
+        id: 12,
         brand: "Samsung",
         name: "Galaxy S26 Ultra",
         category: "Phones",
@@ -142,12 +309,11 @@ const products = [
             ["Currys", 1249],
             ["Samsung", 1349],
             ["Very", 1219]
-        ],
-        history: [1349, 1299, 1299, 1249, 1219, 1199]
+        ]
     },
 
     {
-        id: 6,
+        id: 13,
         brand: "Samsung",
         name: "Galaxy S26+",
         category: "Phones",
@@ -168,12 +334,11 @@ const products = [
             ["Currys", 1029],
             ["Samsung", 1099],
             ["Very", 1049]
-        ],
-        history: [1099, 1099, 1049, 1029, 999, 999]
+        ]
     },
 
     {
-        id: 7,
+        id: 14,
         brand: "Samsung",
         name: "Galaxy S26",
         category: "Phones",
@@ -194,16 +359,85 @@ const products = [
             ["Currys", 929],
             ["Samsung", 999],
             ["Very", 919]
-        ],
-        history: [999, 999, 969, 949, 919, 899]
+        ]
     },
 
-    /* =========================
-       GOOGLE PHONES
-       ========================= */
+    {
+        id: 15,
+        brand: "Samsung",
+        name: "Galaxy Z Fold 7",
+        category: "Phones",
+        price: 1799,
+        oldPrice: 1999,
+        rating: 4.7,
+        reviews: 381,
+        dealScore: 89,
+        emoji: "📱",
+        images: [
+            "images/galaxy-z-fold-7-1.jpg",
+            "images/galaxy-z-fold-7-2.jpg",
+            "images/galaxy-z-fold-7-3.jpg"
+        ],
+        retailers: [
+            ["Amazon", 1799],
+            ["Currys", 1849],
+            ["Samsung", 1999],
+            ["Very", 1899]
+        ]
+    },
 
     {
-        id: 8,
+        id: 16,
+        brand: "Samsung",
+        name: "Galaxy Buds Pro",
+        category: "Audio",
+        price: 179,
+        oldPrice: 229,
+        rating: 4.6,
+        reviews: 631,
+        dealScore: 94,
+        emoji: "🎧",
+        images: [
+            "images/galaxy-buds-pro-1.jpg",
+            "images/galaxy-buds-pro-2.jpg",
+            "images/galaxy-buds-pro-3.jpg"
+        ],
+        retailers: [
+            ["Amazon", 179],
+            ["Currys", 189],
+            ["Samsung", 229],
+            ["Very", 199]
+        ]
+    },
+
+    {
+        id: 17,
+        brand: "Samsung",
+        name: "Galaxy Watch",
+        category: "Watches",
+        price: 299,
+        oldPrice: 349,
+        rating: 4.7,
+        reviews: 721,
+        dealScore: 90,
+        emoji: "⌚",
+        images: [
+            "images/galaxy-watch-1.jpg",
+            "images/galaxy-watch-2.jpg",
+            "images/galaxy-watch-3.jpg"
+        ],
+        retailers: [
+            ["Amazon", 299],
+            ["Currys", 319],
+            ["Samsung", 349],
+            ["Very", 329]
+        ]
+    },
+
+    /* GOOGLE */
+
+    {
+        id: 18,
         brand: "Google",
         name: "Pixel 10 Pro XL",
         category: "Phones",
@@ -224,12 +458,11 @@ const products = [
             ["Currys", 1029],
             ["Google", 1099],
             ["Very", 1049]
-        ],
-        history: [1099, 1099, 1049, 1029, 999, 999]
+        ]
     },
 
     {
-        id: 9,
+        id: 19,
         brand: "Google",
         name: "Pixel 10 Pro",
         category: "Phones",
@@ -250,407 +483,202 @@ const products = [
             ["Currys", 929],
             ["Google", 999],
             ["Very", 949]
-        ],
-        history: [999, 999, 969, 949, 919, 899]
+        ]
     },
 
-    {
-        id: 10,
-        brand: "Google",
-        name: "Pixel 10",
-        category: "Phones",
-        price: 699,
-        oldPrice: 799,
-        rating: 4.6,
-        reviews: 318,
-        dealScore: 89,
-        emoji: "📱",
-        images: [
-            "images/pixel-10-1.jpg",
-            "images/pixel-10-2.jpg",
-            "images/pixel-10-3.jpg",
-            "images/pixel-10-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 699],
-            ["Currys", 729],
-            ["Google", 799],
-            ["Very", 749]
-        ],
-        history: [799, 799, 769, 749, 729, 699]
-    },
-
-    /* =========================
-       APPLE LAPTOPS
-       ========================= */
-
-    {
-        id: 11,
-        brand: "Apple",
-        name: "MacBook Pro 16-inch",
-        category: "Laptops",
-        price: 2499,
-        oldPrice: 2699,
-        rating: 4.9,
-        reviews: 642,
-        dealScore: 94,
-        emoji: "💻",
-        images: [
-            "images/macbook-pro-16-1.jpg",
-            "images/macbook-pro-16-2.jpg",
-            "images/macbook-pro-16-3.jpg",
-            "images/macbook-pro-16-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 2499],
-            ["Currys", 2549],
-            ["Apple", 2699],
-            ["Very", 2599]
-        ],
-        history: [2699, 2699, 2599, 2549, 2499, 2499]
-    },
-
-    {
-        id: 12,
-        brand: "Apple",
-        name: "MacBook Air 15-inch",
-        category: "Laptops",
-        price: 1299,
-        oldPrice: 1499,
-        rating: 4.8,
-        reviews: 824,
-        dealScore: 95,
-        emoji: "💻",
-        images: [
-            "images/macbook-air-15-1.jpg",
-            "images/macbook-air-15-2.jpg",
-            "images/macbook-air-15-3.jpg",
-            "images/macbook-air-15-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 1299],
-            ["Currys", 1349],
-            ["Apple", 1499],
-            ["Very", 1399]
-        ],
-        history: [1499, 1499, 1399, 1349, 1299, 1299]
-    },
-
-    {
-        id: 13,
-        brand: "Apple",
-        name: "MacBook Air 13-inch",
-        category: "Laptops",
-        price: 999,
-        oldPrice: 1099,
-        rating: 4.8,
-        reviews: 1102,
-        dealScore: 93,
-        emoji: "💻",
-        images: [
-            "images/macbook-air-13-1.jpg",
-            "images/macbook-air-13-2.jpg",
-            "images/macbook-air-13-3.jpg",
-            "images/macbook-air-13-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 999],
-            ["Currys", 1029],
-            ["Apple", 1099],
-            ["Very", 1049]
-        ],
-        history: [1099, 1099, 1049, 1029, 999, 999]
-    },
-
-    /* =========================
-       SAMSUNG TABLETS
-       ========================= */
-
-    {
-        id: 14,
-        brand: "Samsung",
-        name: "Galaxy Tab S10 Ultra",
-        category: "Tablets",
-        price: 1099,
-        oldPrice: 1199,
-        rating: 4.8,
-        reviews: 384,
-        dealScore: 92,
-        emoji: "📲",
-        images: [
-            "images/galaxy-tab-s10-ultra-1.jpg",
-            "images/galaxy-tab-s10-ultra-2.jpg",
-            "images/galaxy-tab-s10-ultra-3.jpg",
-            "images/galaxy-tab-s10-ultra-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 1099],
-            ["Currys", 1149],
-            ["Samsung", 1199],
-            ["Very", 1129]
-        ],
-        history: [1199, 1199, 1149, 1129, 1099, 1099]
-    },
-
-    {
-        id: 15,
-        brand: "Samsung",
-        name: "Galaxy Tab S10+",
-        category: "Tablets",
-        price: 899,
-        oldPrice: 999,
-        rating: 4.7,
-        reviews: 271,
-        dealScore: 90,
-        emoji: "📲",
-        images: [
-            "images/galaxy-tab-s10-plus-1.jpg",
-            "images/galaxy-tab-s10-plus-2.jpg",
-            "images/galaxy-tab-s10-plus-3.jpg",
-            "images/galaxy-tab-s10-plus-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 899],
-            ["Currys", 929],
-            ["Samsung", 999],
-            ["Very", 949]
-        ],
-        history: [999, 999, 969, 949, 929, 899]
-    },
-
-    /* =========================
-       APPLE AUDIO
-       ========================= */
-
-    {
-        id: 16,
-        brand: "Apple",
-        name: "AirPods Pro",
-        category: "Audio",
-        price: 229,
-        oldPrice: 249,
-        rating: 4.8,
-        reviews: 3412,
-        dealScore: 94,
-        emoji: "🎧",
-        images: [
-            "images/airpods-pro-1.jpg",
-            "images/airpods-pro-2.jpg",
-            "images/airpods-pro-3.jpg",
-            "images/airpods-pro-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 229],
-            ["Currys", 239],
-            ["Apple", 249],
-            ["Very", 239]
-        ],
-        history: [249, 249, 239, 239, 229, 229]
-    },
-
-    {
-        id: 17,
-        brand: "Apple",
-        name: "AirPods 4",
-        category: "Audio",
-        price: 129,
-        oldPrice: 139,
-        rating: 4.7,
-        reviews: 1832,
-        dealScore: 91,
-        emoji: "🎧",
-        images: [
-            "images/airpods-4-1.jpg",
-            "images/airpods-4-2.jpg",
-            "images/airpods-4-3.jpg",
-            "images/airpods-4-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 129],
-            ["Currys", 134],
-            ["Apple", 139],
-            ["Very", 135]
-        ],
-        history: [139, 139, 135, 134, 129, 129]
-    },
-
-    /* =========================
-       SAMSUNG AUDIO
-       ========================= */
-
-    {
-        id: 18,
-        brand: "Samsung",
-        name: "Galaxy Buds 4 Pro",
-        category: "Audio",
-        price: 219,
-        oldPrice: 249,
-        rating: 4.6,
-        reviews: 623,
-        dealScore: 90,
-        emoji: "🎧",
-        images: [
-            "images/galaxy-buds-4-pro-1.jpg",
-            "images/galaxy-buds-4-pro-2.jpg",
-            "images/galaxy-buds-4-pro-3.jpg",
-            "images/galaxy-buds-4-pro-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 219],
-            ["Currys", 229],
-            ["Samsung", 249],
-            ["Very", 229]
-        ],
-        history: [249, 249, 239, 229, 219, 219]
-    },
-
-    /* =========================
-       APPLE WATCH
-       ========================= */
-
-    {
-        id: 19,
-        brand: "Apple",
-        name: "Apple Watch Series 11",
-        category: "Watches",
-        price: 399,
-        oldPrice: 429,
-        rating: 4.8,
-        reviews: 912,
-        dealScore: 92,
-        emoji: "⌚",
-        images: [
-            "images/apple-watch-series-11-1.jpg",
-            "images/apple-watch-series-11-2.jpg",
-            "images/apple-watch-series-11-3.jpg",
-            "images/apple-watch-series-11-4.jpg"
-        ],
-        retailers: [
-            ["Amazon", 399],
-            ["Currys", 409],
-            ["Apple", 429],
-            ["Very", 419]
-        ],
-        history: [429, 429, 419, 409, 399, 399]
-    },
-
-    /* =========================
-       SAMSUNG WATCH
-       ========================= */
+    /* DELL */
 
     {
         id: 20,
-        brand: "Samsung",
-        name: "Galaxy Watch 8",
-        category: "Watches",
+        brand: "Dell",
+        name: "Dell XPS 14",
+        category: "Laptops",
+        price: 1499,
+        oldPrice: 1699,
+        rating: 4.6,
+        reviews: 318,
+        dealScore: 89,
+        emoji: "💻",
+        images: [
+            "images/dell-xps-14-1.jpg",
+            "images/dell-xps-14-2.jpg",
+            "images/dell-xps-14-3.jpg",
+            "images/dell-xps-14-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 1499],
+            ["Dell", 1599],
+            ["Currys", 1549],
+            ["Very", 1599]
+        ]
+    },
+
+    {
+        id: 21,
+        brand: "Dell",
+        name: "Dell Inspiron 16",
+        category: "Laptops",
+        price: 799,
+        oldPrice: 899,
+        rating: 4.5,
+        reviews: 412,
+        dealScore: 88,
+        emoji: "💻",
+        images: [
+            "images/dell-inspiron-16-1.jpg",
+            "images/dell-inspiron-16-2.jpg",
+            "images/dell-inspiron-16-3.jpg",
+            "images/dell-inspiron-16-4.jpg"
+        ],
+        retailers: [
+            ["Amazon", 799],
+            ["Dell", 849],
+            ["Currys", 829],
+            ["Very", 849]
+        ]
+    },
+
+    /* SONY */
+
+    {
+        id: 22,
+        brand: "Sony",
+        name: "Sony WH-1000XM6",
+        category: "Audio",
         price: 349,
         oldPrice: 399,
-        rating: 4.7,
-        reviews: 486,
-        dealScore: 91,
-        emoji: "⌚",
+        rating: 4.8,
+        reviews: 921,
+        dealScore: 90,
+        emoji: "🎧",
         images: [
-            "images/galaxy-watch-8-1.jpg",
-            "images/galaxy-watch-8-2.jpg",
-            "images/galaxy-watch-8-3.jpg",
-            "images/galaxy-watch-8-4.jpg"
+            "images/sony-wh1000xm6-1.jpg",
+            "images/sony-wh1000xm6-2.jpg",
+            "images/sony-wh1000xm6-3.jpg",
+            "images/sony-wh1000xm6-4.jpg"
         ],
         retailers: [
             ["Amazon", 349],
             ["Currys", 369],
-            ["Samsung", 399],
+            ["Sony", 399],
             ["Very", 359]
-        ],
-        history: [399, 399, 379, 369, 359, 349]
+        ]
     },
 
-    /* =========================
-       GAMING
-       ========================= */
+    /* MICROSOFT */
 
     {
-        id: 21,
+        id: 23,
         brand: "Microsoft",
         name: "Xbox Series X",
         category: "Gaming",
         price: 499,
         oldPrice: 549,
         rating: 4.8,
-        reviews: 4210,
-        dealScore: 90,
+        reviews: 2100,
+        dealScore: 89,
         emoji: "🎮",
         images: [
             "images/xbox-series-x-1.jpg",
             "images/xbox-series-x-2.jpg",
-            "images/xbox-series-x-3.jpg",
-            "images/xbox-series-x-4.jpg"
+            "images/xbox-series-x-3.jpg"
         ],
         retailers: [
             ["Amazon", 499],
             ["Currys", 509],
+            ["Microsoft", 549],
             ["Very", 519]
-        ],
-        history: [549, 549, 529, 519, 509, 499]
+        ]
     },
 
+    /* PLAYSTATION */
+
     {
-        id: 22,
+        id: 24,
         brand: "Sony",
         name: "PlayStation 5",
         category: "Gaming",
         price: 499,
         oldPrice: 549,
         rating: 4.9,
-        reviews: 5230,
-        dealScore: 92,
+        reviews: 4200,
+        dealScore: 90,
         emoji: "🎮",
         images: [
             "images/ps5-1.jpg",
             "images/ps5-2.jpg",
-            "images/ps5-3.jpg",
-            "images/ps5-4.jpg"
+            "images/ps5-3.jpg"
         ],
         retailers: [
             ["Amazon", 499],
             ["Currys", 509],
-            ["Very", 519]
-        ],
-        history: [549, 549, 529, 519, 509, 499]
+            ["Very", 519],
+            ["Sony", 549]
+        ]
     }
 ];
 
 
 /* =========================
    STATE
-   ========================= */
+========================= */
 
-let watchlist = JSON.parse(localStorage.getItem("pricepilotWatchlist") || "[]");
+let watchlist = JSON.parse(
+    localStorage.getItem("pricepilot_watchlist") || "[]"
+);
 
-let currentSearch = "";
-
-let currentProductId = null;
+let currentProducts = [...products];
 
 
 /* =========================
-   START PRICEPILOT
-   ========================= */
+   SAFE IMAGE HANDLING
+========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+function imageFallback(img, emoji) {
 
-    updateWatchCount();
+    img.onerror = function () {
 
-    renderProducts();
+        this.onerror = null;
 
-    renderDeals();
+        this.style.display = "none";
 
-    applySavedTheme();
+        const parent = this.parentElement;
 
-});
+        if (parent && !parent.querySelector(".product-emoji")) {
+
+            const fallback = document.createElement("div");
+
+            fallback.className = "product-emoji";
+
+            fallback.textContent = emoji || "📦";
+
+            parent.appendChild(fallback);
+        }
+    };
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+function getMainImage(product) {
+
+    if (
+        product.images &&
+        product.images.length &&
+        product.images[0]
+    ) {
+        return product.images[0];
+    }
+
+    return "";
+}
 
 
 /* =========================
    RENDER PRODUCTS
-   ========================= */
+========================= */
 
 function renderProducts() {
 
@@ -659,29 +687,28 @@ function renderProducts() {
     if (!grid) return;
 
     const searchInput = document.getElementById("productSearch");
+    const categoryInput = document.getElementById("categoryFilter");
+    const brandInput = document.getElementById("brandFilter");
+    const sortInput = document.getElementById("sortFilter");
 
-    const categoryFilter = document.getElementById("categoryFilter");
+    const search = searchInput
+        ? searchInput.value.toLowerCase().trim()
+        : "";
 
-    const brandFilter = document.getElementById("brandFilter");
+    const category = categoryInput
+        ? categoryInput.value
+        : "all";
 
-    const sortFilter = document.getElementById("sortFilter");
+    const brand = brandInput
+        ? brandInput.value
+        : "all";
 
-
-    const search = (
-        searchInput?.value ||
-        currentSearch ||
-        ""
-    ).toLowerCase().trim();
-
-
-    const category = categoryFilter?.value || "all";
-
-    const brand = brandFilter?.value || "all";
-
-    const sort = sortFilter?.value || "deal";
+    const sort = sortInput
+        ? sortInput.value
+        : "deal";
 
 
-    let filtered = products.filter(product => {
+    currentProducts = products.filter(product => {
 
         const matchesSearch =
             !search ||
@@ -697,217 +724,251 @@ function renderProducts() {
             brand === "all" ||
             product.brand === brand;
 
-        return matchesSearch && matchesCategory && matchesBrand;
-
+        return (
+            matchesSearch &&
+            matchesCategory &&
+            matchesBrand
+        );
     });
 
 
-    if (sort === "priceLow") {
+    currentProducts.sort((a, b) => {
 
-        filtered.sort((a, b) => a.price - b.price);
+        if (sort === "priceLow") {
+            return a.price - b.price;
+        }
 
+        if (sort === "priceHigh") {
+            return b.price - a.price;
+        }
+
+        if (sort === "rating") {
+            return b.rating - a.rating;
+        }
+
+        return b.dealScore - a.dealScore;
+    });
+
+
+    grid.innerHTML = "";
+
+
+    if (!currentProducts.length) {
+
+        grid.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">🔎</div>
+                <h3>No products found</h3>
+                <p>Try changing your search or filters.</p>
+            </div>
+        `;
+
+    } else {
+
+        currentProducts.forEach(product => {
+
+            grid.appendChild(
+                createProductCard(product)
+            );
+
+        });
     }
 
-    else if (sort === "priceHigh") {
 
-        filtered.sort((a, b) => b.price - a.price);
-
-    }
-
-    else if (sort === "rating") {
-
-        filtered.sort((a, b) => b.rating - a.rating);
-
-    }
-
-    else {
-
-        filtered.sort((a, b) => b.dealScore - a.dealScore);
-
-    }
-
-
-    grid.innerHTML = filtered.length
-        ? filtered.map(createProductCard).join("")
-        : createEmptyState();
-
-
-    const resultCount = document.getElementById("resultCount");
+    const resultCount =
+        document.getElementById("resultCount");
 
     if (resultCount) {
 
         resultCount.textContent =
-            `${filtered.length} product${filtered.length === 1 ? "" : "s"}`;
-
+            `${currentProducts.length} product${currentProducts.length === 1 ? "" : "s"}`;
     }
 
 
-    const statProducts = document.getElementById("statProducts");
+    const statProducts =
+        document.getElementById("statProducts");
 
     if (statProducts) {
 
-        statProducts.textContent = products.length;
-
+        statProducts.textContent =
+            products.length;
     }
-
 }
 
 
 /* =========================
    PRODUCT CARD
-   ========================= */
+========================= */
 
 function createProductCard(product) {
 
-    const isWatched = watchlist.includes(product.id);
+    const card = document.createElement("article");
 
-    const savings = Math.max(
-        0,
-        product.oldPrice - product.price
-    );
+    card.className = "product-card";
+
+    const isFavourite =
+        watchlist.includes(product.id);
+
+    const savings =
+        Math.max(
+            0,
+            product.oldPrice - product.price
+        );
 
 
-    const image = product.images?.[0];
+    card.innerHTML = `
+
+        <div class="product-image">
+
+            ${
+                getMainImage(product)
+                ? `
+                    <img
+                        src="${getMainImage(product)}"
+                        alt="${product.name}"
+                        loading="lazy"
+                    >
+                `
+                : `
+                    <div class="product-emoji">
+                        ${product.emoji || "📦"}
+                    </div>
+                `
+            }
+
+        </div>
 
 
-    return `
+        <div class="deal-score">
+            ${product.dealScore}% deal
+        </div>
 
-        <article class="product-card">
 
-            <div class="deal-score">
-                ${product.dealScore}% deal
+        <button
+            class="favourite ${isFavourite ? "active" : ""}"
+            onclick="toggleWatchlist(${product.id})"
+            aria-label="Add to watchlist"
+        >
+            ${isFavourite ? "♥" : "♡"}
+        </button>
+
+
+        <div class="product-body">
+
+            <div class="product-brand">
+                ${product.brand}
             </div>
 
+            <div class="product-name">
+                ${product.name}
+            </div>
 
-            <button
-                class="favourite ${isWatched ? "active" : ""}"
-                onclick="toggleWatchlist(${product.id})"
-                aria-label="Add to watchlist"
-            >
-                ${isWatched ? "♥" : "♡"}
-            </button>
+            <div class="rating">
+                ★ ${product.rating}
+                <span>(${product.reviews.toLocaleString()})</span>
+            </div>
 
+            <div class="price-row">
 
-            <div class="product-image">
+                <div>
+
+                    <div class="price">
+                        €${product.price.toLocaleString()}
+                    </div>
+
+                    <span class="old-price">
+                        €${product.oldPrice.toLocaleString()}
+                    </span>
+
+                </div>
 
                 ${
-                    image
+                    savings > 0
                     ? `
-                        <img
-                            src="${image}"
-                            alt="${product.name}"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                        >
+                        <div class="savings">
+                            Save €${savings}
+                        </div>
                     `
                     : ""
                 }
 
-                <span
-                    class="product-emoji"
-                    style="${image ? "display:none;" : ""}"
+            </div>
+
+
+            <div class="product-actions">
+
+                <button
+                    class="compare-button"
+                    onclick="showProduct(${product.id})"
                 >
-                    ${product.emoji}
-                </span>
+                    Compare
+                </button>
+
+                <button
+                    class="details-button"
+                    onclick="showProduct(${product.id})"
+                >
+                    Details
+                </button>
 
             </div>
 
-
-            <div class="product-body">
-
-                <div class="product-brand">
-                    ${product.brand}
-                </div>
-
-
-                <div class="product-name">
-                    ${product.name}
-                </div>
-
-
-                <div class="rating">
-                    ★ ${product.rating}
-                    <span>(${product.reviews.toLocaleString()})</span>
-                </div>
-
-
-                <div class="price-row">
-
-                    <div>
-
-                        <div class="price">
-                            €${product.price.toLocaleString()}
-                        </div>
-
-                        <span class="old-price">
-                            €${product.oldPrice.toLocaleString()}
-                        </span>
-
-                    </div>
-
-
-                    <div class="savings">
-                        Save €${savings.toLocaleString()}
-                    </div>
-
-                </div>
-
-
-                <div class="product-actions">
-
-                    <button
-                        class="compare-button"
-                        onclick="showDetails(${product.id})"
-                    >
-                        Compare
-                    </button>
-
-                    <button
-                        class="details-button"
-                        onclick="showDetails(${product.id})"
-                    >
-                        Details
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
+        </div>
     `;
 
+
+    const image =
+        card.querySelector("img");
+
+    if (image) {
+
+        imageFallback(
+            image,
+            product.emoji
+        );
+    }
+
+
+    return card;
 }
 
 
 /* =========================
    DEALS
-   ========================= */
+========================= */
 
 function renderDeals() {
 
-    const grid = document.getElementById("dealGrid");
+    const grid =
+        document.getElementById("dealGrid");
 
     if (!grid) return;
 
-
-    const deals = [...products]
-        .sort((a, b) => b.dealScore - a.dealScore)
+    const deals =
+        [...products]
+        .sort(
+            (a, b) =>
+                b.dealScore - a.dealScore
+        )
         .slice(0, 8);
 
+    grid.innerHTML = "";
 
-    grid.innerHTML =
-        deals.map(createProductCard).join("");
+    deals.forEach(product => {
 
+        grid.appendChild(
+            createProductCard(product)
+        );
+
+    });
 }
 
 
 /* =========================
    SEARCH
-   ========================= */
+========================= */
 
 function syncSearch(value) {
-
-    currentSearch = value;
 
     const productSearch =
         document.getElementById("productSearch");
@@ -915,68 +976,59 @@ function syncSearch(value) {
     if (productSearch) {
 
         productSearch.value = value;
-
     }
-
 }
 
 
 function performSearch() {
 
-    const search =
-        document.getElementById("heroSearch")?.value || "";
+    renderProducts();
 
-    currentSearch = search;
+    const productsSection =
+        document.getElementById("products");
+
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+
+function quickSearch(term) {
+
+    const heroSearch =
+        document.getElementById("heroSearch");
 
     const productSearch =
         document.getElementById("productSearch");
 
-    if (productSearch) {
-
-        productSearch.value = search;
-
+    if (heroSearch) {
+        heroSearch.value = term;
     }
 
+    if (productSearch) {
+        productSearch.value = term;
+    }
 
     renderProducts();
 
-    document
-        .getElementById("products")
-        ?.scrollIntoView({
+    const productsSection =
+        document.getElementById("products");
+
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
             behavior: "smooth"
         });
-
-}
-
-
-function quickSearch(search) {
-
-    currentSearch = search;
-
-    const hero =
-        document.getElementById("heroSearch");
-
-    const product =
-        document.getElementById("productSearch");
-
-    if (hero) hero.value = search;
-
-    if (product) product.value = search;
-
-    renderProducts();
-
-    document
-        .getElementById("products")
-        ?.scrollIntoView({
-            behavior: "smooth"
-        });
-
+    }
 }
 
 
 /* =========================
    CATEGORY FILTER
-   ========================= */
+========================= */
 
 function filterCategory(category) {
 
@@ -985,118 +1037,93 @@ function filterCategory(category) {
 
     if (categoryFilter) {
 
-        categoryFilter.value = category;
-
+        categoryFilter.value =
+            category;
     }
 
-
     renderProducts();
 
+    const productsSection =
+        document.getElementById("products");
 
-    document
-        .getElementById("products")
-        ?.scrollIntoView({
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
             behavior: "smooth"
         });
-
-}
-
-
-/* =========================
-   SHOW ALL PRODUCTS
-   ========================= */
-
-function showAllProducts() {
-
-    currentSearch = "";
-
-    const search =
-        document.getElementById("productSearch");
-
-    const category =
-        document.getElementById("categoryFilter");
-
-    const brand =
-        document.getElementById("brandFilter");
-
-    if (search) search.value = "";
-
-    if (category) category.value = "all";
-
-    if (brand) brand.value = "all";
-
-
-    renderProducts();
-
-
-    document
-        .getElementById("products")
-        ?.scrollIntoView({
-            behavior: "smooth"
-        });
-
+    }
 }
 
 
 /* =========================
    CLEAR FILTERS
-   ========================= */
+========================= */
 
 function clearFilters() {
 
-    currentSearch = "";
-
-    const search =
+    const productSearch =
         document.getElementById("productSearch");
 
-    const category =
+    const categoryFilter =
         document.getElementById("categoryFilter");
 
-    const brand =
+    const brandFilter =
         document.getElementById("brandFilter");
 
-    const sort =
+    const sortFilter =
         document.getElementById("sortFilter");
 
-    if (search) search.value = "";
+    if (productSearch)
+        productSearch.value = "";
 
-    if (category) category.value = "all";
+    if (categoryFilter)
+        categoryFilter.value = "all";
 
-    if (brand) brand.value = "all";
+    if (brandFilter)
+        brandFilter.value = "all";
 
-    if (sort) sort.value = "deal";
+    if (sortFilter)
+        sortFilter.value = "deal";
 
+    const heroSearch =
+        document.getElementById("heroSearch");
+
+    if (heroSearch)
+        heroSearch.value = "";
 
     renderProducts();
-
 }
 
 
 /* =========================
    WATCHLIST
-   ========================= */
+========================= */
+
+function saveWatchlist() {
+
+    localStorage.setItem(
+        "pricepilot_watchlist",
+        JSON.stringify(watchlist)
+    );
+}
+
 
 function toggleWatchlist(id) {
 
     if (watchlist.includes(id)) {
 
         watchlist =
-            watchlist.filter(item => item !== id);
+            watchlist.filter(
+                productId =>
+                    productId !== id
+            );
 
-    }
-
-    else {
+    } else {
 
         watchlist.push(id);
-
     }
 
-
-    localStorage.setItem(
-        "pricepilotWatchlist",
-        JSON.stringify(watchlist)
-    );
-
+    saveWatchlist();
 
     updateWatchCount();
 
@@ -1105,143 +1132,157 @@ function toggleWatchlist(id) {
     renderDeals();
 
     renderWatchlist();
-
 }
 
 
 function updateWatchCount() {
 
-    const counter =
+    const count =
         document.getElementById("watchCount");
 
-    if (!counter) return;
+    if (!count) return;
 
+    count.textContent =
+        watchlist.length;
 
-    counter.textContent = watchlist.length;
-
-    counter.style.display =
-        watchlist.length > 0
+    count.style.display =
+        watchlist.length
             ? "flex"
             : "none";
-
 }
 
 
 /* =========================
-   WATCHLIST PAGE
-   ========================= */
+   WATCHLIST SECTION
+========================= */
 
 function showWatchlist() {
 
     const section =
-        document.getElementById("watchlistSection");
+        document.getElementById(
+            "watchlistSection"
+        );
 
     if (!section) return;
-
 
     section.classList.remove("hidden");
 
     renderWatchlist();
 
-
     section.scrollIntoView({
         behavior: "smooth"
     });
-
 }
 
 
 function renderWatchlist() {
 
-    const container =
-        document.getElementById("watchlist");
-
-    if (!container) return;
-
-
-    const watchedProducts =
-        products.filter(product =>
-            watchlist.includes(product.id)
+    const grid =
+        document.getElementById(
+            "watchlistGrid"
         );
 
+    if (!grid) return;
 
-    if (!watchedProducts.length) {
+    const saved =
+        products.filter(
+            product =>
+                watchlist.includes(product.id)
+        );
 
-        container.innerHTML = `
+    grid.innerHTML = "";
 
+    if (!saved.length) {
+
+        grid.innerHTML = `
             <div class="empty">
-
-                <div class="empty-icon">
-                    ♡
-                </div>
-
-                <h3>
-                    Your watchlist is empty
-                </h3>
-
-                <p>
-                    Tap the heart on a product to start tracking it.
-                </p>
-
+                <div class="empty-icon">♡</div>
+                <h3>Your watchlist is empty</h3>
+                <p>Press the heart on a product to save it here.</p>
             </div>
-
         `;
 
         return;
-
     }
 
+    saved.forEach(product => {
 
-    container.innerHTML =
-        watchedProducts
-            .map(createProductCard)
-            .join("");
+        grid.appendChild(
+            createProductCard(product)
+        );
 
+    });
 }
 
 
 /* =========================
-   PRODUCT DETAILS
-   ========================= */
+   SHOW ALL PRODUCTS
+========================= */
 
-function showDetails(id) {
+function showAllProducts() {
+
+    clearFilters();
+
+    const section =
+        document.getElementById("products");
+
+    if (section) {
+
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+
+/* =========================
+   PRODUCT DETAILS MODAL
+========================= */
+
+function showProduct(id) {
 
     const product =
-        products.find(item => item.id === id);
+        products.find(
+            item => item.id === id
+        );
 
     if (!product) return;
 
 
-    currentProductId = id;
-
-
     let modal =
-        document.getElementById("productModal");
+        document.getElementById(
+            "productModal"
+        );
 
 
     if (!modal) {
 
-        modal = document.createElement("div");
+        modal =
+            document.createElement("div");
 
-        modal.id = "productModal";
+        modal.id =
+            "productModal";
 
-        modal.className = "modal";
+        modal.className =
+            "modal";
 
         document.body.appendChild(modal);
-
     }
+
+
+    const gallery =
+        product.images && product.images.length
+            ? product.images
+            : [];
 
 
     modal.innerHTML = `
 
-        <div
-            class="modal-content"
-            onclick="event.stopPropagation()"
-        >
+        <div class="modal-content">
 
             <button
                 class="modal-close"
-                onclick="closeModal()"
+                onclick="closeProductModal()"
             >
                 ×
             </button>
@@ -1251,45 +1292,54 @@ function showDetails(id) {
 
                 <div>
 
-                    <div class="modal-image">
+                    <div
+                        class="modal-image"
+                        id="modalMainImage"
+                    >
 
-                        <img
-                            id="modalMainImage"
-                            src="${product.images?.[0] || ""}"
-                            alt="${product.name}"
-                            onerror="this.style.display='none'; document.getElementById('modalEmoji').style.display='block';"
-                        >
-
-                        <span
-                            id="modalEmoji"
-                            class="product-emoji"
-                            style="display:none;"
-                        >
-                            ${product.emoji}
-                        </span>
+                        ${
+                            gallery[0]
+                            ? `
+                                <img
+                                    src="${gallery[0]}"
+                                    alt="${product.name}"
+                                    style="
+                                        width:100%;
+                                        height:300px;
+                                        object-fit:contain;
+                                    "
+                                >
+                            `
+                            : `
+                                <div class="product-emoji">
+                                    ${product.emoji || "📦"}
+                                </div>
+                            `
+                        }
 
                     </div>
 
 
-                    <div
-                        id="modalGallery"
-                        style="
-                            display:flex;
-                            gap:8px;
-                            margin-top:10px;
-                            overflow-x:auto;
-                        "
-                    >
+                    ${
+                        gallery.length > 1
+                        ? `
+                            <div
+                                style="
+                                    display:flex;
+                                    gap:8px;
+                                    margin-top:10px;
+                                    overflow-x:auto;
+                                "
+                            >
 
-                        ${
-                            (product.images || [])
-                                .map(
+                                ${gallery.map(
                                     (image, index) => `
                                         <button
-                                            onclick="changeModalImage('${image}')"
+                                            onclick="changeModalImage('${image.replace(/'/g, "\\'")}', '${product.emoji || "📦"}')"
                                             style="
-                                                min-width:70px;
+                                                width:70px;
                                                 height:70px;
+                                                flex:0 0 auto;
                                                 border:1px solid var(--border);
                                                 border-radius:10px;
                                                 background:var(--surface);
@@ -1309,11 +1359,12 @@ function showDetails(id) {
                                             >
                                         </button>
                                     `
-                                )
-                                .join("")
-                        }
+                                ).join("")}
 
-                    </div>
+                            </div>
+                        `
+                        : ""
+                    }
 
                 </div>
 
@@ -1328,7 +1379,6 @@ function showDetails(id) {
                         ${product.name}
                     </h2>
 
-
                     <div class="rating">
                         ★ ${product.rating}
                         <span>
@@ -1336,234 +1386,241 @@ function showDetails(id) {
                         </span>
                     </div>
 
-
                     <div class="modal-price">
                         €${product.price.toLocaleString()}
                     </div>
 
-
-                    <div class="savings">
-                        Save €${(
-                            product.oldPrice - product.price
-                        ).toLocaleString()}
-                    </div>
-
-
-                    <h3 style="margin-top:25px;">
-                        Compare retailers
-                    </h3>
-
+                    <p style="color:var(--muted);">
+                        Best current listed price:
+                        <strong>
+                            €${product.price.toLocaleString()}
+                        </strong>
+                    </p>
 
                     <div class="retailer-list">
 
+                        <h3>Compare retailers</h3>
+
                         ${
                             product.retailers
-                                .map(
-                                    retailer => `
-                                        <div class="retailer-row">
+                            .map(
+                                retailer => `
+                                    <div class="retailer-row">
 
-                                            <strong>
-                                                ${retailer[0]}
-                                            </strong>
+                                        <strong>
+                                            ${retailer[0]}
+                                        </strong>
 
-                                            <span>
-                                                €${retailer[1].toLocaleString()}
-                                            </span>
+                                        <span>
+                                            €${retailer[1].toLocaleString()}
+                                        </span>
 
-                                            <button
-                                                onclick="retailerClick('${retailer[0]}', '${product.name}')"
-                                            >
-                                                Visit
-                                            </button>
+                                        <button
+                                            onclick="alert('Retailer links will be connected when live retailer APIs are added.')"
+                                        >
+                                            View
+                                        </button>
 
-                                        </div>
-                                    `
-                                )
-                                .join("")
+                                    </div>
+                                `
+                            )
+                            .join("")
                         }
 
                     </div>
-
-
-                    <button
-                        class="details-button"
-                        style="
-                            width:100%;
-                            margin-top:15px;
-                            padding:13px;
-                            border-radius:10px;
-                        "
-                        onclick="toggleWatchlist(${product.id})"
-                    >
-                        ${
-                            watchlist.includes(product.id)
-                                ? "♥ Remove from watchlist"
-                                : "♡ Add to watchlist"
-                        }
-                    </button>
 
                 </div>
 
             </div>
 
         </div>
-
     `;
 
 
     modal.classList.add("show");
 
 
-    modal.onclick = event => {
+    const mainImage =
+        modal.querySelector(
+            "#modalMainImage img"
+        );
 
-        if (event.target === modal) {
+    if (mainImage) {
 
-            closeModal();
-
-        }
-
-    };
-
+        imageFallback(
+            mainImage,
+            product.emoji
+        );
+    }
 }
 
 
-function changeModalImage(image) {
+function changeModalImage(image, emoji) {
 
-    const main =
-        document.getElementById("modalMainImage");
+    const container =
+        document.getElementById(
+            "modalMainImage"
+        );
 
-    if (!main) return;
+    if (!container) return;
 
-    main.style.display = "block";
+    container.innerHTML = `
+        <img
+            src="${image}"
+            alt=""
+            style="
+                width:100%;
+                height:300px;
+                object-fit:contain;
+            "
+        >
+    `;
 
-    main.src = image;
+    const img =
+        container.querySelector("img");
 
+    if (img) {
+
+        imageFallback(
+            img,
+            emoji
+        );
+    }
 }
 
 
-/* =========================
-   MODAL CLOSE
-   ========================= */
-
-function closeModal() {
+function closeProductModal() {
 
     const modal =
-        document.getElementById("productModal");
+        document.getElementById(
+            "productModal"
+        );
 
     if (modal) {
 
         modal.classList.remove("show");
-
     }
-
-}
-
-
-document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-
-        closeModal();
-
-    }
-
-});
-
-
-/* =========================
-   RETAILER BUTTON
-   ========================= */
-
-function retailerClick(retailer, productName) {
-
-    alert(
-        `${retailer} link for ${productName} will be connected when PricePilot's retailer APIs are live.`
-    );
-
-}
-
-
-/* =========================
-   HOME
-   ========================= */
-
-function showHome() {
-
-    document
-        .getElementById("watchlistSection")
-        ?.classList.add("hidden");
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
 }
 
 
 /* =========================
    DARK MODE
-   ========================= */
+========================= */
 
 function toggleTheme() {
 
-    document.body.classList.toggle("dark");
-
+    document.body.classList.toggle(
+        "dark"
+    );
 
     localStorage.setItem(
-        "pricepilotTheme",
+        "pricepilot_theme",
         document.body.classList.contains("dark")
             ? "dark"
             : "light"
     );
-
 }
 
 
-function applySavedTheme() {
+function loadTheme() {
 
-    const theme =
-        localStorage.getItem("pricepilotTheme");
+    const saved =
+        localStorage.getItem(
+            "pricepilot_theme"
+        );
 
-    if (theme === "dark") {
+    if (saved === "dark") {
 
-        document.body.classList.add("dark");
-
+        document.body.classList.add(
+            "dark"
+        );
     }
-
 }
 
 
 /* =========================
-   SAFETY: IMAGE FALLBACK
-   ========================= */
+   HOME
+========================= */
+
+function showHome() {
+
+    const watchlistSection =
+        document.getElementById(
+            "watchlistSection"
+        );
+
+    if (watchlistSection) {
+
+        watchlistSection.classList.add(
+            "hidden"
+        );
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   MODAL CLICK OUTSIDE
+========================= */
 
 document.addEventListener(
-    "error",
-    event => {
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
 
         if (
-            event.target &&
-            event.target.tagName === "IMG"
+            modal &&
+            event.target === modal
         ) {
 
-            event.target.style.display = "none";
-
-            const fallback =
-                event.target.nextElementSibling;
-
-            if (
-                fallback &&
-                fallback.classList.contains("product-emoji")
-            ) {
-
-                fallback.style.display = "block";
-
-            }
-
+            closeProductModal();
         }
-
-    },
-    true
+    }
 );
+
+
+/* =========================
+   ESC KEY
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeProductModal();
+        }
+    }
+);
+
+
+/* =========================
+   INITIALISE PRICEPILOT
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadTheme();
+
+        renderProducts();
+
+        renderDeals();
+
+        updateWatchCount();
+
+        renderWatchlist();
+
+    }
+);
+```
