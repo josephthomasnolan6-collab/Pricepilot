@@ -1,15 +1,8 @@
-/* =========================================================
-   PRICEPILOT 3.0
-   Main application JavaScript
-   ========================================================= */
-
-
-/* -----------------------------
-   PRODUCT DATABASE
------------------------------ */
+/* =====================================================
+   PRICEPILOT 3.0 — WORKING JAVASCRIPT
+   ===================================================== */
 
 const products = [
-
     {
         id: 1,
         brand: "Apple",
@@ -133,7 +126,7 @@ const products = [
     {
         id: 7,
         brand: "Dell",
-        name: "XPS 14",
+        name: "Dell XPS 14",
         category: "Laptops",
         emoji: "💻",
         price: 1499,
@@ -193,7 +186,7 @@ const products = [
     {
         id: 10,
         brand: "Sony",
-        name: "WH-1000XM6",
+        name: "Sony WH-1000XM6",
         category: "Audio",
         emoji: "🎧",
         price: 349,
@@ -329,97 +322,55 @@ const products = [
         ],
         history: [799, 779, 749, 729, 699, 699]
     }
-
 ];
 
 
-/* -----------------------------
+/* =====================================================
    STATE
------------------------------ */
+   ===================================================== */
 
-let favourites =
-    JSON.parse(localStorage.getItem("pricepilotFavourites")) || [];
+let favourites = [];
 
-let darkMode =
-    localStorage.getItem("pricepilotDark") === "true";
+try {
+    favourites =
+        JSON.parse(
+            localStorage.getItem("pricepilotFavourites")
+        ) || [];
+} catch {
+    favourites = [];
+}
 
 
-/* -----------------------------
-   INITIALISE
------------------------------ */
+/* =====================================================
+   START WEBSITE
+   ===================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (darkMode) {
-        document.body.classList.add("dark");
-    }
+function startPricePilot() {
 
     renderDeals();
     renderProducts();
     updateWatchCount();
 
-    const stat =
+    const counter =
         document.getElementById("statProducts");
 
-    if (stat) {
-        stat.textContent = products.length;
+    if (counter) {
+        counter.textContent = products.length;
     }
 
-});
-
-
-/* -----------------------------
-   SEARCH
------------------------------ */
-
-function syncSearch(value) {
-
-    const productSearch =
-        document.getElementById("productSearch");
-
-    if (productSearch) {
-        productSearch.value = value;
-    }
-
-    renderProducts();
-
 }
 
 
-function performSearch() {
-
-    document
-        .getElementById("products")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-    renderProducts();
-
-}
-
-
-function quickSearch(term) {
-
-    document.getElementById("heroSearch").value = term;
-
-    document.getElementById("productSearch").value = term;
-
-    performSearch();
-
-}
-
-
-/* -----------------------------
-   RENDER DEALS
------------------------------ */
+/* =====================================================
+   DEALS
+   ===================================================== */
 
 function renderDeals() {
 
-    const container =
+    const grid =
         document.getElementById("dealGrid");
 
-    if (!container) return;
+    if (!grid) return;
 
     const deals =
         [...products]
@@ -429,15 +380,17 @@ function renderDeals() {
             )
             .slice(0, 4);
 
-    container.innerHTML =
-        deals.map(createProductCard).join("");
+    grid.innerHTML =
+        deals
+            .map(product => createProductCard(product))
+            .join("");
 
 }
 
 
-/* -----------------------------
-   RENDER PRODUCTS
------------------------------ */
+/* =====================================================
+   PRODUCTS
+   ===================================================== */
 
 function renderProducts() {
 
@@ -446,32 +399,46 @@ function renderProducts() {
 
     if (!grid) return;
 
+
+    const searchInput =
+        document.getElementById("productSearch");
+
+    const categoryInput =
+        document.getElementById("categoryFilter");
+
+    const brandInput =
+        document.getElementById("brandFilter");
+
+    const sortInput =
+        document.getElementById("sortFilter");
+
+
     const search =
-        (
-            document.getElementById("productSearch")
-                ?.value || ""
-        )
-        .toLowerCase()
-        .trim();
+        searchInput
+            ? searchInput.value.toLowerCase().trim()
+            : "";
 
     const category =
-        document.getElementById("categoryFilter")
-            ?.value || "all";
+        categoryInput
+            ? categoryInput.value
+            : "all";
 
     const brand =
-        document.getElementById("brandFilter")
-            ?.value || "all";
+        brandInput
+            ? brandInput.value
+            : "all";
 
     const sort =
-        document.getElementById("sortFilter")
-            ?.value || "deal";
+        sortInput
+            ? sortInput.value
+            : "deal";
 
 
-    let filtered =
+    let results =
         products.filter(product => {
 
-            const matchesSearch =
-                !search ||
+            const searchMatch =
+                search === "" ||
                 product.name
                     .toLowerCase()
                     .includes(search) ||
@@ -482,18 +449,18 @@ function renderProducts() {
                     .toLowerCase()
                     .includes(search);
 
-            const matchesCategory =
+            const categoryMatch =
                 category === "all" ||
                 product.category === category;
 
-            const matchesBrand =
+            const brandMatch =
                 brand === "all" ||
                 product.brand === brand;
 
             return (
-                matchesSearch &&
-                matchesCategory &&
-                matchesBrand
+                searchMatch &&
+                categoryMatch &&
+                brandMatch
             );
 
         });
@@ -501,31 +468,31 @@ function renderProducts() {
 
     if (sort === "priceLow") {
 
-        filtered.sort(
+        results.sort(
             (a, b) => a.price - b.price
         );
 
     }
 
-    if (sort === "priceHigh") {
+    else if (sort === "priceHigh") {
 
-        filtered.sort(
+        results.sort(
             (a, b) => b.price - a.price
         );
 
     }
 
-    if (sort === "rating") {
+    else if (sort === "rating") {
 
-        filtered.sort(
+        results.sort(
             (a, b) => b.rating - a.rating
         );
 
     }
 
-    if (sort === "deal") {
+    else {
 
-        filtered.sort(
+        results.sort(
             (a, b) =>
                 b.dealScore - a.dealScore
         );
@@ -533,17 +500,24 @@ function renderProducts() {
     }
 
 
-    document.getElementById("resultCount").textContent =
-        `${filtered.length} product${filtered.length === 1 ? "" : "s"}`;
+    const resultCounter =
+        document.getElementById("resultCount");
+
+    if (resultCounter) {
+
+        resultCounter.textContent =
+            `${results.length} product${results.length === 1 ? "" : "s"}`;
+
+    }
 
 
-    if (filtered.length === 0) {
+    if (results.length === 0) {
 
         grid.innerHTML = `
             <div class="empty">
                 <div class="empty-icon">🔎</div>
                 <h3>No products found</h3>
-                <p>Try another search or clear the filters.</p>
+                <p>Try another search or clear your filters.</p>
             </div>
         `;
 
@@ -553,27 +527,27 @@ function renderProducts() {
 
 
     grid.innerHTML =
-        filtered
-            .map(createProductCard)
+        results
+            .map(product => createProductCard(product))
             .join("");
 
 }
 
 
-/* -----------------------------
+/* =====================================================
    PRODUCT CARD
------------------------------ */
+   ===================================================== */
 
 function createProductCard(product) {
 
-    const saved =
+    const isFavourite =
         favourites.includes(product.id);
 
     const saving =
         product.oldPrice - product.price;
 
-    return `
 
+    return `
         <article class="product-card">
 
             <div class="deal-score">
@@ -581,17 +555,18 @@ function createProductCard(product) {
             </div>
 
             <button
-                class="favourite ${saved ? "active" : ""}"
+                class="favourite ${isFavourite ? "active" : ""}"
                 onclick="toggleFavourite(${product.id})"
-                aria-label="Favourite product"
             >
-                ${saved ? "♥" : "♡"}
+                ${isFavourite ? "♥" : "♡"}
             </button>
 
             <div class="product-image">
+
                 <div class="product-emoji">
                     ${product.emoji}
                 </div>
+
             </div>
 
             <div class="product-body">
@@ -614,6 +589,7 @@ function createProductCard(product) {
                 <div class="price-row">
 
                     <div>
+
                         <div class="price">
                             €${product.price.toLocaleString()}
                         </div>
@@ -621,10 +597,11 @@ function createProductCard(product) {
                         <span class="old-price">
                             €${product.oldPrice.toLocaleString()}
                         </span>
+
                     </div>
 
                     <div class="savings">
-                        Save €${saving.toLocaleString()}
+                        Save €${saving}
                     </div>
 
                 </div>
@@ -650,15 +627,14 @@ function createProductCard(product) {
             </div>
 
         </article>
-
     `;
 
 }
 
 
-/* -----------------------------
-   PRODUCT MODAL
------------------------------ */
+/* =====================================================
+   PRODUCT DETAILS
+   ===================================================== */
 
 function openProduct(id) {
 
@@ -669,16 +645,21 @@ function openProduct(id) {
 
     if (!product) return;
 
+
     const modal =
         document.getElementById("productModal");
 
     const content =
         document.getElementById("modalContent");
 
+    if (!modal || !content) return;
 
-    const cheapest =
+
+    const retailers =
         [...product.retailers]
-            .sort((a, b) => a[1] - b[1])[0];
+            .sort(
+                (a, b) => a[1] - b[1]
+            );
 
 
     content.innerHTML = `
@@ -706,18 +687,21 @@ function openProduct(id) {
 
                 <div class="rating">
                     ★ ${product.rating}
+
                     <span>
                         ${product.reviews.toLocaleString()} reviews
                     </span>
                 </div>
 
                 <div class="modal-price">
-                    €${cheapest[1].toLocaleString()}
+                    €${product.price.toLocaleString()}
                 </div>
 
                 <p>
                     PricePilot Deal Score:
-                    <strong>${product.dealScore}/100</strong>
+                    <strong>
+                        ${product.dealScore}/100
+                    </strong>
                 </p>
 
                 <div class="retailer-list">
@@ -728,9 +712,8 @@ function openProduct(id) {
 
                     <br>
 
-                    ${product.retailers
-                        .sort((a,b) => a[1] - b[1])
-                        .map((retailer, index) => `
+                    ${retailers.map(
+                        (retailer, index) => `
 
                         <div class="retailer-row">
 
@@ -751,8 +734,7 @@ function openProduct(id) {
 
                         </div>
 
-                    `)
-                    .join("")}
+                    `).join("")}
 
                 </div>
 
@@ -760,40 +742,39 @@ function openProduct(id) {
 
         </div>
 
+        <div style="margin-top:30px">
 
-        <div style="margin-top:35px">
+            <h3>
+                Price history
+            </h3>
 
-            <h3>Price history</h3>
-
-            <p style="color:var(--muted);margin-top:5px">
+            <p style="color:var(--muted)">
                 Recent price movement
             </p>
 
             <div class="history-chart">
 
-                ${product.history
-                    .map(
-                        price => `
-                            <span
-                                style="
-                                height:${Math.max(
-                                    20,
-                                    160 -
-                                    (
-                                        price /
-                                        product.oldPrice
-                                    ) * 130
-                                )}px"
-                                title="€${price}"
-                            ></span>
-                        `
-                    )
-                    .join("")}
+                ${product.history.map(price => `
+
+                    <span
+                        title="€${price}"
+                        style="
+                            height:${Math.max(
+                                25,
+                                170 -
+                                (
+                                    price /
+                                    product.oldPrice
+                                ) * 120
+                            )}px
+                        "
+                    ></span>
+
+                `).join("")}
 
             </div>
 
         </div>
-
     `;
 
 
@@ -802,36 +783,25 @@ function openProduct(id) {
 }
 
 
-/* -----------------------------
+/* =====================================================
    CLOSE MODAL
------------------------------ */
+   ===================================================== */
 
 function closeModal() {
-
-    document
-        .getElementById("productModal")
-        .classList.remove("show");
-
-}
-
-
-document.addEventListener("click", event => {
 
     const modal =
         document.getElementById("productModal");
 
-    if (
-        event.target === modal
-    ) {
-        closeModal();
+    if (modal) {
+        modal.classList.remove("show");
     }
 
-});
+}
 
 
-/* -----------------------------
+/* =====================================================
    FAVOURITES
------------------------------ */
+   ===================================================== */
 
 function toggleFavourite(id) {
 
@@ -839,7 +809,8 @@ function toggleFavourite(id) {
 
         favourites =
             favourites.filter(
-                item => item !== id
+                favouriteId =>
+                    favouriteId !== id
             );
 
     } else {
@@ -864,12 +835,17 @@ function toggleFavourite(id) {
 }
 
 
+/* =====================================================
+   WATCH COUNT
+   ===================================================== */
+
 function updateWatchCount() {
 
     const counter =
         document.getElementById("watchCount");
 
     if (!counter) return;
+
 
     if (favourites.length > 0) {
 
@@ -887,32 +863,38 @@ function updateWatchCount() {
 }
 
 
-/* -----------------------------
+/* =====================================================
    WATCHLIST
------------------------------ */
+   ===================================================== */
 
 function showWatchlist() {
 
     const section =
-        document.getElementById("watchlistSection");
+        document.getElementById(
+            "watchlistSection"
+        );
 
     const grid =
-        document.getElementById("watchlistGrid");
+        document.getElementById(
+            "watchlistGrid"
+        );
+
+    if (!section || !grid) return;
+
 
     section.classList.remove("hidden");
 
 
-    const savedProducts =
+    const saved =
         products.filter(
             product =>
                 favourites.includes(product.id)
         );
 
 
-    if (savedProducts.length === 0) {
+    if (saved.length === 0) {
 
         grid.innerHTML = `
-
             <div class="empty">
 
                 <div class="empty-icon">
@@ -925,17 +907,16 @@ function showWatchlist() {
 
                 <p>
                     Click the heart on a product
-                    to start tracking it.
+                    to add it.
                 </p>
 
             </div>
-
         `;
 
     } else {
 
         grid.innerHTML =
-            savedProducts
+            saved
                 .map(createProductCard)
                 .join("");
 
@@ -949,125 +930,152 @@ function showWatchlist() {
 }
 
 
-/* -----------------------------
-   CATEGORY FILTER
------------------------------ */
+/* =====================================================
+   CATEGORY
+   ===================================================== */
 
 function filterCategory(category) {
 
     const categoryFilter =
-        document.getElementById("categoryFilter");
+        document.getElementById(
+            "categoryFilter"
+        );
 
-    categoryFilter.value = category;
+    const search =
+        document.getElementById(
+            "productSearch"
+        );
 
-    document.getElementById("productSearch").value = "";
+
+    if (categoryFilter) {
+        categoryFilter.value = category;
+    }
+
+    if (search) {
+        search.value = "";
+    }
+
 
     renderProducts();
 
-    document
-        .getElementById("products")
-        .scrollIntoView({
+
+    const productsSection =
+        document.getElementById(
+            "products"
+        );
+
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
             behavior: "smooth"
         });
+
+    }
 
 }
 
 
-/* -----------------------------
-   SHOW ALL
------------------------------ */
+/* =====================================================
+   SEARCH
+   ===================================================== */
 
-function showAllProducts() {
+function syncSearch(value) {
 
-    clearFilters();
+    const search =
+        document.getElementById(
+            "productSearch"
+        );
 
-    document
-        .getElementById("products")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+    if (search) {
+        search.value = value;
+    }
+
+    renderProducts();
 
 }
 
 
-/* -----------------------------
+function performSearch() {
+
+    const productsSection =
+        document.getElementById(
+            "products"
+        );
+
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+    renderProducts();
+
+}
+
+
+function quickSearch(term) {
+
+    const hero =
+        document.getElementById(
+            "heroSearch"
+        );
+
+    const search =
+        document.getElementById(
+            "productSearch"
+        );
+
+
+    if (hero) {
+        hero.value = term;
+    }
+
+    if (search) {
+        search.value = term;
+    }
+
+
+    performSearch();
+
+}
+
+
+/* =====================================================
    CLEAR FILTERS
------------------------------ */
+   ===================================================== */
 
 function clearFilters() {
 
-    document.getElementById("productSearch").value = "";
+    const search =
+        document.getElementById(
+            "productSearch"
+        );
 
-    document.getElementById("categoryFilter").value = "all";
+    const hero =
+        document.getElementById(
+            "heroSearch"
+        );
 
-    document.getElementById("brandFilter").value = "all";
+    const category =
+        document.getElementById(
+            "categoryFilter"
+        );
 
-    document.getElementById("sortFilter").value = "deal";
+    const brand =
+        document.getElementById(
+            "brandFilter"
+        );
 
-    document.getElementById("heroSearch").value = "";
-
-    renderProducts();
-
-}
-
-
-/* -----------------------------
-   HOME
------------------------------ */
-
-function showHome() {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
+    const sort =
+        document.getElementById(
+            "sortFilter"
+        );
 
 
-/* -----------------------------
-   DARK MODE
------------------------------ */
+    if (search) search.value = "";
 
-function toggleTheme() {
+    if (hero) hero.value = "";
 
-    document.body.classList.toggle("dark");
-
-    darkMode =
-        document.body.classList.contains("dark");
-
-    localStorage.setItem(
-        "pricepilotDark",
-        darkMode
-    );
-
-}
-
-
-/* -----------------------------
-   RETAILER BUTTON
------------------------------ */
-
-function retailerClick(retailer) {
-
-    alert(
-        `${retailer} integration will be connected when the live retailer API is added.`
-    );
-
-}
-
-
-/* -----------------------------
-   KEYBOARD SHORTCUT
------------------------------ */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (event.key === "Escape") {
-            closeModal();
-        }
-
-    }
-);
+    if (category) category.value = "
